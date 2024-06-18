@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function fetchUserProfile(token) {
-    fetch('http://192.168.1.200:1111/api/profile', {
+    fetch('https//www.play.zlg.gg:1111/api/profile', {
         headers: {
             'Authorization': `Bearer ${token}`
         }
