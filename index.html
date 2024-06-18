@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Zombie Lynx Gaming - Profile</title>
+    <meta name="danielhenderson" content="_nK">
+    <link rel="icon" type="image/png" href="assets/images/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- START: Styles -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700%7cOpen+Sans:400,700" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="assets/vendor/bootstrap/dist/css/bootstrap.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script defer src="assets/vendor/fontawesome-free/js/all.js"></script>
+    <script defer src="assets/vendor/fontawesome-free/js/v4-shims.js"></script>
+    <link rel="stylesheet" href="assets/vendor/ionicons/css/ionicons.min.css">
+    <link rel="stylesheet" href="assets/vendor/flickity/dist/flickity.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/vendor/photoswipe/dist/photoswipe.css">
+    <link rel="stylesheet" type="text/css" href="assets/vendor/photoswipe/dist/default-skin/default-skin.css">
+    <link rel="stylesheet" href="assets/vendor/bootstrap-slider/dist/css/bootstrap-slider.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/vendor/summernote/dist/summernote-bs4.css">
+    <link rel="stylesheet" href="assets/css/goodgames.min.css">
+    <link rel="stylesheet" href="assets/css/custom.css">
+    <link href="/assets/css/styles.css" rel="stylesheet">
+    <script src="assets/vendor/jquery/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <header class="nk-header nk-header-opaque">
+        <div class="nk-contacts-top my-0" style="margin: 0; padding: .105px;"></div>
+        <nav class="nk-navbar nk-navbar-top nk-navbar-sticky nk-navbar-autohide">
+            <div class="container">
+                <div class="nk-nav-table">
+                    <a href="index.html" class="nk-nav-logo">
+                        <img src="assets/images/zlg-logo.png" alt="Zombie Lynx Gaming" width="199">
+                    </a>
+                    <ul class="nk-nav nk-nav-right d-none d-lg-table-cell" data-nav-mobile="#nk-nav-mobile">
+                        <li><a href="#zlg-servers"> ZLG Servers </a></li>
+                        <li><a href="#server-status"> Server Status </a></li>
+                        <li><a href="#services"> Services </a></li>
+                        <li class="nk-drop-item">
+                            <a href=""> Connect </a>
+                            <ul class="dropdown">
+                                <li><a href="https://www.tiktok.com/@zombielynxgaming"> TikTok </a></li>
+                                <li><a href="https://www.facebook.com/profile.php?id=61553715584865"> Facebook </a></li>
+                                <li><a href="https://twitter.com/zombie_lynx"> X </a></li>
+                                <li><a href="mailto:zombielynxgaming@gmail.com"> Email </a></li>
+                                <li><a href="http://localhost:3000/auth/steam">Login via Steam</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <ul class="nk-nav nk-nav-right nk-nav-icons">
+                        <li class="single-icon d-lg-none">
+                            <a href="#" class="no-link-effect" data-nav-toggle="#nk-nav-mobile">
+                                <span class="nk-icon-burger">
+                                    <span class="nk-t-1"></span>
+                                    <span class="nk-t-2"></span>
+                                    <span class="nk-t-3"></span>
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div id="nk-nav-mobile" class="nk-navbar nk-navbar-side nk-navbar-right-side nk-navbar-overlay-content d-lg-none">
+        <div class="nano">
+            <div class="nano-content">
+                <a href="index.html" class="nk-nav-logo">
+                    <img src="assets/images/zlg-logo.png" alt="" width="120">
+                </a>
+                <div class="nk-navbar-mobile-content">
+                    <ul class="nk-nav"></ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="nk-main">
+        <div class="nk-gap-2"></div>
+        <div class="container my-5" style="height: 73vh;">
+            <div id="message" class="alert alert-info text-center" style="visibility: hidden; height: 40px; display: flex; align-items: center; justify-content: center;"></div>
+            <div class="row h-100">
+                <div class="col-lg-8 mb-4 h-100">
+                    <div class="card bg-dark text-white h-100">
+                        <div class="card-body d-flex flex-column p-0">
+                            <!-- Desktop View -->
+                            <div class="price-card-mobile justify-content-between d-none d-md-flex">
+                                <div class="d-flex align-items-center">
+                                    <img id="avatar" src="" alt="Player Avatar" class="avatar me-3 h-100">
+                                    <div class="ms-2" style="line-height: normal;">
+                                        <h2 id="username" class="card-title mb-0 username"></h2>
+                                        <p id="tribe" class="card-text tribe"></p>
+                                        <p class="card-text mb-0 mt-50">POINTS: <br> <span id="points" class="points fs-2" style="line-height: normal;"></span></p>
+                                    </div>
+                                </div>
+                                <div class="d-flex flex-column align-items-end">
+                                    <span class="nk-post-categories text-center" style="width: 200px;">
+                                        <p id="membership" class="bg-main-1 membership membership-text mb-2 mt-50 rounded-left p-5"></p>
+                                    </span>
+                                    <div class="mt-70 d-md-flex d-block mb-5 me-2">
+                                        <button class="nk-btn nk-btn-rounded nk-btn-color-dark-3 nk-btn-hover-color-main-1 me-2 w-75" onclick="window.location.href='https://zlg.gg/aseshop'">Buy</button>
+                                        <button class="nk-btn nk-btn-rounded nk-btn-color-dark-3 nk-btn-hover-color-main-1 w-75" data-toggle="modal" data-target="#voteModal">Vote</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Mobile View -->
+                            <div class="d-block d-md-none">
+                                <div class="price-card-mobile justify-content-between p-0 m-0">
+                                    <div class="d-flex align-items-center justify-content-between me-5 pe-3 h-100">
+                                        <img id="avatar-mobile" src="" alt="Player Avatar" class="avatar me-3 h-100">
+                                        <div class="ms-2" style="line-height: normal;">
+                                            <h2 id="username-mobile" class="card-title mb-0 username"></h2>
+                                            <p id="tribe-mobile" class="card-text tribe text-center"></p>
+                                            <p class="card-text mb-0 mt-50 text-center">POINTS: <br> <span id="points-mobile" class="points fs-2" style="line-height: normal;"></span></p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="d-flex flex-column align-items-end">
+                                    <span class="nk-post-categories text-center w-100">
+                                        <p id="membership-mobile" class="bg-main-1 membership membership-text mb-2 mt-2 p-5"></p>
+                                    </span>
+                                </div>
+                                <div class="d-flex mb-5 me-2 w-100 justify-content-between mt-5 pt-5" style="border-bottom: 1px solid black;">
+                                    <button class="nk-btn nk-btn-rounded nk-btn-hover-color-main-1 me-2 w-50" onclick="window.location.href='https://zlg.gg/aseshop'" style="background-color: transparent;"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="bi bi-currency-dollar" viewBox="0 0 16 16">
+                                        <path d="M4 10.781c.148 1.667 1.513 2.85 3.591 3.003V15h1.043v-1.216c2.27-.179 3.678-1.438 3.678-3.3 0-1.59-.947-2.51-2.956-3.028l-.722-.187V3.467c1.122.11 1.879.714 2.07 1.616h1.47c-.166-1.6-1.54-2.748-3.54-2.875V1H7.591v1.233c-1.939.23-3.27 1.472-3.27 3.156 0 1.454.966 2.483 2.661 2.917l.61.162v4.031c-1.149-.17-1.94-.8-2.131-1.718zm3.391-3.836c-1.043-.263-1.6-.825-1.6-1.616 0-.944.704-1.641 1.8-1.828v3.495l-.2-.05zm1.591 1.872c1.287.323 1.852.859 1.852 1.769 0 1.097-.826 1.828-2.2 1.939V8.73z"/>
+                                    </svg>Buy</button>
+                                    <button class="nk-btn nk-btn-rounded nk-btn-hover-color-main-1 w-50" data-toggle="modal" data-target="#voteModal" style="background-color: transparent;"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="bi bi-check-lg" viewBox="0 0 16 16">
+                                        <path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425z"/>
+                                    </svg>Vote</button>
+                                </div>
+                            </div>
+
+                            <div class="mt-5 flex-grow-1 align-items-center pt-5 ps-4 pe-4">
+                                <div class="stat-section mb-3">
+                                    <h4>Season 8 Stats</h4>
+                                    <div class="row justify-content-start">
+                                        <div class="col-4 text-start d-flex flex-column align-items-start stat-item" style="line-height: normal;">
+                                            <div class="d-flex align-items-center">
+                                                <img src="assets/images/kills.png" alt="Kills" class="me-2">
+                                                <p>Kills</p>
+                                            </div>
+                                            <p id="kills" class="stat-number kills"></p>
+                                            <canvas id="killsChart" height="50"></canvas>
+                                        </div>
+                                        <div class="col-4 text-start d-flex flex-column align-items-start stat-item" style="line-height: normal;">
+                                            <div class="d-flex align-items-center">
+                                                <img src="assets/images/deaths.png" alt="Deaths" class="me-2">
+                                                <p>Deaths</p>
+                                            </div>
+                                            <p id="deaths" class="stat-number deaths"></p>
+                                            <canvas id="deathsChart" height="50"></canvas>
+                                        </div>
+                                        <div class="col-4 text-start d-flex flex-column align-items-start stat-item" style="line-height: normal;">
+                                            <div class="d-flex align-items-center">
+                                                <img src="assets/images/kd.png" alt="KD Ratio" class="me-2">
+                                                <p>KD Ratio</p>
+                                            </div>
+                                            <p id="kd" class="stat-number kd"></p>
+                                            <canvas id="kdChart" height="50"></canvas>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="stat-section mt-40">
+                                    <div class="row justify-content-start">
+                                        <div class="col-4 text-start d-flex flex-column align-items-start stat-item" style="line-height: normal;">
+                                            <div class="d-flex align-items-center">
+                                                <img src="assets/images/dailies.png" alt="Dailies" class="me-2">
+                                                <p>Dailies</p>
+                                            </div>
+                                            <p id="dailies" class="stat-number dailies"></p>
+                                            <canvas id="dailiesChart" height="50"></canvas>
+                                        </div>
+                                        <div class="col-4 text-start d-flex flex-column align-items-start stat-item" style="line-height: normal;">
+                                            <div class="d-flex align-items-center">
+                                                <img src="assets/images/weeklies.png" alt="Weeklies" class="me-2">
+                                                <p>Weeklies</p>
+                                            </div>
+                                            <p id="weeklies" class="stat-number weeklies"></p>
+                                            <canvas id="weekliesChart" height="50"></canvas>
+                                        </div>
+                                        <div class="col-4 text-start d-flex flex-column align-items-start stat-item" style="line-height: normal;">
+                                            <div class="d-flex align-items-center">
+                                                <img src="assets/images/bkilled.png" alt="Bosses Killed" class="me-2">
+                                                <p>Bosses</p>
+                                            </div>
+                                            <p id="bkilled" class="stat-number bkilled"></p>
+                                            <canvas id="bossesKilledChart" height="50"></canvas>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 h-100">
+                    <div class="card bg-dark text-white mb-4 h-100">
+                        <div class="card-body">
+                            <h5 class="card-title mt-25 mb-30 text-center text-md-left">Season 8 PVP Leaderboard</h5>
+                            <table class="table table-dark table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Rank</th>
+                                        <th>Player</th>
+                                        <th>
+                                            <img src="assets/images/kills.png" alt="Kills" class="me-2">
+                                            Kills
+                                        </th>
+                                        <th>
+                                            <img src="assets/images/kd.png" alt="KD Ratio" class="me-2">
+                                            K/D
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody id="leaderboard">
+                                    <!-- Leaderboard will be populated by JavaScript -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="voteModal" tabindex="-1" role="dialog" aria-labelledby="voteModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header justify-content-center">
+                    <h5 class="modal-title text-center" id="voteModalLabel">Select a Server to Vote for <br> <span><p>Voting gets you more points in game!</p></span></h5>
+                </div>
+                <div class="modal-body text-center">
+                    <button class="nk-btn nk-btn-rounded nk-btn-color-dark-3 nk-btn-hover-color-main-1 mb-4" onclick="window.location.href='https://ark-servers.net/server/285935/vote/'">Valguero</button><br>
+                    <button class="nk-btn nk-btn-rounded nk-btn-color-dark-3 nk-btn-hover-color-main-1 mb-4" onclick="window.location.href='https://ark-servers.net/server/285936/vote/'">Extinction</button><br>
+                    <button class="nk-btn nk-btn-rounded nk-btn-color-dark-3 nk-btn-hover-color-main-1 mb-4" onclick="window.location.href='https://ark-servers.net/server/285939/vote/'">Gen1</button><br>
+                    <button class="nk-btn nk-btn-rounded nk-btn-color-dark-3 nk-btn-hover-color-main-1 mb-4" onclick="window.location.href='https://ark-servers.net/server/285940/vote/'">Aberration</button><br>
+                    <button class="nk-btn nk-btn-rounded nk-btn-color-dark-3 nk-btn-hover-color-main-1 mb-4" onclick="window.location.href='https://ark-servers.net/server/285941/vote/'">TheIsland</button><br>
+                    <button class="nk-btn nk-btn-rounded nk-btn-color-dark-3 nk-btn-hover-color-main-1 mb-4" onclick="window.location.href='https://ark-servers.net/server/285942/vote/'">TheCenter</button><br>
+                    <button class="nk-btn nk-btn-rounded nk-btn-color-dark-3 nk-btn-hover-color-main-1 mb-4" onclick="window.location.href='https://ark-servers.net/server/285943/vote/'">Gen2</button><br>
+                    <button class="nk-btn nk-btn-rounded nk-btn-color-dark-3 nk-btn-hover-color-main-1 mb-4" onclick="window.location.href='https://ark-servers.net/server/285944/vote/'">Ragnarok</button><br>
+                    <button class="nk-btn nk-btn-rounded nk-btn-color-dark-3 nk-btn-hover-color-main-1 mb-4" onclick="window.location.href='https://ark-servers.net/server/285937/vote/'">CrystalIsles</button><br>
+                    <button class="nk-btn nk-btn-rounded nk-btn-color-dark-3 nk-btn-hover-color-main-1 mb-4" onclick="window.location.href='https://ark-servers.net/server/285938/vote/'">ScorchedEarth</button><br>
+                    <button class="nk-btn nk-btn-rounded nk-btn-color-dark-3 nk-btn-hover-color-main-1 mb-4" onclick="window.location.href='https://ark-servers.net/server/285943/vote/'">LostIsland</button><br>
+                    <button class="nk-btn nk-btn-rounded nk-btn-color-dark-3 nk-btn-hover-color-main-1" onclick="window.location.href='https://ark-servers.net/server/285943/vote/'">Fjordur</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <img class="nk-page-background-top" src="assets/images/bg-top.png" alt="">
+    <img class="nk-page-background-bottom" src="assets/images/bg-bottom.png" alt="">
+
+    <!-- START: Footer -->
+    <footer class="nk-footer fixed-bottom footer">
+        <div class="nk-copyright">
+            <div class="container text-center justify-content-center d-flex">
+                <div class="text-center">
+                    Copyright &copy; 2024 <span style="color: red;">Zombie Lynx Gaming</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- END: Footer -->
+
+    <!-- START: Scripts -->
+    <script src="assets/vendor/object-fit-images/dist/ofi.min.js"></script>
+    <script src="assets/vendor/gsap/src/minified/TweenMax.min.js"></script>
+    <script src="assets/vendor/gsap/src/minified/plugins/ScrollToPlugin.min.js"></script>
+    <script src="assets/vendor/popper.js/dist/umd/popper.min.js"></script>
+    <script src="assets/vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="assets/vendor/sticky-kit/dist/sticky-kit.min.js"></script>
+    <script src="assets/vendor/jarallax/dist/jarallax.min.js"></script>
+    <script src="assets/vendor/jarallax/dist/jarallax-video.min.js"></script>
+    <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+    <script src="assets/vendor/flickity/dist/flickity.pkgd.min.js"></script>
+    <script src="assets/vendor/photoswipe/dist/photoswipe.min.js"></script>
+    <script src="assets/vendor/photoswipe/dist/photoswipe-ui-default.min.js"></script>
+    <script src="assets/vendor/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="assets/vendor/jquery-countdown/dist/jquery.countdown.min.js"></script>
+    <script src="assets/vendor/moment/min/moment.min.js"></script>
+    <script src="assets/vendor/moment-timezone/builds/moment-timezone-with-data.min.js"></script>
+    <script src="assets/vendor/hammerjs/hammer.min.js"></script>
+    <script src="assets/vendor/nanoscroller/bin/javascripts/jquery.nanoscroller.js"></script>
+    <script src="assets/vendor/soundmanager2/script/soundmanager2-nodebug-jsmin.js"></script>
+    <script src="assets/vendor/bootstrap-slider/dist/bootstrap-slider.min.js"></script>
+    <script src="assets/vendor/summernote/dist/summernote-bs4.min.js"></script>
+    <script src="assets/plugins/nk-share/nk-share.js"></script>
+    <script src="assets/js/goodgames.min.js"></script>
+    <script src="assets/js/goodgames-init.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="assets/js/profile.js"></script>
+    <script src="assets/js/user.js"></script>
+    <script src="assets/js/charts.js"></script>
+    <!-- END: Scripts -->
+</body>
+</html>

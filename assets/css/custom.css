@@ -1,0 +1,127 @@
+/* PLACE YOU CUSTOM STYLES IN THIS FILE */
+/* Hide the Version and Connect columns on mobile (up to 767px) */
+table {
+    border-collapse: separate;
+    border-spacing: 0 0px;
+  }
+  
+  thead {
+    /* background-color: rgb(14, 12, 12);
+    border-radius: 4px; */
+  }
+  
+  .section-container {
+    background: linear-gradient(313deg, rgb(8, 8, 8) 5%, rgba(38, 38, 42, 1) 50%, rgb(8, 8, 8) 95%);
+    backdrop-filter: blur(10px);
+    box-shadow: 2px 2px 2px 0 rgb(20, 20, 20);
+  }
+  
+  td {
+    padding: 5px;
+  }
+  
+  tbody tr {
+    color: #cacaca;
+    border-radius: 4px;
+  }
+  
+  .navtop,
+  .navbot {
+    background-color: rgba(0, 0, 0, .1);
+    backdrop-filter: blur(10px);
+    box-shadow: 2px 2px 2px 0 rgb(20, 20, 20);
+  }
+  
+  footer {
+    background-color: rgba(0, 0, 0, .1);
+    backdrop-filter: blur(10px);
+    box-shadow: 2px 2px 2px 0 rgb(20, 20, 20);
+  }
+  
+  .nav-link:hover {
+    color: #e7512e;
+  }
+  
+  .btn-outline {
+    outline: 1px solid #dd9989;
+    background-color: #EB7B37;
+    color: rgb(219, 218, 218);
+    font-weight: bold;
+    border-radius: 3px;
+  }
+  
+  .btn-outline:hover {
+    background-color: #acacac;
+    outline: none;
+    transform: translate(1px);
+  }
+  
+  a {
+    text-decoration: none;
+    color: white;
+  }
+  
+  .vp-text {
+    font-size: .8em;
+  }
+  
+  
+  .server-name {
+    width: 50%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  .copy-popup {
+    display: inline-block;
+    padding: 8px 16px;
+    background-color: #333;
+    color: #fff;
+    border-radius: 4px;
+    font-size: 14px;
+    opacity: 0.9;
+    position: absolute;
+    z-index: 999;
+  }
+  
+
+
+
+.price-card-mobile {
+  background: repeating-linear-gradient(-55deg,
+      rgba(13, 13, 13, 1),
+      rgba(13, 13, 13, 1) 2px,
+      rgba(7, 7, 7, 1) 2px,
+      rgba(7, 7, 7, 1) 5px);
+}
+
+  /* Hide the Version and Connect columns on mobile (up to 767px) */
+  @media (max-width: 767px) {
+  
+    th.version,
+    td.version,
+    th.connect,
+    td.connect {
+      display: none;
+    }
+  }
+  
+  /* Custom CSS for fixed-bottom navigation */
+  .fixed-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    /* Change the background color as needed */
+    box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.1);
+    /* Optional: Add a subtle shadow for the navigation bar */
+    z-index: 1000;
+    /* Optional: Adjust the z-index to make sure it stays on top of other elements */
+  }
+  
+  
+  /* Optional: Add some padding to the navigation items */
+  .fixed-nav a {
+    padding: 5px 10px;
+  }
