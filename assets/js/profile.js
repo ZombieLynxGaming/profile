@@ -1,6 +1,6 @@
 // profile.js
 
-const API_BASE_URL = "https//www.play.zlg.gg:1111";
+const API_BASE_URL = "http://192.168.1.200:1111";
 
 function fetchUserProfile() {
     console.log('Fetching user profile');
