@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const token = new URLSearchParams(window.location.search).get('token');
+    const token = getCookie('token');
     if (!token) {
         console.error('No token found');
         return;
@@ -28,6 +28,12 @@ function fetchUserProfile(token) {
     .catch(error => {
         console.error('Error fetching user profile:', error);
     });
+}
+
+function getCookie(name) {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(';').shift();
 }
 
 function displayUserProfile(user) {

@@ -1,10 +1,8 @@
-// profile.js
-
 const API_BASE_URL = "https://profile.zlg.gg:1111";  // Update to HTTPS
 
 function fetchUserProfile() {
     console.log('Fetching user profile');
-    const token = new URLSearchParams(window.location.search).get('token');
+    const token = getCookie('token');
     console.log('Token:', token);  // Log the token to verify it's being extracted correctly
     if (!token) {
         console.error('No token found');
@@ -31,6 +29,12 @@ function fetchUserProfile() {
         console.error('Error fetching user profile:', error);
         document.getElementById('profile').innerText = 'Error fetching user profile: ' + error.message;
     });
+}
+
+function getCookie(name) {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(';').shift();
 }
 
 function displayUserProfile(data) {
