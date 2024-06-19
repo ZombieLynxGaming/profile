@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function fetchUserProfile(token) {
-    fetch('http://profile.zlg.gg:1111/api/profile', {  // Update to production API URL
+    fetch('https://profile.zlg.gg:1111/api/profile', {  // Update to production API URL
         headers: {
             'Authorization': `Bearer ${token}`
         }
