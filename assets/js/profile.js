@@ -5,6 +5,7 @@ const API_BASE_URL = "http://profile.zlg.gg:1111";  // Update to production API 
 function fetchUserProfile() {
     console.log('Fetching user profile');
     const token = new URLSearchParams(window.location.search).get('token');
+    console.log('Token:', token);  // Add this log to verify the token
     if (!token) {
         console.error('No token found');
         return;
@@ -33,6 +34,7 @@ function fetchUserProfile() {
 }
 
 function displayUserProfile(data) {
+    console.log('Displaying user profile:', data);  // Add this log
     const usernameElement = document.getElementById('username');
     const avatarElement = document.getElementById('avatar');
     const tribeElement = document.getElementById('tribe');
