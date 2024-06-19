@@ -1,6 +1,6 @@
 // profile.js
 
-const API_BASE_URL = "https://profile.zlg.gg:1111";  // Update to production API URL
+const API_BASE_URL = "http://profile.zlg.gg:1111";  // Update to production API URL
 
 function fetchUserProfile() {
     console.log('Fetching user profile');
