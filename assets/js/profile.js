@@ -5,7 +5,7 @@ const API_BASE_URL = "https://profile.zlg.gg:1111";  // Update to HTTPS
 function fetchUserProfile() {
     console.log('Fetching user profile');
     const token = new URLSearchParams(window.location.search).get('token');
-    console.log('Token:', token);  // Add this log to verify the token
+    console.log('Token:', token);  // Log the token to verify it's being extracted correctly
     if (!token) {
         console.error('No token found');
         return;
@@ -17,7 +17,7 @@ function fetchUserProfile() {
         }
     })
     .then(response => {
-        console.log('Response received:', response);
+        console.log('Response received:', response); // Log the response
         if (!response.ok) {
             throw new Error('Network response was not ok ' + response.statusText);
         }
@@ -34,7 +34,7 @@ function fetchUserProfile() {
 }
 
 function displayUserProfile(data) {
-    console.log('Displaying user profile:', data);  // Add this log
+    console.log('Displaying user profile:', data);  // Log user data for verification
     const usernameElement = document.getElementById('username');
     const avatarElement = document.getElementById('avatar');
     const tribeElement = document.getElementById('tribe');

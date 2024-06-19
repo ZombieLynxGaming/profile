@@ -1,33 +1,32 @@
-document.addEventListener("DOMContentLoaded", function () {
-  const token = new URLSearchParams(window.location.search).get("token");
-  if (!token) {
-    console.error("No token found");
-    return;
-  }
+document.addEventListener('DOMContentLoaded', function() {
+    const token = new URLSearchParams(window.location.search).get('token');
+    if (!token) {
+        console.error('No token found');
+        return;
+    }
 
-  fetchUserProfile(token);
+    fetchUserProfile(token);
 });
 
 function fetchUserProfile(token) {
-  fetch("https://profile.zlg.gg:1111/api/profile", {
-    // Update to production API URL
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  })
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error("Network response was not ok " + response.statusText);
-      }
-      return response.json();
+    fetch('https://profile.zlg.gg:1111/api/profile', {  // Update to HTTPS
+        headers: {
+            'Authorization': `Bearer ${token}`
+        }
     })
-    .then((data) => {
-      console.log("User data:", data);
-      displayUserProfile(data);
-      initializeCharts(data); // Initialize charts with user data
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok ' + response.statusText);
+        }
+        return response.json();
     })
-    .catch((error) => {
-      console.error("Error fetching user profile:", error);
+    .then(data => {
+        console.log('User data:', data);
+        displayUserProfile(data);
+        initializeCharts(data); // Initialize charts with user data
+    })
+    .catch(error => {
+        console.error('Error fetching user profile:', error);
     });
 }
 
