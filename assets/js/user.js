@@ -87,16 +87,16 @@ function displayUserProfile(user) {
 }
 
 function getMembershipColor(membership) {
-  switch (membership) {
-      case 'Admin':
+  switch (membership.toLowerCase()) {
+      case 'admin':
           return '#dd163b'; // Red
-      case 'Vibranium':
-          return '#8a2be2'; // Vibranium color
-      case 'Diamond':
-          return '#00bfff'; // Diamond color
-      case 'Gold':
-          return '#ffd700'; // Gold color
+      case 'vibranium':
+          return '#8a2be2'; // BlueViolet
+      case 'diamond':
+          return '#00bfff'; // LightBlue
+      case 'gold':
+          return '#ffd700'; // Gold
       default:
-          return '#139257'; // Standard color
+          return '#139257'; // Standard green
   }
 }
