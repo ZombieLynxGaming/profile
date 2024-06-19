@@ -31,72 +31,76 @@ function fetchUserProfile(token) {
 }
 
 function displayUserProfile(user) {
-  document.querySelectorAll(".username").forEach((elem) => {
-      elem.innerText = user.displayName;
-  });
-  document.querySelectorAll(".avatar").forEach((elem) => {
-      elem.src = user.avatar;
-  });
-  document.querySelectorAll(".points").forEach((elem) => {
-      elem.innerText = user.points;
-  });
-  document.querySelectorAll(".membership").forEach((elem) => {
-      elem.innerText = user.membership;
-      elem.style.backgroundColor = getMembershipColor(user.membership);
-  });
-  document.querySelectorAll(".message").forEach((elem) => {
-      elem.innerText = user.message;
-  });
-  document.querySelectorAll(".tribe").forEach((elem) => {
-      elem.innerText = user.tribe;
-  });
-  document.querySelectorAll(".kills").forEach((elem) => {
-      elem.innerText = user.kills;
-  });
-  document.querySelectorAll(".deaths").forEach((elem) => {
-      elem.innerText = user.deaths;
-  });
-  document.querySelectorAll(".kd").forEach((elem) => {
-      elem.innerText = user.kd;
-  });
-  document.querySelectorAll(".dailies").forEach((elem) => {
-      elem.innerText = user.dailies;
-  });
-  document.querySelectorAll(".weeklies").forEach((elem) => {
-      elem.innerText = user.weeklies;
-  });
-  document.querySelectorAll(".bkilled").forEach((elem) => {
-      elem.innerText = user.bkilled;
-  });
+document
+  .querySelectorAll(".username")
+  .forEach((elem) => (elem.innerText = user.displayName));
+document
+  .querySelectorAll(".avatar")
+  .forEach((elem) => (elem.src = user.avatar));
+document
+  .querySelectorAll(".points")
+  .forEach((elem) => (elem.innerText = user.points));
+document.querySelectorAll(".membership").forEach((elem) => {
+  elem.innerText = user.membership;
 
-  const leaderboard = document.getElementById("leaderboard");
-  leaderboard.innerHTML = "";
+  // Assign colors based on membership level
+  let membershipColor;
+  switch (user.membership) {
+    case 'Admin':
+      membershipColor = '#dd163b'; // Red
+      break;
+    case 'Vibranium':
+      membershipColor = '#8a2be2'; // BlueViolet
+      break;
+    case 'Diamond':
+      membershipColor = '#00bfff'; // LightBlue
+      break;
+    case 'Gold':
+      membershipColor = '#ffd700'; // Gold
+      break;
+    default:
+      membershipColor = '#139257'; // Green for Standard
+  }
+  elem.style.backgroundColor = membershipColor;
+});
+document
+  .querySelectorAll(".message")
+  .forEach((elem) => (elem.innerText = user.message));
+document
+  .querySelectorAll(".tribe")
+  .forEach((elem) => (elem.innerText = user.tribe));
+document
+  .querySelectorAll(".kills")
+  .forEach((elem) => (elem.innerText = user.kills));
+document
+  .querySelectorAll(".deaths")
+  .forEach((elem) => (elem.innerText = user.deaths));
+document
+  .querySelectorAll(".kd")
+  .forEach((elem) => (elem.innerText = user.kd));
+document
+  .querySelectorAll(".dailies")
+  .forEach((elem) => (elem.innerText = user.dailies));
+document
+  .querySelectorAll(".weeklies")
+  .forEach((elem) => (elem.innerText = user.weeklies));
+document
+  .querySelectorAll(".bkilled")
+  .forEach((elem) => (elem.innerText = user.bkilled));
 
-  user.leaderboard.forEach((player, index) => {
-      const row = document.createElement("tr");
-      row.innerHTML = `
+const leaderboard = document.getElementById("leaderboard");
+leaderboard.innerHTML = "";
+
+user.leaderboard.forEach((player, index) => {
+  const row = document.createElement("tr");
+  row.innerHTML = `
           <td class="text-center">${index + 1}</td>
           <td>${player.Name}</td>
           <td class="text-center">${player.PlayerKills}</td>
           <td class="text-center">${
-              player.KD ? player.KD.toFixed(2) : "N/A"
+            player.KD ? player.KD.toFixed(2) : "N/A"
           }</td>
       `;
-      leaderboard.appendChild(row);
-  });
-}
-
-function getMembershipColor(membership) {
-  switch (membership.toLowerCase()) {
-      case 'admin':
-          return '#dd163b'; // Red
-      case 'vibranium':
-          return '#8a2be2'; // BlueViolet
-      case 'diamond':
-          return '#00bfff'; // LightBlue
-      case 'gold':
-          return '#ffd700'; // Gold
-      default:
-          return '#139257'; // Standard green
-  }
+  leaderboard.appendChild(row);
+});
 }
