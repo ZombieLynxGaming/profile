@@ -4,22 +4,32 @@ const API_BASE_URL = "http://profile.zlg.gg:1111";  // Update to production API 
 
 function fetchUserProfile() {
     console.log('Fetching user profile');
-    fetch(`${API_BASE_URL}/api/profile`)
-        .then(response => {
-            console.log('Response received:', response);
-            if (!response.ok) {
-                throw new Error('Network response was not ok ' + response.statusText);
-            }
-            return response.json();
-        })
-        .then(data => {
-            console.log('User data:', data);
-            displayUserProfile(data);
-        })
-        .catch(error => {
-            console.error('Error fetching user profile:', error);
-            document.getElementById('profile').innerText = 'Error fetching user profile: ' + error.message;
-        });
+    const token = new URLSearchParams(window.location.search).get('token');
+    if (!token) {
+        console.error('No token found');
+        return;
+    }
+
+    fetch(`${API_BASE_URL}/api/profile`, {
+        headers: {
+            'Authorization': `Bearer ${token}`
+        }
+    })
+    .then(response => {
+        console.log('Response received:', response);
+        if (!response.ok) {
+            throw new Error('Network response was not ok ' + response.statusText);
+        }
+        return response.json();
+    })
+    .then(data => {
+        console.log('User data:', data);
+        displayUserProfile(data);
+    })
+    .catch(error => {
+        console.error('Error fetching user profile:', error);
+        document.getElementById('profile').innerText = 'Error fetching user profile: ' + error.message;
+    });
 }
 
 function displayUserProfile(data) {
@@ -36,7 +46,7 @@ function displayUserProfile(data) {
     const bkilledElement = document.getElementById('bkilled');
 
     if (usernameElement) usernameElement.textContent = data.displayName;
-    if (avatarElement) avatarElement.src = data.photos[2].value;
+    if (avatarElement) avatarElement.src = data.avatar;
     if (tribeElement) tribeElement.textContent = data.tribe;
     if (pointsElement) pointsElement.textContent = data.points;
     if (membershipElement) {
