@@ -42,7 +42,26 @@ document
   .forEach((elem) => (elem.innerText = user.points));
 document.querySelectorAll(".membership").forEach((elem) => {
   elem.innerText = user.membership;
-  setMembershipColor(elem); // Set the color based on the membership
+
+  // Assign colors based on membership level
+  let membershipColor;
+  switch (user.membership) {
+    case 'Admin':
+      membershipColor = '#dd163b'; // Red
+      break;
+    case 'Vibranium':
+      membershipColor = '#8a2be2'; // BlueViolet
+      break;
+    case 'Diamond':
+      membershipColor = '#00bfff'; // LightBlue
+      break;
+    case 'Gold':
+      membershipColor = '#ffd700'; // Gold
+      break;
+    default:
+      membershipColor = '#139257'; // Green for Standard
+  }
+  elem.style.backgroundColor = membershipColor;
 });
 document
   .querySelectorAll(".message")
@@ -84,26 +103,4 @@ user.leaderboard.forEach((player, index) => {
       `;
   leaderboard.appendChild(row);
 });
-}
-
-function setMembershipColor(elem) {
-  const membership = elem.innerText;
-  switch (membership) {
-      case 'Admin':
-          elem.style.backgroundColor = 'radial-gradient(circle, #dd163b, #8b0000)'; // Red gradient
-          break;
-      case 'Vibranium':
-          elem.style.backgroundColor = 'radial-gradient(circle, #8a2be2, #4b0082)'; // BlueViolet gradient
-          break;
-      case 'Diamond':
-          elem.style.backgroundColor = 'radial-gradient(circle, #00bfff, #1e90ff)'; // LightBlue gradient
-          break;
-      case 'Gold':
-          elem.style.backgroundColor = 'radial-gradient(circle, #ffd700, #daa520)'; // Gold gradient
-          break;
-      case 'Standard':
-      default:
-          elem.style.backgroundColor = 'radial-gradient(circle, #6c757d, #495057)'; // Silver gradient
-          break;
-  }
 }
