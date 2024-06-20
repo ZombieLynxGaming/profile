@@ -35,32 +35,32 @@ function fetchUserProfile() {
 
 function displayUserProfile(data) {
     console.log('Displaying user profile:', data);  // Log user data for verification
-    const usernameElement = document.getElementById('username');
-    const avatarElement = document.getElementById('avatar');
-    const tribeElement = document.getElementById('tribe');
-    const pointsElement = document.getElementById('points');
-    const membershipElement = document.getElementById('membership');
-    const killsElement = document.getElementById('kills');
-    const deathsElement = document.getElementById('deaths');
-    const kdElement = document.getElementById('kd');
-    const dailiesElement = document.getElementById('dailies');
-    const weekliesElement = document.getElementById('weeklies');
-    const bkilledElement = document.getElementById('bkilled');
+    const usernameElements = document.querySelectorAll('.username');
+    const avatarElements = document.querySelectorAll('.avatar');
+    const tribeElements = document.querySelectorAll('.tribe');
+    const pointsElements = document.querySelectorAll('.points');
+    const membershipElements = document.querySelectorAll('.membership');
+    const killsElements = document.querySelectorAll('.kills');
+    const deathsElements = document.querySelectorAll('.deaths');
+    const kdElements = document.querySelectorAll('.kd');
+    const dailiesElements = document.querySelectorAll('.dailies');
+    const weekliesElements = document.querySelectorAll('.weeklies');
+    const bkilledElements = document.querySelectorAll('.bkilled');
 
-    if (usernameElement) usernameElement.textContent = data.displayName;
-    if (avatarElement) avatarElement.src = data.avatar;
-    if (tribeElement) tribeElement.textContent = data.tribe;
-    if (pointsElement) pointsElement.textContent = data.points;
-    if (membershipElement) {
-        membershipElement.textContent = data.membership;
-        membershipElement.style.backgroundColor = data.membershipColor;
-    }
-    if (killsElement) killsElement.textContent = data.kills;
-    if (deathsElement) deathsElement.textContent = data.deaths;
-    if (kdElement) kdElement.textContent = data.kd;
-    if (dailiesElement) dailiesElement.textContent = data.dailies;
-    if (weekliesElement) weekliesElement.textContent = data.weeklies;
-    if (bkilledElement) bkilledElement.textContent = data.bkilled;
+    usernameElements.forEach(elem => elem.textContent = data.displayName);
+    avatarElements.forEach(elem => elem.src = data.avatar);
+    tribeElements.forEach(elem => elem.textContent = data.tribe);
+    pointsElements.forEach(elem => elem.textContent = data.points);
+    membershipElements.forEach(elem => {
+        elem.textContent = data.membership;
+        setMembershipColor(elem); // Set the color based on the membership
+    });
+    killsElements.forEach(elem => elem.textContent = data.kills);
+    deathsElements.forEach(elem => elem.textContent = data.deaths);
+    kdElements.forEach(elem => elem.textContent = data.kd);
+    dailiesElements.forEach(elem => elem.textContent = data.dailies);
+    weekliesElements.forEach(elem => elem.textContent = data.weeklies);
+    bkilledElements.forEach(elem => elem.textContent = data.bkilled);
 
     // For leaderboard
     const leaderboardElement = document.getElementById('leaderboard');
@@ -73,6 +73,28 @@ function displayUserProfile(data) {
                 <td class="text-center">${player.KD ? player.KD.toFixed(2) : 'N/A'}</td>
             </tr>
         `).join('');
+    }
+}
+
+function setMembershipColor(elem) {
+    const membership = elem.textContent;
+    switch (membership) {
+        case 'Admin':
+            elem.style.background = 'radial-gradient(circle, #dd163b, #8b0000)'; // Red gradient
+            break;
+        case 'Vibranium':
+            elem.style.background = 'radial-gradient(circle, #8a2be2, #4b0082)'; // BlueViolet gradient
+            break;
+        case 'Diamond':
+            elem.style.background = 'radial-gradient(circle, #00bfff, #1e90ff)'; // LightBlue gradient
+            break;
+        case 'Gold':
+            elem.style.background = 'radial-gradient(circle, #ffd700, #daa520)'; // Gold gradient
+            break;
+        case 'Standard':
+        default:
+            elem.style.background = 'radial-gradient(circle, #6c757d, #495057)'; // Silver gradient
+            break;
     }
 }
 
