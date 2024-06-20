@@ -4,11 +4,11 @@ document.addEventListener('DOMContentLoaded', function() {
         console.error('No token found');
         return;
     }
-
+  
     fetchUserProfile(token);
-});
-
-function fetchUserProfile(token) {
+  });
+  
+  function fetchUserProfile(token) {
     fetch('https://profile.zlg.gg:1111/api/profile', {  // Update to HTTPS
         headers: {
             'Authorization': `Bearer ${token}`
@@ -28,58 +28,24 @@ function fetchUserProfile(token) {
     .catch(error => {
         console.error('Error fetching user profile:', error);
     });
-}
-
-function displayUserProfile(user) {
-    const membershipClasses = {
-        'Admins': 'admin',
-        'Vibranium': 'vibranium',
-        'Diamond': 'diamond',
-        'Gold': 'gold',
-        'Standard': 'standard'
-    };
-
-    document
-        .querySelectorAll(".username")
-        .forEach((elem) => (elem.innerText = user.displayName));
-    document
-        .querySelectorAll(".avatar")
-        .forEach((elem) => (elem.src = user.avatar));
-    document
-        .querySelectorAll(".points")
-        .forEach((elem) => (elem.innerText = user.points));
-    document.querySelectorAll(".membership").forEach((elem) => {
-        elem.innerText = user.membership;
-        elem.className = `membership ${membershipClasses[user.membership] || 'standard'}`;
-    });
-    document
-        .querySelectorAll(".message")
-        .forEach((elem) => (elem.innerText = user.message));
-    document
-        .querySelectorAll(".tribe")
-        .forEach((elem) => (elem.innerText = user.tribe));
-    document
-        .querySelectorAll(".kills")
-        .forEach((elem) => (elem.innerText = user.kills));
-    document
-        .querySelectorAll(".deaths")
-        .forEach((elem) => (elem.innerText = user.deaths));
-    document
-        .querySelectorAll(".kd")
-        .forEach((elem) => (elem.innerText = user.kd));
-    document
-        .querySelectorAll(".dailies")
-        .forEach((elem) => (elem.innerText = user.dailies));
-    document
-        .querySelectorAll(".weeklies")
-        .forEach((elem) => (elem.innerText = user.weeklies));
-    document
-        .querySelectorAll(".bkilled")
-        .forEach((elem) => (elem.innerText = user.bkilled));
-
+  }
+  
+  function displayUserProfile(user) {
+    document.querySelectorAll(".username").forEach((elem) => (elem.innerText = user.displayName));
+    document.querySelectorAll(".avatar").forEach((elem) => (elem.src = user.avatar));
+    document.querySelectorAll(".points").forEach((elem) => (elem.innerText = user.points));
+    document.querySelectorAll(".message").forEach((elem) => (elem.innerText = user.message));
+    document.querySelectorAll(".tribe").forEach((elem) => (elem.innerText = user.tribe));
+    document.querySelectorAll(".kills").forEach((elem) => (elem.innerText = user.kills));
+    document.querySelectorAll(".deaths").forEach((elem) => (elem.innerText = user.deaths));
+    document.querySelectorAll(".kd").forEach((elem) => (elem.innerText = user.kd));
+    document.querySelectorAll(".dailies").forEach((elem) => (elem.innerText = user.dailies));
+    document.querySelectorAll(".weeklies").forEach((elem) => (elem.innerText = user.weeklies));
+    document.querySelectorAll(".bkilled").forEach((elem) => (elem.innerText = user.bkilled));
+  
     const leaderboard = document.getElementById("leaderboard");
     leaderboard.innerHTML = "";
-
+  
     user.leaderboard.forEach((player, index) => {
         const row = document.createElement("tr");
         row.innerHTML = `
@@ -92,4 +58,27 @@ function displayUserProfile(user) {
         `;
         leaderboard.appendChild(row);
     });
-}
+  
+    // This runs last to ensure the innerHTML is set before checking it
+    document.querySelectorAll(".membership").forEach((elem) => {
+        elem.classList.remove('admin', 'vibranium', 'diamond', 'gold', 'standard');
+        switch (elem.innerText.trim()) {
+            case 'Admins':
+                elem.classList.add('admin');
+                break;
+            case 'Vibranium':
+                elem.classList.add('vibranium');
+                break;
+            case 'Diamond':
+                elem.classList.add('diamond');
+                break;
+            case 'Gold':
+                elem.classList.add('gold');
+                break;
+            default:
+                elem.classList.add('standard');
+                break;
+        }
+    });
+  }
+  
