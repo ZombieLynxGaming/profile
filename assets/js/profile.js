@@ -79,7 +79,7 @@ function displayUserProfile(data) {
 function setMembershipColor(elem) {
     const membership = elem.textContent;
     switch (membership) {
-        case 'Admin':
+        case 'Admins':
             elem.style.background = 'radial-gradient(circle, #dd163b, #8b0000)'; // Red gradient
             break;
         case 'Vibranium':

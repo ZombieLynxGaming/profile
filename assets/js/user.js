@@ -1,95 +1,86 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const token = new URLSearchParams(window.location.search).get('token');
-    if (!token) {
-        console.error('No token found');
-        return;
-    }
+  const token = new URLSearchParams(window.location.search).get('token');
+  if (!token) {
+      console.error('No token found');
+      return;
+  }
 
-    fetchUserProfile(token);
+  fetchUserProfile(token);
 });
 
 function fetchUserProfile(token) {
-    fetch('https://profile.zlg.gg:1111/api/profile', {
-        headers: {
-            'Authorization': `Bearer ${token}`
-        }
-    })
-    .then(response => {
-        if (!response.ok) {
-            throw new Error('Network response was not ok ' + response.statusText);
-        }
-        return response.json();
-    })
-    .then(data => {
-        console.log('User data:', data);
-        displayUserProfile(data);
-        initializeCharts(data); // Initialize charts with user data
-    })
-    .catch(error => {
-        console.error('Error fetching user profile:', error);
-    });
+  fetch('https://profile.zlg.gg:1111/api/profile', {  // Update to HTTPS
+      headers: {
+          'Authorization': `Bearer ${token}`
+      }
+  })
+  .then(response => {
+      if (!response.ok) {
+          throw new Error('Network response was not ok ' + response.statusText);
+      }
+      return response.json();
+  })
+  .then(data => {
+      console.log('User data:', data);
+      displayUserProfile(data);
+      initializeCharts(data); // Initialize charts with user data
+  })
+  .catch(error => {
+      console.error('Error fetching user profile:', error);
+  });
 }
 
 function displayUserProfile(user) {
-  const membershipColors = {
-    'Admins': 'radial-gradient(circle, #dd163b, #8b0000)',
-    'Vibranium': 'radial-gradient(circle, #d8ba0e, #d8ba0e)',
-    'Diamond': 'radial-gradient(circle, #d8ba0e, #d8ba0e)',
-    'Gold': 'radial-gradient(circle, #d8ba0e, #d8ba0e)',
-    'Standard': 'radial-gradient(circle, #139257, #139257)'
-  };
-
   document
-    .querySelectorAll(".username")
-    .forEach((elem) => (elem.innerText = user.displayName));
+      .querySelectorAll(".username")
+      .forEach((elem) => (elem.innerText = user.displayName));
   document
-    .querySelectorAll(".avatar")
-    .forEach((elem) => (elem.src = user.avatar));
+      .querySelectorAll(".avatar")
+      .forEach((elem) => (elem.src = user.avatar));
   document
-    .querySelectorAll(".points")
-    .forEach((elem) => (elem.innerText = user.points));
+      .querySelectorAll(".points")
+      .forEach((elem) => (elem.innerText = user.points));
   document.querySelectorAll(".membership").forEach((elem) => {
-    elem.innerText = user.membership;
-    elem.style.backgroundColor = membershipColors[user.membership] || membershipColors['Standard'];
+      elem.innerText = user.membership;
   });
   document
-    .querySelectorAll(".message")
-    .forEach((elem) => (elem.innerText = user.message));
+      .querySelectorAll(".message")
+      .forEach((elem) => (elem.innerText = user.message));
   document
-    .querySelectorAll(".tribe")
-    .forEach((elem) => (elem.innerText = user.tribe));
+      .querySelectorAll(".tribe")
+      .forEach((elem) => (elem.innerText = user.tribe));
   document
-    .querySelectorAll(".kills")
-    .forEach((elem) => (elem.innerText = user.kills));
+      .querySelectorAll(".kills")
+      .forEach((elem) => (elem.innerText = user.kills));
   document
-    .querySelectorAll(".deaths")
-    .forEach((elem) => (elem.innerText = user.deaths));
+      .querySelectorAll(".deaths")
+      .forEach((elem) => (elem.innerText = user.deaths));
   document
-    .querySelectorAll(".kd")
-    .forEach((elem) => (elem.innerText = user.kd));
+      .querySelectorAll(".kd")
+      .forEach((elem) => (elem.innerText = user.kd));
   document
-    .querySelectorAll(".dailies")
-    .forEach((elem) => (elem.innerText = user.dailies));
+      .querySelectorAll(".dailies")
+      .forEach((elem) => (elem.innerText = user.dailies));
   document
-    .querySelectorAll(".weeklies")
-    .forEach((elem) => (elem.innerText = user.weeklies));
+      .querySelectorAll(".weeklies")
+      .forEach((elem) => (elem.innerText = user.weeklies));
   document
-    .querySelectorAll(".bkilled")
-    .forEach((elem) => (elem.innerText = user.bkilled));
+      .querySelectorAll(".bkilled")
+      .forEach((elem) => (elem.innerText = user.bkilled));
 
   const leaderboard = document.getElementById("leaderboard");
   leaderboard.innerHTML = "";
 
   user.leaderboard.forEach((player, index) => {
-    const row = document.createElement("tr");
-    row.innerHTML = `
-            <td class="text-center">${index + 1}</td>
-            <td>${player.Name}</td>
-            <td class="text-center">${player.PlayerKills}</td>
-            <td class="text-center">${
+      const row = document.createElement("tr");
+      row.innerHTML = `
+          <td class="text-center">${index + 1}</td>
+          <td>${player.Name}</td>
+          <td class="text-center">${player.PlayerKills}</td>
+          <td class="text-center">${
               player.KD ? player.KD.toFixed(2) : "N/A"
-            }</td>
-        `;
-    leaderboard.appendChild(row);
+          }</td>
+      `;
+      leaderboard.appendChild(row);
   });
 }
