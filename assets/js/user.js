@@ -32,7 +32,7 @@ function fetchUserProfile(token) {
 
 function displayUserProfile(user) {
   const membershipColors = {
-    'Admin': 'radial-gradient(circle, #dd163b, #8b0000)',
+    'Admins': 'radial-gradient(circle, #dd163b, #8b0000)',
     'Vibranium': 'radial-gradient(circle, #d8ba0e, #d8ba0e)',
     'Diamond': 'radial-gradient(circle, #d8ba0e, #d8ba0e)',
     'Gold': 'radial-gradient(circle, #d8ba0e, #d8ba0e)',
