@@ -42,6 +42,7 @@ function displayUserProfile(user) {
         .forEach((elem) => (elem.innerText = user.points));
     document.querySelectorAll(".membership").forEach((elem) => {
         elem.innerText = user.membership;
+        elem.style.backgroundColor = user.membershipColor;
     });
     document
         .querySelectorAll(".message")
@@ -77,7 +78,9 @@ function displayUserProfile(user) {
             <td class="text-center">${index + 1}</td>
             <td>${player.Name}</td>
             <td class="text-center">${player.PlayerKills}</td>
-            <td class="text-center">${player.KD ? player.KD.toFixed(2) : "N/A"}</td>
+            <td class="text-center">${
+                player.KD ? player.KD.toFixed(2) : "N/A"
+            }</td>
         `;
         leaderboard.appendChild(row);
     });

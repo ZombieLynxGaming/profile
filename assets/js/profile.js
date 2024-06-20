@@ -1,20 +1,23 @@
-document.addEventListener('DOMContentLoaded', function() {
+// profile.js
+
+const API_BASE_URL = "https://profile.zlg.gg:1111";  // Update to HTTPS
+
+function fetchUserProfile() {
+    console.log('Fetching user profile');
     const token = new URLSearchParams(window.location.search).get('token');
+    console.log('Token:', token);  // Log the token to verify it's being extracted correctly
     if (!token) {
         console.error('No token found');
         return;
     }
 
-    fetchUserProfile(token);
-});
-
-function fetchUserProfile(token) {
-    fetch('https://profile.zlg.gg:1111/api/profile', {  // Update to HTTPS
+    fetch(`${API_BASE_URL}/api/profile`, {
         headers: {
             'Authorization': `Bearer ${token}`
         }
     })
     .then(response => {
+        console.log('Response received:', response); // Log the response
         if (!response.ok) {
             throw new Error('Network response was not ok ' + response.statusText);
         }
@@ -31,42 +34,35 @@ function fetchUserProfile(token) {
 }
 
 function displayUserProfile(data) {
-    const membershipColors = {
-        'Admins': 'radial-gradient(circle, #dd163b, #8b0000)',
-        'Vibranium': 'radial-gradient(circle, #d8ba0e, #d8ba0e)',
-        'Diamond': 'radial-gradient(circle, #d8ba0e, #d8ba0e)',
-        'Gold': 'radial-gradient(circle, #d8ba0e, #d8ba0e)',
-        'Standard': 'radial-gradient(circle, #139257, #139257)'
-    };
+    console.log('Displaying user profile:', data);  // Log user data for verification
+    const usernameElements = document.querySelectorAll('.username');
+    const avatarElements = document.querySelectorAll('.avatar');
+    const tribeElements = document.querySelectorAll('.tribe');
+    const pointsElements = document.querySelectorAll('.points');
+    const membershipElements = document.querySelectorAll('.membership');
+    const killsElements = document.querySelectorAll('.kills');
+    const deathsElements = document.querySelectorAll('.deaths');
+    const kdElements = document.querySelectorAll('.kd');
+    const dailiesElements = document.querySelectorAll('.dailies');
+    const weekliesElements = document.querySelectorAll('.weeklies');
+    const bkilledElements = document.querySelectorAll('.bkilled');
+    const messageElements = document.querySelectorAll('.message');
 
-    const usernameElement = document.querySelectorAll('.username');
-    const avatarElement = document.querySelectorAll('.avatar');
-    const tribeElement = document.querySelectorAll('.tribe');
-    const pointsElement = document.querySelectorAll('.points');
-    const membershipElement = document.querySelectorAll('.membership');
-    const killsElement = document.querySelectorAll('.kills');
-    const deathsElement = document.querySelectorAll('.deaths');
-    const kdElement = document.querySelectorAll('.kd');
-    const dailiesElement = document.querySelectorAll('.dailies');
-    const weekliesElement = document.querySelectorAll('.weeklies');
-    const bkilledElement = document.querySelectorAll('.bkilled');
-
-    if (usernameElement) usernameElement.forEach((elem) => elem.textContent = data.displayName);
-    if (avatarElement) avatarElement.forEach((elem) => elem.src = data.avatar);
-    if (tribeElement) tribeElement.forEach((elem) => elem.textContent = data.tribe);
-    if (pointsElement) pointsElement.forEach((elem) => elem.textContent = data.points);
-    if (membershipElement) {
-        membershipElement.forEach((elem) => {
-            elem.textContent = data.membership;
-            elem.style.backgroundColor = membershipColors[data.membership] || membershipColors['Standard'];
-        });
-    }
-    if (killsElement) killsElement.forEach((elem) => elem.textContent = data.kills);
-    if (deathsElement) deathsElement.forEach((elem) => elem.textContent = data.deaths);
-    if (kdElement) kdElement.forEach((elem) => elem.textContent = data.kd);
-    if (dailiesElement) dailiesElement.forEach((elem) => elem.textContent = data.dailies);
-    if (weekliesElement) weekliesElement.forEach((elem) => elem.textContent = data.weeklies);
-    if (bkilledElement) bkilledElement.forEach((elem) => elem.textContent = data.bkilled);
+    usernameElements.forEach(elem => elem.textContent = data.displayName);
+    avatarElements.forEach(elem => elem.src = data.avatar);
+    tribeElements.forEach(elem => elem.textContent = data.tribe);
+    pointsElements.forEach(elem => elem.textContent = data.points);
+    membershipElements.forEach(elem => {
+        elem.textContent = data.membership;
+        elem.style.backgroundColor = data.membershipColor;
+    });
+    killsElements.forEach(elem => elem.textContent = data.kills);
+    deathsElements.forEach(elem => elem.textContent = data.deaths);
+    kdElements.forEach(elem => elem.textContent = data.kd);
+    dailiesElements.forEach(elem => elem.textContent = data.dailies);
+    weekliesElements.forEach(elem => elem.textContent = data.weeklies);
+    bkilledElements.forEach(elem => elem.textContent = data.bkilled);
+    messageElements.forEach(elem => elem.textContent = data.message);
 
     // For leaderboard
     const leaderboardElement = document.getElementById('leaderboard');
