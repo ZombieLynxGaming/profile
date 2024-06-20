@@ -51,7 +51,7 @@ function displayUserProfile(user) {
     document.querySelectorAll(".points").forEach(elem => elem.innerText = user.points);
     document.querySelectorAll(".membership").forEach(elem => {
         elem.innerText = user.membership;
-        elem.className = `membership ${membershipClasses[user.membership] || 'standard'}`;
+        elem.classList.add(membershipClasses[user.membership] || 'standard');
     });
     document.querySelectorAll(".message").forEach(elem => elem.innerText = user.message);
     document.querySelectorAll(".tribe").forEach(elem => elem.innerText = user.tribe);
