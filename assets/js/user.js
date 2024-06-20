@@ -31,6 +31,14 @@ function fetchUserProfile(token) {
 }
 
 function displayUserProfile(user) {
+    const membershipClasses = {
+        'Admins': 'admin',
+        'Vibranium': 'vibranium',
+        'Diamond': 'diamond',
+        'Gold': 'gold',
+        'Standard': 'standard'
+    };
+
     document
         .querySelectorAll(".username")
         .forEach((elem) => (elem.innerText = user.displayName));
@@ -42,7 +50,7 @@ function displayUserProfile(user) {
         .forEach((elem) => (elem.innerText = user.points));
     document.querySelectorAll(".membership").forEach((elem) => {
         elem.innerText = user.membership;
-        elem.style.backgroundColor = user.membershipColor;
+        elem.className = `membership ${membershipClasses[user.membership] || 'standard'}`;
     });
     document
         .querySelectorAll(".message")

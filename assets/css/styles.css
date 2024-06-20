@@ -102,3 +102,22 @@ p, td{
     color: whitesmoke;
 }
 
+.admin {
+    background-color: radial-gradient(circle, #dd163b, #8b0000);
+}
+
+.vibranium {
+    background-color: radial-gradient(circle, #d8ba0e, #d8ba0e);
+}
+
+.diamond {
+    background-color: radial-gradient(circle, #d8ba0e, #d8ba0e);
+}
+
+.gold {
+    background-color: radial-gradient(circle, #d8ba0e, #d8ba0e);
+}
+
+.standard {
+    background-color: radial-gradient(circle, #139257, #139257);
+}
