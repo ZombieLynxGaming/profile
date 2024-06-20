@@ -102,22 +102,22 @@ p, td{
     color: whitesmoke;
 }
 
-.admin {
-    background-color: radial-gradient(circle, #dd163b, #8b0000);
+.membership.admin {
+    background-color: radial-gradient(circle, #dd163b, #8b0000) !important;
 }
 
-.vibranium {
-    background-color: radial-gradient(circle, #d8ba0e, #d8ba0e);
+.membership.vibranium {
+    background-color: radial-gradient(circle, #d8ba0e, #d8ba0e) !important;
 }
 
-.diamond {
-    background-color: radial-gradient(circle, #d8ba0e, #d8ba0e);
+.membership.diamond {
+    background-color: radial-gradient(circle, #d8ba0e, #d8ba0e) !important;
 }
 
-.gold {
-    background-color: radial-gradient(circle, #d8ba0e, #d8ba0e);
+.membership.gold {
+    background-color: radial-gradient(circle, #d8ba0e, #d8ba0e) !important;
 }
 
-.standard {
-    background-color: radial-gradient(circle, #139257, #139257);
+.membership.standard {
+    background-color: radial-gradient(circle, #139257, #139257) !important;
 }
