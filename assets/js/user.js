@@ -30,6 +30,31 @@ function fetchUserProfile(token) {
     });
 }
 
+    // Add the class based on membership after setting the innerText
+    document.querySelectorAll(".membership").forEach((elem) => {
+        const membership = user.membership.trim();
+        elem.innerText = membership;
+        elem.className = 'membership';  // Reset any existing classes
+        switch (membership) {
+            case 'Admins':
+                elem.classList.add('admin');
+                break;
+            case 'Vibranium':
+                elem.classList.add('vibranium');
+                break;
+            case 'Diamond':
+                elem.classList.add('diamond');
+                break;
+            case 'Gold':
+                elem.classList.add('gold');
+                break;
+            default:
+                elem.classList.add('standard');
+                break;
+        }
+    });
+
+
 function displayUserProfile(user) {
     document.querySelectorAll(".username").forEach((elem) => (elem.innerText = user.displayName));
     document.querySelectorAll(".avatar").forEach((elem) => (elem.src = user.avatar));
@@ -59,27 +84,5 @@ function displayUserProfile(user) {
         leaderboard.appendChild(row);
     });
 
-    // Add the class based on membership after setting the innerText
-    document.querySelectorAll(".membership").forEach((elem) => {
-        const membership = user.membership.trim();
-        elem.innerText = membership;
-        elem.className = 'membership';  // Reset any existing classes
-        switch (membership) {
-            case 'Admins':
-                elem.classList.add('admin');
-                break;
-            case 'Vibranium':
-                elem.classList.add('vibranium');
-                break;
-            case 'Diamond':
-                elem.classList.add('diamond');
-                break;
-            case 'Gold':
-                elem.classList.add('gold');
-                break;
-            default:
-                elem.classList.add('standard');
-                break;
-        }
-    });
+
 }
