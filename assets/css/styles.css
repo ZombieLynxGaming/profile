@@ -103,21 +103,21 @@ p, td{
 }
 
 .membership.admin {
-    background-color: radial-gradient(circle, #dd163b, #8b0000) !important;
+    background: radial-gradient(circle, #dd163b, #8b0000) !important;
 }
 
 .membership.vibranium {
-    background-color: radial-gradient(circle, #d8ba0e, #d8ba0e) !important;
+    background: radial-gradient(circle, #d8ba0e, #d8ba0e) !important;
 }
 
 .membership.diamond {
-    background-color: radial-gradient(circle, #d8ba0e, #d8ba0e) !important;
+    background: radial-gradient(circle, #d8ba0e, #d8ba0e) !important;
 }
 
 .membership.gold {
-    background-color: radial-gradient(circle, #d8ba0e, #d8ba0e) !important;
+    background: radial-gradient(circle, #d8ba0e, #d8ba0e) !important;
 }
 
 .membership.standard {
-    background-color: radial-gradient(circle, #139257, #139257) !important;
+    background: radial-gradient(circle, #139257, #139257) !important;
 }
