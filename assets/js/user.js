@@ -4,11 +4,11 @@ document.addEventListener('DOMContentLoaded', function() {
         console.error('No token found');
         return;
     }
-  
+
     fetchUserProfile(token);
-  });
-  
-  function fetchUserProfile(token) {
+});
+
+function fetchUserProfile(token) {
     fetch('https://profile.zlg.gg:1111/api/profile', {  // Update to HTTPS
         headers: {
             'Authorization': `Bearer ${token}`
@@ -28,9 +28,9 @@ document.addEventListener('DOMContentLoaded', function() {
     .catch(error => {
         console.error('Error fetching user profile:', error);
     });
-  }
-  
-  function displayUserProfile(user) {
+}
+
+function displayUserProfile(user) {
     document.querySelectorAll(".username").forEach((elem) => (elem.innerText = user.displayName));
     document.querySelectorAll(".avatar").forEach((elem) => (elem.src = user.avatar));
     document.querySelectorAll(".points").forEach((elem) => (elem.innerText = user.points));
@@ -42,10 +42,10 @@ document.addEventListener('DOMContentLoaded', function() {
     document.querySelectorAll(".dailies").forEach((elem) => (elem.innerText = user.dailies));
     document.querySelectorAll(".weeklies").forEach((elem) => (elem.innerText = user.weeklies));
     document.querySelectorAll(".bkilled").forEach((elem) => (elem.innerText = user.bkilled));
-  
+
     const leaderboard = document.getElementById("leaderboard");
     leaderboard.innerHTML = "";
-  
+
     user.leaderboard.forEach((player, index) => {
         const row = document.createElement("tr");
         row.innerHTML = `
@@ -58,11 +58,13 @@ document.addEventListener('DOMContentLoaded', function() {
         `;
         leaderboard.appendChild(row);
     });
-  
-    // This runs last to ensure the innerHTML is set before checking it
+
+    // Add the class based on membership after setting the innerText
     document.querySelectorAll(".membership").forEach((elem) => {
-        elem.classList.remove('admin', 'vibranium', 'diamond', 'gold', 'standard');
-        switch (elem.innerText.trim()) {
+        const membership = user.membership.trim();
+        elem.innerText = membership;
+        elem.className = 'membership';  // Reset any existing classes
+        switch (membership) {
             case 'Admins':
                 elem.classList.add('admin');
                 break;
@@ -80,5 +82,4 @@ document.addEventListener('DOMContentLoaded', function() {
                 break;
         }
     });
-  }
-  
+}
