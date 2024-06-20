@@ -30,43 +30,52 @@ function fetchUserProfile(token) {
     });
 }
 
-    // Add the class based on membership after setting the innerText
-    document.querySelectorAll(".membership").forEach((elem) => {
-        const membership = user.membership.trim();
-        elem.innerText = membership;
-        elem.className = 'membership';  // Reset any existing classes
-        switch (membership) {
-            case 'Admins':
-                elem.classList.add('admin');
-                break;
-            case 'Vibranium':
-                elem.classList.add('vibranium');
-                break;
-            case 'Diamond':
-                elem.classList.add('diamond');
-                break;
-            case 'Gold':
-                elem.classList.add('gold');
-                break;
-            default:
-                elem.classList.add('standard');
-                break;
-        }
-    });
-
-
 function displayUserProfile(user) {
-    document.querySelectorAll(".username").forEach((elem) => (elem.innerText = user.displayName));
-    document.querySelectorAll(".avatar").forEach((elem) => (elem.src = user.avatar));
-    document.querySelectorAll(".points").forEach((elem) => (elem.innerText = user.points));
-    document.querySelectorAll(".message").forEach((elem) => (elem.innerText = user.message));
-    document.querySelectorAll(".tribe").forEach((elem) => (elem.innerText = user.tribe));
-    document.querySelectorAll(".kills").forEach((elem) => (elem.innerText = user.kills));
-    document.querySelectorAll(".deaths").forEach((elem) => (elem.innerText = user.deaths));
-    document.querySelectorAll(".kd").forEach((elem) => (elem.innerText = user.kd));
-    document.querySelectorAll(".dailies").forEach((elem) => (elem.innerText = user.dailies));
-    document.querySelectorAll(".weeklies").forEach((elem) => (elem.innerText = user.weeklies));
-    document.querySelectorAll(".bkilled").forEach((elem) => (elem.innerText = user.bkilled));
+    const membershipClasses = {
+        'Admins': 'admin',
+        'Vibranium': 'vibranium',
+        'Diamond': 'diamond',
+        'Gold': 'gold',
+        'Standard': 'standard'
+    };
+
+    document
+        .querySelectorAll(".username")
+        .forEach((elem) => (elem.innerText = user.displayName));
+    document
+        .querySelectorAll(".avatar")
+        .forEach((elem) => (elem.src = user.avatar));
+    document
+        .querySelectorAll(".points")
+        .forEach((elem) => (elem.innerText = user.points));
+    document.querySelectorAll(".membership").forEach((elem) => {
+        elem.innerText = user.membership;
+        elem.className = `membership ${membershipClasses[user.membership] || 'standard'}`;
+    });
+    document
+        .querySelectorAll(".message")
+        .forEach((elem) => (elem.innerText = user.message));
+    document
+        .querySelectorAll(".tribe")
+        .forEach((elem) => (elem.innerText = user.tribe));
+    document
+        .querySelectorAll(".kills")
+        .forEach((elem) => (elem.innerText = user.kills));
+    document
+        .querySelectorAll(".deaths")
+        .forEach((elem) => (elem.innerText = user.deaths));
+    document
+        .querySelectorAll(".kd")
+        .forEach((elem) => (elem.innerText = user.kd));
+    document
+        .querySelectorAll(".dailies")
+        .forEach((elem) => (elem.innerText = user.dailies));
+    document
+        .querySelectorAll(".weeklies")
+        .forEach((elem) => (elem.innerText = user.weeklies));
+    document
+        .querySelectorAll(".bkilled")
+        .forEach((elem) => (elem.innerText = user.bkilled));
 
     const leaderboard = document.getElementById("leaderboard");
     leaderboard.innerHTML = "";
@@ -83,6 +92,4 @@ function displayUserProfile(user) {
         `;
         leaderboard.appendChild(row);
     });
-
-
 }
