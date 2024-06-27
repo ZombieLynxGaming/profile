@@ -2,6 +2,35 @@
 
 const API_BASE_URL = "https://profile.zlg.gg:1111";  // Update to HTTPS
 
+/*
+const mockUser = {
+    displayName: 'Grimcrusher',
+    avatar: 'assets/images/avatar.png',
+    tribe: 'Futile',
+    points: 12345,
+    membership: 'Vibranium',
+    kills: 12,
+    deaths: 6,
+    kd: 2.0,
+    dailies: 32,
+    weeklies: 12,
+    bkilled: 12,
+    averages: {
+        avgKills: 10,
+        avgDeaths: 5,
+        avgKD: 1.8,
+        avgDailies: 20,
+        avgWeeklies: 10,
+        avgBossKills: 8
+    },
+    leaderboard: [
+        { Name: 'Player1', PlayerKills: 15, KD: 2.5 },
+        { Name: 'Player2', PlayerKills: 10, KD: 2.0 },
+        { Name: 'Player3', PlayerKills: 8, KD: 1.8 }
+    ]
+};
+*/
+
 document.addEventListener('DOMContentLoaded', () => {
     const token = new URLSearchParams(window.location.search).get('token');
     if (!token) {
@@ -9,6 +38,9 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
     }
     fetchUserProfile(token);
+
+    // Uncomment this line to use mock data for testing
+    // displayMockUser();
 });
 
 function fetchUserProfile(token) {
@@ -78,4 +110,13 @@ function displayUserProfile(user) {
         `;
         leaderboard.appendChild(row);
     });
+
+    console.log('Leaderboard data populated:', user.leaderboard); // Log the leaderboard data
 }
+
+/*
+function displayMockUser() {
+    displayUserProfile(mockUser);
+    initializeCharts(mockUser); // Ensure the charts are initialized with mock data
+}
+*/
