@@ -102,9 +102,10 @@
                                     </div>
                                 </div>
                                 <div class="d-flex flex-column align-items-end">
-                                    <span class="nk-post-categories text-center" style="width: 200px;">
+                                    <span class="nk-post-categories text-center mt-25" style="width: 200px;">
                                         <p id="membership"
-                                            class="membership membership-text mb-2 mt-50 rounded-left p-5" style="color: whitesmoke;"></p>
+                                            class="membership membership-text mb-2 mt-50 rounded-left p-5"
+                                            style="color: whitesmoke;"></p>
                                     </span>
                                     <div class="mt-70 d-md-flex d-block mb-5 me-2">
                                         <button
@@ -133,7 +134,8 @@
                                 </div>
                                 <div class="d-flex flex-column align-items-end">
                                     <span class="nk-post-categories text-center w-100">
-                                        <p id="membership-mobile" class="membership membership-text mb-2 mt-2 p-5" style="color: whitesmoke;"></p>
+                                        <p id="membership-mobile" class="membership membership-text mb-2 mt-2 p-5"
+                                            style="color: whitesmoke;"></p>
                                     </span>
                                 </div>
                                 <div class="d-flex mb-5 me-2 w-100 justify-content-between mt-5 pt-5"
@@ -156,72 +158,84 @@
                                         </svg>Vote</button>
                                 </div>
                             </div>
+                            <div class="align-items-center">
+                                <h4 class="p-10 m-10 text-md-start text-center">Season 8 Stats</h4>
+                                <div class="d-flex">
+                                    <div class="col-5 d-md-block d-none">
+                                        <!-- Radial Chart Container -->
+                                        <canvas id="radialChart"></canvas>
+                                    </div>
+                                    <div class="align-item-center d-flex w-100 h-100">
+                                        <div class="mt-5 flex-grow-1 align-items-center pt-5 ps-4 pe-4">
+                                            <div class="stat-section mb-3">
+                                                <div class="row justify-content-start">
+                                                    <div class="col-4 text-start d-flex flex-column align-items-start stat-item"
+                                                        style="line-height: normal;">
+                                                        <div class="d-flex align-items-center">
+                                                            <img src="assets/images/kills.png" alt="Kills" class="me-2">
+                                                            <p>Kills</p>
+                                                        </div>
+                                                        <p id="kills" class="stat-number kills">0</p>
+                                                    </div>
+                                                    <div class="col-4 text-start d-flex flex-column align-items-start stat-item"
+                                                        style="line-height: normal;">
+                                                        <div class="d-flex align-items-center">
+                                                            <img src="assets/images/deaths.png" alt="Deaths"
+                                                                class="me-2">
+                                                            <p>Deaths</p>
+                                                        </div>
+                                                        <p id="deaths" class="stat-number deaths">0</p>
+                                                    </div>
+                                                    <div class="col-4 text-start d-flex flex-column align-items-start stat-item"
+                                                        style="line-height: normal;">
+                                                        <div class="d-flex align-items-center">
+                                                            <img src="assets/images/kd.png" alt="KD Ratio" class="me-2">
+                                                            <p>KD Ratio</p>
+                                                        </div>
+                                                        <p id="kd" class="stat-number kd">0</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="stat-section mt-40">
+                                                <div class="row justify-content-start">
+                                                    <div class="col-4 text-start d-flex flex-column align-items-start stat-item mt-50"
+                                                        style="line-height: normal;">
+                                                        <div class="d-flex align-items-center">
+                                                            <img src="assets/images/dailies.png" alt="Dailies"
+                                                                class="me-2">
+                                                            <p>Dailies</p>
+                                                        </div>
+                                                        <p id="dailies" class="stat-number dailies">0</p>
+                                                    </div>
+                                                    <div class="col-4 text-start d-flex flex-column align-items-start stat-item mt-50"
+                                                        style="line-height: normal;">
+                                                        <div class="d-flex align-items-center">
+                                                            <img src="assets/images/weeklies.png" alt="Weeklies"
+                                                                class="me-2">
+                                                            <p>Weeklies</p>
+                                                        </div>
+                                                        <p id="weeklies" class="stat-number weeklies">0</p>
 
-                            <div class="mt-5 flex-grow-1 align-items-center pt-5 ps-4 pe-4">
-                                <div class="stat-section mb-3">
-                                    <h4>Season 8 Stats</h4>
-                                    <div class="row justify-content-start">
-                                        <div class="col-4 text-start d-flex flex-column align-items-start stat-item"
-                                            style="line-height: normal;">
-                                            <div class="d-flex align-items-center">
-                                                <img src="assets/images/kills.png" alt="Kills" class="me-2">
-                                                <p>Kills</p>
+                                                    </div>
+                                                    <div class="col-4 text-start d-flex flex-column align-items-start stat-item mt-50"
+                                                        style="line-height: normal;">
+                                                        <div class="d-flex align-items-center">
+                                                            <img src="assets/images/bkilled.png" alt="Bosses Killed"
+                                                                class="me-2">
+                                                            <p>Bosses</p>
+                                                        </div>
+                                                        <p id="bkilled" class="stat-number bkilled" 0>0</p>
+
+                                                    </div>
+                                                </div>
                                             </div>
-                                            <p id="kills" class="stat-number kills">0</p>
-                                            <canvas id="killsChart" height="50"></canvas>
-                                        </div>
-                                        <div class="col-4 text-start d-flex flex-column align-items-start stat-item"
-                                            style="line-height: normal;">
-                                            <div class="d-flex align-items-center">
-                                                <img src="assets/images/deaths.png" alt="Deaths" class="me-2">
-                                                <p>Deaths</p>
-                                            </div>
-                                            <p id="deaths" class="stat-number deaths">0</p>
-                                            <canvas id="deathsChart" height="50"></canvas>
-                                        </div>
-                                        <div class="col-4 text-start d-flex flex-column align-items-start stat-item"
-                                            style="line-height: normal;">
-                                            <div class="d-flex align-items-center">
-                                                <img src="assets/images/kd.png" alt="KD Ratio" class="me-2">
-                                                <p>KD Ratio</p>
-                                            </div>
-                                            <p id="kd" class="stat-number kd">0</p>
-                                            <canvas id="kdChart" height="50"></canvas>
                                         </div>
                                     </div>
+                                    <div class="version-text">v0.13(beta)</div>
                                 </div>
-                                <div class="stat-section mt-40">
-                                    <div class="row justify-content-start">
-                                        <div class="col-4 text-start d-flex flex-column align-items-start stat-item"
-                                            style="line-height: normal;">
-                                            <div class="d-flex align-items-center">
-                                                <img src="assets/images/dailies.png" alt="Dailies" class="me-2">
-                                                <p>Dailies</p>
-                                            </div>
-                                            <p id="dailies" class="stat-number dailies">0</p>
-                                            <canvas id="dailiesChart" height="50"></canvas>
-                                        </div>
-                                        <div class="col-4 text-start d-flex flex-column align-items-start stat-item"
-                                            style="line-height: normal;">
-                                            <div class="d-flex align-items-center">
-                                                <img src="assets/images/weeklies.png" alt="Weeklies" class="me-2">
-                                                <p>Weeklies</p>
-                                            </div>
-                                            <p id="weeklies" class="stat-number weeklies">0</p>
-                                            <canvas id="weekliesChart" height="50"></canvas>
-                                        </div>
-                                        <div class="col-4 text-start d-flex flex-column align-items-start stat-item"
-                                            style="line-height: normal;">
-                                            <div class="d-flex align-items-center">
-                                                <img src="assets/images/bkilled.png" alt="Bosses Killed" class="me-2">
-                                                <p>Bosses</p>
-                                            </div>
-                                            <p id="bkilled" class="stat-number bkilled" 0>0</p>
-                                            <canvas id="bossesKilledChart" height="50"></canvas>
-                                        </div>
-                                    </div>
-                                </div>
+                                
                             </div>
+
                         </div>
                     </div>
                 </div>
