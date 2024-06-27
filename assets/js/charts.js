@@ -7,35 +7,37 @@ document.addEventListener("DOMContentLoaded", function() {
         }, 5000); // 5000ms = 5 seconds
     }
 
-    // Mock user data
-    const mockUser = {
-        displayName: 'Grimcrusher',
-        avatar: 'assets/images/avatar.png',
-        tribe: 'Futile',
-        points: 12345,
-        membership: 'Vibranium',
-        kills: 12,
-        deaths: 6,
-        kd: 2.0,
-        dailies: 4,
-        weeklies: 12,
-        bkilled: 12,
-        averages: {
-            avgKills: 10,
-            avgDeaths: 5,
-            avgKD: 1.8,
-            avgDailies: 2,
-            avgWeeklies: 10,
-            avgBossKills: 8
-        }
-    };
-
-    // Display mock user profile
-    displayUserProfile(mockUser);
-
-    // Initialize charts with mock data
-    initializeCharts(mockUser);
+    // Fetch real user data from backend
+    fetchUserProfile();
 });
+
+function fetchUserProfile() {
+    const token = new URLSearchParams(window.location.search).get('token');
+    if (!token) {
+        console.error('No token found');
+        return;
+    }
+
+    fetch('https://profile.zlg.gg:1111/api/profile', {
+        headers: {
+            'Authorization': `Bearer ${token}`
+        }
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok ' + response.statusText);
+        }
+        return response.json();
+    })
+    .then(data => {
+        displayUserProfile(data);
+        initializeCharts(data);
+    })
+    .catch(error => {
+        console.error('Error fetching user profile:', error);
+        document.getElementById('profile').innerText = 'Error fetching user profile: ' + error.message;
+    });
+}
 
 function displayUserProfile(user) {
     const membershipClasses = {
@@ -116,7 +118,6 @@ function createRadialChart(ctx, user) {
         }
     });
 }
-
 
 function initializeCharts(user) {
     const radialChartCtx = document.getElementById('radialChart').getContext('2d');
