@@ -1,5 +1,3 @@
-// charts.js
-
 function createRadialChart(ctx, user) {
     return new Chart(ctx, {
         type: 'radar',
@@ -27,10 +25,17 @@ function createRadialChart(ctx, user) {
                 r: {
                     beginAtZero: true,
                     angleLines: {
-                        display: true
+                        display: true,
+                        color: '#fff' // Color of the spider web lines
+                    },
+                    grid: {
+                        color: '#fff' // Color of the grid lines
                     },
                     pointLabels: {
                         display: true, // Display point labels
+                        font: {
+                            color: '#fff' // Color of the point labels
+                        },
                         callback: function(value, index) {
                             return ['Kills', 'Deaths', 'KD Ratio', 'Dailies', 'Weeklies', 'Bosses Killed'][index];
                         }
