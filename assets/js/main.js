@@ -52,9 +52,7 @@ function displayUserProfile(user) {
     document.querySelectorAll(".points").forEach(elem => elem.innerText = user.points);
     document.querySelectorAll(".membership").forEach(elem => {
         elem.innerText = user.membership;
-        // Remove all existing membership classes
         elem.className = 'membership';
-        // Add the appropriate membership class
         elem.classList.add(membershipClasses[user.membership] || 'standard');
     });
     document.querySelectorAll(".message").forEach(elem => elem.innerText = user.message);
@@ -65,6 +63,17 @@ function displayUserProfile(user) {
     document.querySelectorAll(".dailies").forEach(elem => elem.innerText = user.dailies);
     document.querySelectorAll(".weeklies").forEach(elem => elem.innerText = user.weeklies);
     document.querySelectorAll(".bkilled").forEach(elem => elem.innerText = user.bkilled);
+
+    // Display tribe members
+    const tribeMembersContainer = document.querySelector('.tribe-members');
+    tribeMembersContainer.innerHTML = '';
+    user.tribeMembers.forEach(member => {
+        const memberImg = document.createElement('img');
+        memberImg.src = member.avatar;
+        memberImg.alt = member.name;
+        memberImg.classList.add('tribe-member-avatar');
+        tribeMembersContainer.appendChild(memberImg);
+    });
 
     const leaderboard = document.getElementById("leaderboard");
     leaderboard.innerHTML = "";
