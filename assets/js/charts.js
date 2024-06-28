@@ -26,15 +26,15 @@ function createRadialChart(ctx, user) {
                     beginAtZero: true,
                     angleLines: {
                         display: true,
-                        color: '#fff' // Color of the spider web lines
+                        color: '#808080' // Color of the spider web lines
                     },
                     grid: {
-                        color: '#fff' // Color of the grid lines
+                        color: '#808080' // Color of the grid lines
                     },
                     pointLabels: {
                         display: true, // Display point labels
                         font: {
-                            color: '#fff' // Color of the point labels
+                            color: '#808080' // Color of the point labels
                         },
                         callback: function(value, index) {
                             return ['Kills', 'Deaths', 'KD Ratio', 'Dailies', 'Weeklies', 'Bosses Killed'][index];
