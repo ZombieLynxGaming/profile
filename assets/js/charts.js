@@ -2,7 +2,7 @@ function createRadialChart(ctx, user) {
     return new Chart(ctx, {
         type: 'radar',
         data: {
-            labels: ['Kills', 'Deaths', 'KD Ratio', 'Dailies', 'Weeklies', 'Bosses Killed'],
+            labels: ['Kills', 'Deaths', 'K/D', 'Dailies', 'Weeklies', 'Bosses'],
             datasets: [
                 {
                     label: user.displayName,
