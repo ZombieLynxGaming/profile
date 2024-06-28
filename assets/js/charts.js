@@ -21,6 +21,7 @@ function createRadialChart(ctx, user) {
             ]
         },
         options: {
+            maintainAspectRatio: false,
             scales: {
                 r: {
                     beginAtZero: true,

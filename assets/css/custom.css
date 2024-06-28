@@ -187,5 +187,12 @@ table {
   background-color: #f32d2d; /* Pastel red */
 }
 
-
+.chart-container {
+  width: 60%;
+  margin: auto;
+}
+.chart-container canvas {
+  width: 100% !important; /* Ensure canvas takes full width of container */
+  height: 80% !important; /* Set height as needed */
+}
 
