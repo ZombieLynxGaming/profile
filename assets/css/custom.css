@@ -135,9 +135,6 @@ table {
     opacity: 0.6;
 }
 
-
-
-
 .tribe-members {
   display: flex;
   align-items: center;
@@ -147,7 +144,6 @@ table {
   width: 25px;
   height: 25px;
   border-radius: 50%;
-  background-color: #2a2a2a; /* Background color for the circle */
   color: white; /* Text color */
   display: flex;
   align-items: center;
@@ -156,4 +152,37 @@ table {
   font-size: 14px; /* Font size for the initial */
   font-weight: bold; /* Font weight for the initial */
 }
+
+.pastel-blue {
+  background-color: #a8d5e2; /* Pastel blue */
+}
+
+.pastel-green {
+  background-color: #b2e2a4; /* Pastel green */
+}
+
+.pastel-purple {
+  background-color: #c3aed6; /* Pastel purple */
+}
+
+.pastel-pink {
+  background-color: #f5c0c0; /* Pastel pink */
+}
+
+.pastel-yellow {
+  background-color: #f5e1a4; /* Pastel yellow */
+}
+
+.pastel-orange {
+  background-color: #f5b971; /* Pastel orange */
+}
+
+.pastel-teal {
+  background-color: #a0e8af; /* Pastel teal */
+}
+
+.pastel-red {
+  background-color: #f5a2a2; /* Pastel red */
+}
+
 

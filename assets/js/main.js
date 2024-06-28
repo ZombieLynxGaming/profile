@@ -1,5 +1,3 @@
-// main.js
-
 const API_BASE_URL = "https://profile.zlg.gg:1111";  // Update to HTTPS
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -67,9 +65,10 @@ function displayUserProfile(user) {
     // Display tribe members
     const tribeMembersContainer = document.querySelector('.tribe-members');
     tribeMembersContainer.innerHTML = '';
-    user.tribeMembers.forEach(member => {
+    const pastelColors = ['pastel-blue', 'pastel-green', 'pastel-purple', 'pastel-pink', 'pastel-yellow', 'pastel-orange', 'pastel-teal', 'pastel-red'];
+    user.tribeMembers.forEach((member, index) => {
         const memberDiv = document.createElement('div');
-        memberDiv.classList.add('tribe-member-initial');
+        memberDiv.classList.add('tribe-member-initial', pastelColors[index % pastelColors.length]);
         memberDiv.innerText = member.initial;
         tribeMembersContainer.appendChild(memberDiv);
     });
