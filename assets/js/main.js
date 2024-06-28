@@ -70,6 +70,7 @@ function displayUserProfile(user) {
         const memberDiv = document.createElement('div');
         memberDiv.classList.add('tribe-member-initial', pastelColors[index % pastelColors.length]);
         memberDiv.innerText = member.initial;
+        memberDiv.style.zIndex = user.tribeMembers.length - index; // Ensure the first icon is on top
         tribeMembersContainer.appendChild(memberDiv);
     });
 

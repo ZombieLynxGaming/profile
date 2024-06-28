@@ -144,13 +144,15 @@ table {
   width: 25px;
   height: 25px;
   border-radius: 50%;
+  border: 2px solid white;
   color: white; /* Text color */
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-left: -5px; /* Adjust this value to control the overlap */
+  margin-left: -7px; /* Adjust this value to control the overlap */
   font-size: 14px; /* Font size for the initial */
   font-weight: bold; /* Font weight for the initial */
+  position: relative;
 }
 
 .pastel-blue {
@@ -184,5 +186,6 @@ table {
 .pastel-red {
   background-color: #f32d2d; /* Pastel red */
 }
+
 
 
