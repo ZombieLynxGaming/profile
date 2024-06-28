@@ -143,10 +143,17 @@ table {
   align-items: center;
 }
 
-.tribe-member-avatar {
+.tribe-member-initial {
   width: 25px;
   height: 25px;
   border-radius: 50%;
-  margin-left: -10px; /* Adjust this value to control the overlap */
-  border: 2px solid #2a2a2a; /* Match the background to create a border effect */
+  background-color: #2a2a2a; /* Background color for the circle */
+  color: white; /* Text color */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: -5px; /* Adjust this value to control the overlap */
+  font-size: 14px; /* Font size for the initial */
+  font-weight: bold; /* Font weight for the initial */
 }
+

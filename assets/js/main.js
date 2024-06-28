@@ -68,11 +68,10 @@ function displayUserProfile(user) {
     const tribeMembersContainer = document.querySelector('.tribe-members');
     tribeMembersContainer.innerHTML = '';
     user.tribeMembers.forEach(member => {
-        const memberImg = document.createElement('img');
-        memberImg.src = member.avatar;
-        memberImg.alt = member.name;
-        memberImg.classList.add('tribe-member-avatar');
-        tribeMembersContainer.appendChild(memberImg);
+        const memberDiv = document.createElement('div');
+        memberDiv.classList.add('tribe-member-initial');
+        memberDiv.innerText = member.initial;
+        tribeMembersContainer.appendChild(memberDiv);
     });
 
     const leaderboard = document.getElementById("leaderboard");
