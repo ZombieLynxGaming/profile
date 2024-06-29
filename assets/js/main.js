@@ -57,7 +57,7 @@ function displayUserProfile(user) {
     document.querySelectorAll(".tribe").forEach(elem => elem.innerText = user.tribe);
     document.querySelectorAll(".kills").forEach(elem => elem.innerText = user.kills);
     document.querySelectorAll(".deaths").forEach(elem => elem.innerText = user.deaths);
-    document.querySelectorAll(".kd").forEach(elem => elem.innerText = user.kd.toFixed(1)); // Update to one decimal place
+    document.querySelectorAll(".kd").forEach(elem => elem.innerText = user.kd);
     document.querySelectorAll(".dailies").forEach(elem => elem.innerText = user.dailies);
     document.querySelectorAll(".weeklies").forEach(elem => elem.innerText = user.weeklies);
     document.querySelectorAll(".bkilled").forEach(elem => elem.innerText = user.bkilled);
@@ -83,7 +83,7 @@ function displayUserProfile(user) {
             <td class="text-center">${index + 1}</td>
             <td>${player.Name}</td>
             <td class="text-center">${player.PlayerKills}</td>
-            <td class="text-center">${player.KD ? player.KD.toFixed(1) : "N/A"}</td> <!-- Update to one decimal place -->
+            <td class="text-center">${player.KD ? player.KD.toFixed(2) : "N/A"}</td>
         `;
         leaderboard.appendChild(row);
     });
