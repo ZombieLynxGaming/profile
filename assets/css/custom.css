@@ -129,7 +129,7 @@ table {
   .version-text {
     position: absolute;
     bottom: 10px;
-    right: 10px;
+    right: 25px;
     font-size: 0.8rem;
     color: #fff;
     opacity: 0.6;
@@ -206,11 +206,22 @@ table {
   transform: translateY(-80%);
   width: 170px; /* Adjust size as needed */
   height: 170px; /* Adjust size as needed */
-  border: 4px solid rgb(78, 79, 80, .5); /* Optional: border color */
+  border: 4px solid rgba(78, 79, 80, 0.5); /* Optional: border color */
+
+  /* Media query for small screens and smaller */
+  @media (max-width: 575.98px) {
+    transform: translateY(-60%);
+  }
 }
 
 .profile-details {
-  
+  /* Default margin top value for medium and larger screens */
+  margin-top: 1rem; /* equivalent to mt-3 in Bootstrap */
+
+  /* Media query for small screens and smaller */
+  @media (max-width: 575.98px) {
+    margin-top: 5.5rem; /* equivalent to mt-5 in Bootstrap */
+  }
 }
 
 .profile-points {
@@ -221,17 +232,44 @@ table {
 .border-gray-top {
   border-width: 0px 1px 1px 1px; /* top right bottom left */
   border-style: solid;
-  border-color: rgb(78, 78, 78, .5);
+  border-color: rgba(78, 78, 78, 0.5);
+
+  /* Media query for screens smaller than 600px */
+  @media (max-width: 599.98px) {
+    border-width: 0; /* Remove border entirely for smaller screens */
+  }
 }
 
 .border-gray-bottom {
   border-width: 1px 1px 0px 1px; /* top right bottom left */
   border-style: solid;
-  border-color: rgb(78, 78, 78, .5);
+  border-color: rgba(78, 78, 78, 0.5);
+
+  /* Media query for screens smaller than 600px */
+  @media (max-width: 599.98px) {
+    border-width: 0; /* Remove border entirely for smaller screens */
+  }
 }
+
 
 .border-bottom-80 {
   border-bottom: 2px solid rgb(78, 78, 78, .5); /* Adjust thickness and color as needed */
   width: 100%; /* Adjust the width of the border as a percentage of the element width */
   margin: 0 auto; /* Center the border horizontally */
 }
+
+.stats {
+  /* Default margin-top for smaller screens */
+  margin-top: 55px;
+}
+
+/* Media query for screens medium (md) and larger */
+@media (min-width: 768px) {
+  .stats {
+      margin-top: 100px; /* Adjust margin-top for medium and larger screens */
+  }
+  .stats-inner {
+    padding-bottom: 70px;
+  }
+}
+
