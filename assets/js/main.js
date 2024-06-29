@@ -92,8 +92,8 @@ function displayUserProfile(user) {
 }
 
 function displayMessage(message) {
+    console.log('Displaying message:', message); // Log the message
     if (message) {
-        console.log('Displaying message:', message); // Log the message
         const messageElement = document.getElementById('message');
         if (messageElement) {
             messageElement.innerText = message;
