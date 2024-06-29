@@ -95,6 +95,7 @@ function displayMessage(message) {
     console.log('Displaying message:', message); // Log the message
     if (message) {
         const messageElement = document.getElementById('message');
+        console.log('Message element:', messageElement); // Log the message element
         if (messageElement) {
             messageElement.innerText = message;
             messageElement.style.visibility = 'visible';
