@@ -95,11 +95,15 @@ function displayMessage(message) {
     if (message) {
         console.log('Displaying message:', message); // Log the message
         const messageElement = document.getElementById('message');
-        messageElement.innerText = message;
-        messageElement.style.visibility = 'visible';
-        setTimeout(() => {
-            messageElement.style.visibility = 'hidden';
-            messageElement.innerText = ''; // Clear the message text
-        }, 5000); // Display for 5 seconds
+        if (messageElement) {
+            messageElement.innerText = message;
+            messageElement.style.visibility = 'visible';
+            setTimeout(() => {
+                messageElement.style.visibility = 'hidden';
+                messageElement.innerText = ''; // Clear the message text
+            }, 5000); // Display for 5 seconds
+        } else {
+            console.error('Message element not found in the DOM.');
+        }
     }
 }
