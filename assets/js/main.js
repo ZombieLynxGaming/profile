@@ -26,7 +26,6 @@ function fetchUserProfile(token) {
     .then(data => {
         console.log('User data:', data);
         displayUserProfile(data);
-        initializeCharts(data); // Initialize charts with user data
         displayMessage(data.message); // Display the message if it exists
     })
     .catch(error => {
