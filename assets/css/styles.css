@@ -98,6 +98,7 @@ p, td{
 }
 
 .membership-text {
+    padding: 5px!important;
     font-size: larger;
     color: whitesmoke;
 }
