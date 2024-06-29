@@ -89,76 +89,156 @@
             <div class="row h-100">
                 <div class="col-lg-8 mb-4 h-100">
                     <div class="card bg-dark text-white h-100">
-                        <div class="card-body p-0 img-container">
-                            <div class="row justify-content-center align-items-center border-bottom-80 pb-15 price-card-mobile">
-                                <div
-                                    class="d-flex align-items-center justify-content-end avatar-img halfway-image col-3 position-relative">
-                                    <img id="avatar" src=""
-                                        alt="" class="avatar rounded-circle">
+                        <div class="card-body d-flex flex-column p-0">
+                            <!-- Desktop View -->
+                            <div class="price-card-mobile justify-content-between d-none d-md-flex">
+                                <div class="d-flex align-items-center">
+                                    <img id="avatar" src="" alt="Player Avatar" class="avatar me-3 h-100">
+                                    <div class="ms-2" style="line-height: normal;">
+                                        <h2 id="username" class="card-title mb-0 username"></h2>
+                                        <div class="d-flex">
+                                            <p id="tribe" class="card-text tribe me-3"></p>
+                                            <div class="tribe-members"></div>
+                                        </div>
+                                        <p class="card-text mb-0 mt-50">POINTS <br> <span id="points"
+                                                class="points fs-2" style="line-height: normal;"></span></p>
+                                    </div>
                                 </div>
-                                <div class="col-7 text-start profile-details pt-5 mt-5 ps-2">
-                                    <h4 id="username" class="mb-5 username"></h4>
-                                    <h4 id="tribe" class="fw-light mb-5 tribe"></h4>
-                                    <h4 class="fw-light">Tier: <span id="membership" class="fw-bold p-2 membership membership-text"></span></h4>
-                                </div>
-                                <div class="col-2 text-end profile-points pe-4 pt-5 mt-5">
-                                    <h4 class="mb-0 fw-light">POINTS</h4>
-                                    <h4 id="points" class="mb-5 points"></h4>
-                                    <div class="d-flex text-center justify-content-end"><button
-                                            class="nk-btn nk-btn-rounded nk-btn-color-dark-3 nk-btn-hover-color-main-1 me-2 w-50  d-flex justify-content-center align-items-center"
+                                <div class="d-flex flex-column align-items-end">
+                                    <span class="nk-post-categories text-center mt-25" style="width: 200px;">
+                                        <p id="membership"
+                                            class="membership membership-text mb-2 mt-50 rounded-left p-5"
+                                            style="color: whitesmoke;"></p>
+                                    </span>
+                                    <div class="mt-70 d-md-flex d-block mb-5 me-2">
+                                        <button
+                                            class="nk-btn nk-btn-rounded nk-btn-color-dark-3 nk-btn-hover-color-main-1 me-2 w-75"
                                             onclick="window.location.href='https://zlg.gg/aseshop'">Buy</button>
                                         <button
-                                            class="nk-btn nk-btn-rounded nk-btn-color-dark-3 nk-btn-hover-color-main-1 w-50  d-flex justify-content-center align-items-center"
+                                            class="nk-btn nk-btn-rounded nk-btn-color-dark-3 nk-btn-hover-color-main-1 w-75"
                                             data-toggle="modal" data-target="#voteModal">Vote</button>
                                     </div>
                                 </div>
                             </div>
-                            <div class="row justify-content-center align-items-center mt-70">
-                                <div class="col-md-3 text-center ms-5 border-gray-top p-20 pb-50">
-                                    <div class="d-flex justify-content-start align-items-center text-start">
-                                        <img src="./assets/images/kills.png" alt="" style="width: 20px; height: 20px;">
-                                        <p class="ps-1 mb-0">Kills</p>
+
+                            <!-- Mobile View -->
+                            <div class="d-block d-md-none">
+                                <div class="price-card-mobile justify-content-between p-0 m-0">
+                                    <div class="d-flex align-items-center justify-content-between me-5 pe-3 h-100">
+                                        <img id="avatar-mobile" src="" alt="Player Avatar" class="avatar me-3 h-100">
+                                        <div class="ms-2" style="line-height: normal;">
+                                            <h2 id="username-mobile" class="card-title mb-0 username"></h2>
+                                            <p id="tribe-mobile" class="card-text tribe text-center"></p>
+                                            <p class="card-text mb-0 mt-50 text-center">POINTS: <br> <span
+                                                    id="points-mobile" class="points fs-2"
+                                                    style="line-height: normal;"></span></p>
+                                        </div>
                                     </div>
-                                    <p id="kills" class="d-block fs-1 mb-0 text-start stat-number kills">0</p>
                                 </div>
-                                <div class="col-md-3 text-center border-gray-top p-20 pb-50">
-                                    <div class="d-flex justify-content-start align-items-center text-start">
-                                        <img src="./assets/images/deaths.png" alt="" style="width: 20px; height: 20px;">
-                                        <p class="ps-1 mb-0">Deaths</p>
-                                    </div>
-                                    <p id="deaths" class="d-block fs-1 mb-0 text-start stat-number deaths">0</p>
+                                <div class="d-flex flex-column align-items-end">
+                                    <span class="nk-post-categories text-center w-100">
+                                        <p id="membership-mobile" class="membership membership-text mb-2 mt-2 p-5"
+                                            style="color: whitesmoke;"></p>
+                                    </span>
                                 </div>
-                                <div class="col-md-3 text-center me-5 border-gray-top p-20 pb-50">
-                                    <div class="d-flex justify-content-start align-items-center text-start">
-                                        <img src="./assets/images/kd.png" alt="" style="width: 20px; height: 20px;">
-                                        <p class="ps-1 mb-0">K/D</p>
-                                    </div>
-                                    <p id="kd" class="d-block fs-1 mb-0 text-start stat-number kd">0</p>
-                                </div>
-                            </div>
-                            <div class="row justify-content-center align-items-center mt-0">
-                                <div class="col-md-3 text-center ms-5 p-20 pb-50 border-gray-bottom">
-                                    <div class="d-flex justify-content-start align-items-center text-start">
-                                        <img src="./assets/images/dailies.png" alt="" style="width: 20px; height: 20px;">
-                                        <p class="ps-1 mb-0">Dailies</p>
-                                    </div>
-                                    <p id="dailies" class="d-block fs-1 mb-0 text-start stat-number dailies">0</p>
-                                </div>
-                                <div class="col-md-3 text-center border-gray-bottom p-20 pb-50">
-                                    <div class="d-flex justify-content-start align-items-center text-start">
-                                        <img src="./assets/images/weeklies.png" alt="" style="width: 20px; height: 20px;">
-                                        <p class="ps-1 mb-0">Weeklies</p>
-                                    </div>
-                                    <p id="weeklies" class="d-block fs-1 mb-0 text-start stat-number weeklies">0</p>
-                                </div>
-                                <div class="col-md-3 text-center me-5 border-gray-bottom p-20 pb-50">
-                                    <div class="d-flex justify-content-start align-items-center text-start">
-                                        <img src="./assets/images/bkilled.png" alt="" style="width: 20px; height: 20px;">
-                                        <p class="ps-1 mb-0">Bosses</p>
-                                    </div>
-                                    <p id="bkilled" class="d-block fs-1 mb-0 text-start stat-number bkilled">0</p>
+                                <div class="d-flex mb-5 me-2 w-100 justify-content-between mt-5 pt-5"
+                                    style="border-bottom: 1px solid black;">
+                                    <button class="nk-btn nk-btn-rounded nk-btn-hover-color-main-1 me-2 w-50"
+                                        onclick="window.location.href='https://zlg.gg/aseshop'"
+                                        style="background-color: transparent;"><svg xmlns="http://www.w3.org/2000/svg"
+                                            width="14" height="14" fill="currentColor" class="bi bi-currency-dollar"
+                                            viewBox="0 0 16 16">
+                                            <path
+                                                d="M4 10.781c.148 1.667 1.513 2.85 3.591 3.003V15h1.043v-1.216c2.27-.179 3.678-1.438 3.678-3.3 0-1.59-.947-2.51-2.956-3.028l-.722-.187V3.467c1.122.11 1.879.714 2.07 1.616h1.47c-.166-1.6-1.54-2.748-3.54-2.875V1H7.591v1.233c-1.939.23-3.27 1.472-3.27 3.156 0 1.454.966 2.483 2.661 2.917l.61.162v4.031c-1.149-.17-1.94-.8-2.131-1.718zm3.391-3.836c-1.043-.263-1.6-.825-1.6-1.616 0-.944.704-1.641 1.8-1.828v3.495l-.2-.05zm1.591 1.872c1.287.323 1.852.859 1.852 1.769 0 1.097-.826 1.828-2.2 1.939V8.73z" />
+                                        </svg>Buy</button>
+                                    <button class="nk-btn nk-btn-rounded nk-btn-hover-color-main-1 w-50"
+                                        data-toggle="modal" data-target="#voteModal"
+                                        style="background-color: transparent;"><svg xmlns="http://www.w3.org/2000/svg"
+                                            width="14" height="14" fill="currentColor" class="bi bi-check-lg"
+                                            viewBox="0 0 16 16">
+                                            <path
+                                                d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425z" />
+                                        </svg>Vote</button>
                                 </div>
                             </div>
+                            <div class="align-items-center">
+                                <h4 class="p-10 m-10 text-md-start text-center">Season 8 Stats</h4>
+                                <div class="d-flex">
+                                    <div class="col-5 d-md-block d-none chart-container">
+                                        <!-- Radial Chart Container -->
+                                        <canvas id="radialChart"></canvas>
+                                    </div>
+                                    <div class="align-item-center d-flex w-100 h-100">
+                                        <div class="mt-5 flex-grow-1 align-items-center pt-5 ps-4 pe-4">
+                                            <div class="stat-section mb-3">
+                                                <div class="row justify-content-start">
+                                                    <div class="col-4 text-start d-flex flex-column align-items-start stat-item"
+                                                        style="line-height: normal;">
+                                                        <div class="d-flex align-items-center">
+                                                            <img src="assets/images/kills.png" alt="Kills" class="me-2">
+                                                            <p>Kills</p>
+                                                        </div>
+                                                        <p id="kills" class="stat-number kills">0</p>
+                                                    </div>
+                                                    <div class="col-4 text-start d-flex flex-column align-items-start stat-item"
+                                                        style="line-height: normal;">
+                                                        <div class="d-flex align-items-center">
+                                                            <img src="assets/images/deaths.png" alt="Deaths"
+                                                                class="me-2">
+                                                            <p>Deaths</p>
+                                                        </div>
+                                                        <p id="deaths" class="stat-number deaths">0</p>
+                                                    </div>
+                                                    <div class="col-4 text-start d-flex flex-column align-items-start stat-item"
+                                                        style="line-height: normal;">
+                                                        <div class="d-flex align-items-center">
+                                                            <img src="assets/images/kd.png" alt="KD Ratio" class="me-2">
+                                                            <p>KD Ratio</p>
+                                                        </div>
+                                                        <p id="kd" class="stat-number kd">0</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="stat-section mt-40">
+                                                <div class="row justify-content-start">
+                                                    <div class="col-4 text-start d-flex flex-column align-items-start stat-item mt-50"
+                                                        style="line-height: normal;">
+                                                        <div class="d-flex align-items-center">
+                                                            <img src="assets/images/dailies.png" alt="Dailies"
+                                                                class="me-2">
+                                                            <p>Dailies</p>
+                                                        </div>
+                                                        <p id="dailies" class="stat-number dailies">0</p>
+                                                    </div>
+                                                    <div class="col-4 text-start d-flex flex-column align-items-start stat-item mt-50"
+                                                        style="line-height: normal;">
+                                                        <div class="d-flex align-items-center">
+                                                            <img src="assets/images/weeklies.png" alt="Weeklies"
+                                                                class="me-2">
+                                                            <p>Weeklies</p>
+                                                        </div>
+                                                        <p id="weeklies" class="stat-number weeklies">0</p>
+
+                                                    </div>
+                                                    <div class="col-4 text-start d-flex flex-column align-items-start stat-item mt-50"
+                                                        style="line-height: normal;">
+                                                        <div class="d-flex align-items-center">
+                                                            <img src="assets/images/bkilled.png" alt="Bosses Killed"
+                                                                class="me-2">
+                                                            <p>Bosses</p>
+                                                        </div>
+                                                        <p id="bkilled" class="stat-number bkilled" 0>0</p>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="version-text">v0.13(beta)</div>
+                                </div>
+
+                            </div>
+
                         </div>
                     </div>
                 </div>
