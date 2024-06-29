@@ -57,11 +57,7 @@ function displayUserProfile(user) {
     document.querySelectorAll(".tribe").forEach(elem => elem.innerText = user.tribe);
     document.querySelectorAll(".kills").forEach(elem => elem.innerText = user.kills);
     document.querySelectorAll(".deaths").forEach(elem => elem.innerText = user.deaths);
-
-    // Check if user.kd is a number and format it to one decimal place
-    const kdValue = !isNaN(user.kd) ? user.kd.toFixed(1) : user.kd;
-    document.querySelectorAll(".kd").forEach(elem => elem.innerText = kdValue);
-
+    document.querySelectorAll(".kd").forEach(elem => elem.innerText = user.kd);
     document.querySelectorAll(".dailies").forEach(elem => elem.innerText = user.dailies);
     document.querySelectorAll(".weeklies").forEach(elem => elem.innerText = user.weeklies);
     document.querySelectorAll(".bkilled").forEach(elem => elem.innerText = user.bkilled);
