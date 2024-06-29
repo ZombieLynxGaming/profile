@@ -98,32 +98,32 @@ p, td{
 }
 
 .membership-text {
-    padding: 2px!important;
+    padding: 1px!important;
     font-size: larger;
     color: whitesmoke;
 }
 
 .membership.admin {
-    padding: 2px!important;
+    padding: 1px!important;
     background: radial-gradient(circle, #dd163b, #8b0000) !important;
 }
 
 .membership.vibranium {
-    padding: 2px!important;
+    padding: 1px!important;
     background: radial-gradient(circle, #b833a1, #a30d8a) !important;
 }
 
 .membership.diamond {
-    padding: 2px!important;
+    padding: 1px!important;
     background: radial-gradient(circle, #3ca79e, #19e9d8) !important;
 }
 
 .membership.gold {
-    padding: 2px!important;
+    padding: 1px!important;
     background: radial-gradient(circle, #d8ba0e, #d8ba0e) !important;
 }
 
 .membership.standard {
-    padding: 2px!important;
+    padding: 1px!important;
     background: radial-gradient(circle, #139257, #139257) !important;
 }
