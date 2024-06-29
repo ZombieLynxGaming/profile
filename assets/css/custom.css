@@ -260,13 +260,13 @@ table {
 
 .stats {
   /* Default margin-top for smaller screens */
-  margin-top: 55px;
+  margin-top: 45px;
 }
 
 /* Media query for screens medium (md) and larger */
 @media (min-width: 768px) {
   .stats {
-      margin-top: 100px; /* Adjust margin-top for medium and larger screens */
+      margin-top: 90px; /* Adjust margin-top for medium and larger screens */
   }
   .stats-inner {
     padding-bottom: 70px;
