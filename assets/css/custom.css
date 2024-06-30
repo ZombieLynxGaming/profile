@@ -178,7 +178,7 @@ tbody tr {
 
 .stats-inner {
   padding-top: 20px;
-  padding-bottom: 70px;
+  /* padding-bottom: 70px; */
 }
 
 /* Media query for small screens and smaller */
