@@ -9,14 +9,16 @@ function createHorizontalBarChart(ctx, label, userData, averageData) {
                     data: [userData],
                     backgroundColor: 'rgba(200, 38, 38, 0.6)', // Semi-transparent red for user
                     borderColor: '#C82626', // Red for user
-                    borderWidth: 1
+                    borderWidth: 1,
+                    barThickness: 10 // Set bar thickness (default is 32)
                 },
                 {
                     label: 'Average',
                     data: [averageData],
                     backgroundColor: 'rgba(0, 255, 255, 0.6)', // Semi-transparent blue for average
                     borderColor: '#00FFFF', // Blue for average
-                    borderWidth: 1
+                    borderWidth: 1,
+                    barThickness: 10 // Set bar thickness (default is 32)
                 }
             ]
         },
