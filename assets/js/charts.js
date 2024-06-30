@@ -1,5 +1,10 @@
+let charts = {};
+
 function createHorizontalBarChart(ctx, label, userData, averageData) {
-    return new Chart(ctx, {
+    if (charts[ctx.canvas.id]) {
+        charts[ctx.canvas.id].destroy();
+    }
+    charts[ctx.canvas.id] = new Chart(ctx, {
         type: 'bar',
         data: {
             labels: [''], // No labels
@@ -83,12 +88,10 @@ function initializeCharts(user) {
     });
 }
 
-// Call initializeCharts within your existing initialization function
+// Ensure this function is called from the main script to initialize charts
 document.addEventListener('DOMContentLoaded', () => {
     const token = new URLSearchParams(window.location.search).get('token');
-    if (!token) {
-        console.error('No token found');
-        return;
+    if (token) {
+        fetchUserProfile(token); // Ensure this function is defined in main.js and fetches user data
     }
-    fetchUserProfile(token);
 });
