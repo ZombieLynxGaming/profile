@@ -360,8 +360,8 @@ tbody tr {
 }
 
 .vertical-align-text {
-  height: 50px; /* set your desired height */
-  line-height: 50px; /* match this with the height */
+  height: 40px; /* set your desired height */
+  line-height: 40px; /* match this with the height */
   text-align: center; /* optional: center text horizontally */
   background-color: lightblue; /* optional: for visibility */
 }
