@@ -27,6 +27,10 @@ function createHorizontalBarChart(ctx, label, userData, averageData) {
             scales: {
                 x: {
                     beginAtZero: true,
+                },
+                y: {
+                    barPercentage: 0.5, // Adjust bar percentage (default is 0.9)
+                    categoryPercentage: 0.5 // Adjust category percentage (default is 0.8)
                 }
             },
             plugins: {
