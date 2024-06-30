@@ -360,7 +360,8 @@ tbody tr {
 }
 
 .vertical-align-text {
-  display: flex;
-  align-items: center;
-  justify-content: center; /* if you also want to center horizontally */
+  height: 50px; /* set your desired height */
+  line-height: 50px; /* match this with the height */
+  text-align: center; /* optional: center text horizontally */
+  background-color: lightblue; /* optional: for visibility */
 }
