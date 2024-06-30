@@ -7,6 +7,12 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
     }
     fetchUserProfile(token);
+
+    // Initialize Bootstrap popovers
+    const popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'));
+    popoverTriggerList.map((popoverTriggerEl) => {
+        return new bootstrap.Popover(popoverTriggerEl);
+    });
 });
 
 function fetchUserProfile(token) {
