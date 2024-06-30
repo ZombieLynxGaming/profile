@@ -140,7 +140,9 @@ function initializePopovers() {
     const popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'));
     popoverTriggerList.map((popoverTriggerEl) => {
         console.log(`Initializing popover for element: ${popoverTriggerEl}`);
-        return new bootstrap.Popover(popoverTriggerEl);
+        const popover = new bootstrap.Popover(popoverTriggerEl);
+        popover.show(); // Manually show the popover for testing
+        return popover;
     });
 }
 
