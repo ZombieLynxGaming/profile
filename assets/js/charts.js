@@ -1,49 +1,30 @@
-function createRadialChart(ctx, user) {
+function createHorizontalBarChart(ctx, label, userData, averageData) {
     return new Chart(ctx, {
-        type: 'radar',
+        type: 'bar',
         data: {
-            labels: ['Kills', 'Deaths', 'K/D', 'Dailies', 'Weeklies', 'Bosses'],
+            labels: [label],
             datasets: [
                 {
-                    label: user.displayName,
-                    data: [user.kills, user.deaths, user.kd, user.dailies, user.weeklies, user.bkilled],
-                    backgroundColor: 'rgba(200, 38, 38, 0.2)', // Transparent red for user
+                    label: 'Your Stat',
+                    data: [userData],
+                    backgroundColor: 'rgba(200, 38, 38, 0.6)', // Semi-transparent red for user
                     borderColor: '#C82626', // Red for user
-                    pointBackgroundColor: '#C82626'
+                    borderWidth: 1
                 },
                 {
                     label: 'Average',
-                    data: [user.averages.avgKills, user.averages.avgDeaths, user.averages.avgKD, user.averages.avgDailies, user.averages.avgWeeklies, user.averages.avgBossKills],
-                    backgroundColor: 'rgba(0, 255, 255, 0.2)', // Transparent blue for average
+                    data: [averageData],
+                    backgroundColor: 'rgba(0, 255, 255, 0.6)', // Semi-transparent blue for average
                     borderColor: '#00FFFF', // Blue for average
-                    pointBackgroundColor: '#00FFFF'
+                    borderWidth: 1
                 }
             ]
         },
         options: {
-            maintainAspectRatio: false,
+            indexAxis: 'y',
             scales: {
-                r: {
+                x: {
                     beginAtZero: true,
-                    angleLines: {
-                        display: true,
-                        color: '#808080' // Color of the spider web lines
-                    },
-                    grid: {
-                        color: '#808080' // Color of the grid lines
-                    },
-                    pointLabels: {
-                        display: true, // Display point labels
-                        font: {
-                            color: '#808080' // Color of the point labels
-                        },
-                        callback: function(value, index) {
-                            return ['Kills', 'Deaths', 'KD Ratio', 'Dailies', 'Weeklies', 'Bosses Killed'][index];
-                        }
-                    },
-                    ticks: {
-                        display: false // Hide the numbers
-                    }
                 }
             },
             plugins: {
@@ -62,10 +43,21 @@ function createRadialChart(ctx, user) {
 }
 
 function initializeCharts(user) {
-    const radialChartCtx = document.getElementById('radialChart').getContext('2d');
-    if (radialChartCtx) {
-        createRadialChart(radialChartCtx, user);
-    } else {
-        console.warn('Radial chart canvas not found.');
-    }
+    const stats = [
+        { id: 'killsChart', label: 'Kills', userData: user.kills, averageData: user.averages.avgKills },
+        { id: 'deathsChart', label: 'Deaths', userData: user.deaths, averageData: user.averages.avgDeaths },
+        { id: 'kdChart', label: 'KD Ratio', userData: user.kd, averageData: user.averages.avgKD },
+        { id: 'dailiesChart', label: 'Dailies', userData: user.dailies, averageData: user.averages.avgDailies },
+        { id: 'weekliesChart', label: 'Weeklies', userData: user.weeklies, averageData: user.averages.avgWeeklies },
+        { id: 'bossesChart', label: 'Bosses Killed', userData: user.bkilled, averageData: user.averages.avgBossKills }
+    ];
+
+    stats.forEach(stat => {
+        const ctx = document.getElementById(stat.id).getContext('2d');
+        if (ctx) {
+            createHorizontalBarChart(ctx, stat.label, stat.userData, stat.averageData);
+        } else {
+            console.warn(`Canvas for ${stat.label} not found.`);
+        }
+    });
 }

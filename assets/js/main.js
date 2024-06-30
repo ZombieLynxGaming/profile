@@ -2,36 +2,12 @@ const API_BASE_URL = "https://profile.zlg.gg:1111";  // Update to HTTPS
 
 document.addEventListener('DOMContentLoaded', () => {
     const token = new URLSearchParams(window.location.search).get('token');
-    const refreshToken = new URLSearchParams(window.location.search).get('refreshToken');
-
     if (!token) {
         console.error('No token found');
         return;
     }
-
-    const payload = parseJwt(token);
-    const expirationTime = payload.exp * 1000 - Date.now(); // Calculate time until expiration in ms
-
-    if (expirationTime > 0) {
-        setTimeout(() => {
-            refreshAccessToken(refreshToken);
-        }, expirationTime - 60000); // Refresh token 1 minute before it expires
-
-        fetchUserProfile(token);
-    } else {
-        refreshAccessToken(refreshToken);
-    }
+    fetchUserProfile(token);
 });
-
-function parseJwt(token) {
-    const base64Url = token.split('.')[1];
-    const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
-    const jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
-        return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
-    }).join(''));
-
-    return JSON.parse(jsonPayload);
-}
 
 function fetchUserProfile(token) {
     console.log('Fetching user profile');
@@ -41,6 +17,7 @@ function fetchUserProfile(token) {
         }
     })
     .then(response => {
+        console.log('Response received:', response); // Log the response
         if (!response.ok) {
             if (response.status === 401) {
                 displaySessionExpiredMessage();
@@ -52,6 +29,7 @@ function fetchUserProfile(token) {
     .then(data => {
         console.log('User data:', data);
         displayUserProfile(data);
+        initializeCharts(data); // Initialize charts with user data
         displayMessage(data.message); // Display the message if it exists
     })
     .catch(error => {
@@ -82,7 +60,7 @@ function displayUserProfile(user) {
     document.querySelectorAll(".tribe").forEach(elem => elem.innerText = user.tribe);
     document.querySelectorAll(".kills").forEach(elem => elem.innerText = user.kills);
     document.querySelectorAll(".deaths").forEach(elem => elem.innerText = user.deaths);
-    document.querySelectorAll(".kd").forEach(elem => elem.innerText = user.kd);
+    document.querySelectorAll(".kd").forEach(elem => elem.innerText = user.kd.toFixed(1));
     document.querySelectorAll(".dailies").forEach(elem => elem.innerText = user.dailies);
     document.querySelectorAll(".weeklies").forEach(elem => elem.innerText = user.weeklies);
     document.querySelectorAll(".bkilled").forEach(elem => elem.innerText = user.bkilled);
@@ -117,61 +95,76 @@ function displayUserProfile(user) {
 }
 
 function displayMessage(message) {
-    console.log('Displaying message:', message); // Log the message
     if (message) {
         const messageElement = document.getElementById('message');
-        console.log('Message element:', messageElement); // Log the message element
-        if (messageElement) {
-            messageElement.innerText = message;
-            messageElement.style.visibility = 'visible';
-            setTimeout(() => {
-                messageElement.style.visibility = 'hidden';
-                messageElement.innerText = ''; // Clear the message text
-            }, 5000); // Display for 5 seconds
-        } else {
-            console.error('Message element not found in the DOM.');
-        }
+        messageElement.innerText = message;
+        messageElement.style.visibility = 'visible';
+        setTimeout(() => {
+            messageElement.style.visibility = 'hidden';
+        }, 5000); // Display for 5 seconds
     }
 }
 
-function refreshAccessToken(refreshToken) {
-    console.log('Refreshing access token');
-    fetch(`${API_BASE_URL}/api/refresh-token`, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
+function createHorizontalBarChart(ctx, label, userData, averageData) {
+    return new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: [label],
+            datasets: [
+                {
+                    label: 'Your Stat',
+                    data: [userData],
+                    backgroundColor: 'rgba(200, 38, 38, 0.6)', // Semi-transparent red for user
+                    borderColor: '#C82626', // Red for user
+                    borderWidth: 1
+                },
+                {
+                    label: 'Average',
+                    data: [averageData],
+                    backgroundColor: 'rgba(0, 255, 255, 0.6)', // Semi-transparent blue for average
+                    borderColor: '#00FFFF', // Blue for average
+                    borderWidth: 1
+                }
+            ]
         },
-        body: JSON.stringify({ refreshToken })
-    })
-    .then(response => {
-        if (!response.ok) {
-            throw new Error('Failed to refresh token');
+        options: {
+            indexAxis: 'y',
+            scales: {
+                x: {
+                    beginAtZero: true,
+                }
+            },
+            plugins: {
+                tooltip: {
+                    callbacks: {
+                        label: function(context) {
+                            const label = context.dataset.label || '';
+                            const value = context.raw;
+                            return `${label}: ${value}`;
+                        }
+                    }
+                }
+            }
         }
-        return response.json();
-    })
-    .then(data => {
-        console.log('New tokens received:', data);
-        const newUrlParams = new URLSearchParams(window.location.search);
-        newUrlParams.set('token', data.token);
-        newUrlParams.set('refreshToken', data.refreshToken);
-        window.history.replaceState({}, '', `${window.location.pathname}?${newUrlParams.toString()}`);
-        fetchUserProfile(data.token);
-    })
-    .catch(error => {
-        console.error('Error refreshing token:', error);
-        displaySessionExpiredMessage();
     });
 }
 
-function displaySessionExpiredMessage() {
-    const messageElement = document.getElementById('message');
-    if (messageElement) {
-        messageElement.innerText = 'Your session has expired. Please log in again to continue.';
-        messageElement.style.visibility = 'visible';
-    } else {
-        alert('Your session has expired. Please log in again to continue.');
-    }
-    setTimeout(() => {
-        window.location.href = 'https://zlg.gg'; // Redirect to login page after showing the message
-    }, 5000); // Display for 5 seconds
+function initializeCharts(user) {
+    const stats = [
+        { id: 'killsChart', label: 'Kills', userData: user.kills, averageData: user.averages.avgKills },
+        { id: 'deathsChart', label: 'Deaths', userData: user.deaths, averageData: user.averages.avgDeaths },
+        { id: 'kdChart', label: 'KD Ratio', userData: user.kd, averageData: user.averages.avgKD },
+        { id: 'dailiesChart', label: 'Dailies', userData: user.dailies, averageData: user.averages.avgDailies },
+        { id: 'weekliesChart', label: 'Weeklies', userData: user.weeklies, averageData: user.averages.avgWeeklies },
+        { id: 'bossesChart', label: 'Bosses Killed', userData: user.bkilled, averageData: user.averages.avgBossKills }
+    ];
+
+    stats.forEach(stat => {
+        const ctx = document.getElementById(stat.id).getContext('2d');
+        if (ctx) {
+            createHorizontalBarChart(ctx, stat.label, stat.userData, stat.averageData);
+        } else {
+            console.warn(`Canvas for ${stat.label} not found.`);
+        }
+    });
 }
