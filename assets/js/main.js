@@ -38,10 +38,6 @@ function fetchUserProfile(token) {
     });
 }
 
-// Your existing code
-
-// Your existing code
-
 function displayUserProfile(user) {
     console.log('Displaying user profile:', user);  // Log user data for verification
     const membershipClasses = {
@@ -104,66 +100,6 @@ function displayUserProfile(user) {
 
     console.log('Leaderboard data populated:', user.leaderboard); // Log the leaderboard data
 }
-
-// Automatic logout after inactivity
-let logoutTimer;
-const logoutTime = 15 * 60 * 1000; // 15 minutes in milliseconds
-
-function resetLogoutTimer() {
-    clearTimeout(logoutTimer);
-    logoutTimer = setTimeout(logoutUser, logoutTime);
-}
-
-function logoutUser() {
-    // Clear authentication tokens
-    localStorage.removeItem('token');
-    localStorage.removeItem('refreshToken');
-
-    // Redirect to the Steam authentication page
-    window.location.href = 'https://profile.zlg.gg:1111/auth/steam';
-}
-
-function setupInactivityTracker() {
-    document.addEventListener('mousemove', resetLogoutTimer);
-    document.addEventListener('keydown', resetLogoutTimer);
-    document.addEventListener('scroll', resetLogoutTimer);
-    document.addEventListener('click', resetLogoutTimer);
-    
-    resetLogoutTimer(); // Initialize the logout timer when the script runs
-}
-
-setupInactivityTracker();
-
-// Fetch user profile and display it (example function, adjust according to your actual function)
-async function fetchUserProfile() {
-    const token = localStorage.getItem('token');
-    if (!token) {
-        logoutUser();
-        return;
-    }
-
-    try {
-        const response = await fetch('/api/profile', {
-            method: 'GET',
-            headers: {
-                'Authorization': `Bearer ${token}`
-            }
-        });
-
-        if (response.status === 401) {
-            logoutUser();
-        } else {
-            const userData = await response.json();
-            displayUserProfile(userData);
-        }
-    } catch (error) {
-        console.error('Error fetching user profile:', error);
-        logoutUser();
-    }
-}
-
-// Call fetchUserProfile on page load
-fetchUserProfile();
 
 function displayMessage(message) {
     if (message) {
