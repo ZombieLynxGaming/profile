@@ -358,3 +358,9 @@ tbody tr {
       margin-top: 5.5rem;
   }
 }
+
+.vertical-align-text {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* if you also want to center horizontally */
+}
