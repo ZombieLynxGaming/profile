@@ -7,12 +7,6 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
     }
     fetchUserProfile(token);
-
-    // Initialize Bootstrap popovers
-    const popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'));
-    popoverTriggerList.map((popoverTriggerEl) => {
-        return new bootstrap.Popover(popoverTriggerEl);
-    });
 });
 
 function fetchUserProfile(token) {
@@ -37,6 +31,7 @@ function fetchUserProfile(token) {
         displayUserProfile(data);
         initializeCharts(data); // Initialize charts with user data
         displayMessage(data.message); // Display the message if it exists
+        initializePopovers(); // Initialize Bootstrap popovers
     })
     .catch(error => {
         console.error('Error fetching user profile:', error);
@@ -104,8 +99,6 @@ function displayUserProfile(user) {
         }
         memberDiv.style.zIndex = user.tribeMembers.length - index;
         tribeMembersContainer.appendChild(memberDiv);
-
-        new bootstrap.Popover(memberDiv);  // Initialize the popover
     });
 
     const leaderboard = document.getElementById("leaderboard");
@@ -123,6 +116,13 @@ function displayUserProfile(user) {
     });
 
     console.log('Leaderboard data populated:', user.leaderboard); // Log the leaderboard data
+}
+
+function initializePopovers() {
+    const popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'));
+    popoverTriggerList.map((popoverTriggerEl) => {
+        return new bootstrap.Popover(popoverTriggerEl);
+    });
 }
 
 function displayMessage(message) {
