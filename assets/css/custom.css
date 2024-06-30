@@ -35,7 +35,7 @@ a {
 /* Media query for small screens and smaller */
 @media (max-width: 575.98px) {
   .card-body {
-      height: 550px;
+      height: 570px;
   }
 }
 
