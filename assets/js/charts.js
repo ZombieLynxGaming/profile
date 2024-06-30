@@ -2,7 +2,7 @@ function createHorizontalBarChart(ctx, label, userData, averageData) {
     return new Chart(ctx, {
         type: 'bar',
         data: {
-            labels: [label],
+            labels: [''], // No labels
             datasets: [
                 {
                     label: 'Your Stat',
@@ -27,13 +27,28 @@ function createHorizontalBarChart(ctx, label, userData, averageData) {
             scales: {
                 x: {
                     beginAtZero: true,
+                    grid: {
+                        display: false // Hide x-axis grid lines
+                    },
+                    ticks: {
+                        display: false // Hide x-axis ticks
+                    }
                 },
                 y: {
                     barPercentage: 0.5, // Adjust bar percentage (default is 0.9)
-                    categoryPercentage: 0.5 // Adjust category percentage (default is 0.8)
+                    categoryPercentage: 0.5, // Adjust category percentage (default is 0.8)
+                    grid: {
+                        display: false // Hide y-axis grid lines
+                    },
+                    ticks: {
+                        display: false // Hide y-axis ticks
+                    }
                 }
             },
             plugins: {
+                legend: {
+                    display: false // Hide the legend
+                },
                 tooltip: {
                     callbacks: {
                         label: function(context) {
@@ -67,3 +82,13 @@ function initializeCharts(user) {
         }
     });
 }
+
+// Call initializeCharts within your existing initialization function
+document.addEventListener('DOMContentLoaded', () => {
+    const token = new URLSearchParams(window.location.search).get('token');
+    if (!token) {
+        console.error('No token found');
+        return;
+    }
+    fetchUserProfile(token);
+});
