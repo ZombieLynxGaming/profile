@@ -71,8 +71,15 @@ function displayUserProfile(user) {
     const pastelColors = ['pastel-blue', 'pastel-green', 'pastel-purple', 'pastel-pink', 'pastel-yellow', 'pastel-orange', 'pastel-teal', 'pastel-red'];
     user.tribeMembers.forEach((member, index) => {
         const memberDiv = document.createElement('div');
-        memberDiv.classList.add('tribe-member-initial', pastelColors[index % pastelColors.length]);
-        memberDiv.innerText = member.initial;
+        if (member.avatar) {
+            const memberImg = document.createElement('img');
+            memberImg.src = member.avatar;
+            memberImg.classList.add('tribe-member-avatar');
+            memberDiv.appendChild(memberImg);
+        } else {
+            memberDiv.classList.add('tribe-member-initial', pastelColors[index % pastelColors.length]);
+            memberDiv.innerText = member.initial;
+        }
         memberDiv.style.zIndex = user.tribeMembers.length - index; // Ensure the first icon is on top
         tribeMembersContainer.appendChild(memberDiv);
     });
@@ -93,6 +100,7 @@ function displayUserProfile(user) {
 
     console.log('Leaderboard data populated:', user.leaderboard); // Log the leaderboard data
 }
+
 
 function displayMessage(message) {
     if (message) {

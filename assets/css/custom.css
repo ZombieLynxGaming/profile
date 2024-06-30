@@ -250,6 +250,14 @@ tbody tr {
   position: relative;
 }
 
+.tribe-member-avatar {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  border: 1px solid rgb(83, 83, 83, .5);
+  margin-left: -5px;
+}
+
 .pastel-blue {
   background-color: #2eabce;
 }
