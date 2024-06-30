@@ -10,7 +10,7 @@ function createHorizontalBarChart(ctx, label, userData, averageData) {
                     backgroundColor: 'rgba(200, 38, 38, 0.6)', // Semi-transparent red for user
                     borderColor: '#C82626', // Red for user
                     borderWidth: 1,
-                    barThickness: 10 // Set bar thickness (default is 32)
+                    barThickness: 10 // Set bar thickness
                 },
                 {
                     label: 'Average',
@@ -18,7 +18,7 @@ function createHorizontalBarChart(ctx, label, userData, averageData) {
                     backgroundColor: 'rgba(0, 255, 255, 0.6)', // Semi-transparent blue for average
                     borderColor: '#00FFFF', // Blue for average
                     borderWidth: 1,
-                    barThickness: 10 // Set bar thickness (default is 32)
+                    barThickness: 10 // Set bar thickness
                 }
             ]
         },
@@ -28,17 +28,17 @@ function createHorizontalBarChart(ctx, label, userData, averageData) {
                 x: {
                     beginAtZero: true,
                     grid: {
-                        display: false // Hide x-axis grid lines
+                        display: false, // Hide x-axis grid lines
+                        drawBorder: false // Hide x-axis border line
                     },
                     ticks: {
                         display: false // Hide x-axis ticks
                     }
                 },
                 y: {
-                    barPercentage: 0.5, // Adjust bar percentage (default is 0.9)
-                    categoryPercentage: 0.5, // Adjust category percentage (default is 0.8)
                     grid: {
-                        display: false // Hide y-axis grid lines
+                        display: false, // Hide y-axis grid lines
+                        drawBorder: false // Hide y-axis border line
                     },
                     ticks: {
                         display: false // Hide y-axis ticks
