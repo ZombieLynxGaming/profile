@@ -99,6 +99,8 @@ function displayUserProfile(user) {
         }
         memberDiv.style.zIndex = user.tribeMembers.length - index;
         tribeMembersContainer.appendChild(memberDiv);
+
+        console.log(`Tribe member ${member.name} created with popover.`);
     });
 
     const leaderboard = document.getElementById("leaderboard");
@@ -119,11 +121,20 @@ function displayUserProfile(user) {
 }
 
 function initializePopovers() {
+    console.log('Initializing popovers');
     const popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'));
     popoverTriggerList.map((popoverTriggerEl) => {
+        console.log(`Initializing popover for element: ${popoverTriggerEl}`);
         return new bootstrap.Popover(popoverTriggerEl);
     });
 }
+
+// Add hover event listener for debugging
+document.addEventListener('mouseover', function(event) {
+    if (event.target.matches('.tribe-member')) {
+        console.log('Hover recognized for:', event.target);
+    }
+});
 
 function displayMessage(message) {
     if (message) {
