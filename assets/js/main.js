@@ -69,8 +69,24 @@ function displayUserProfile(user) {
     const tribeMembersContainer = document.querySelector('.tribe-members');
     tribeMembersContainer.innerHTML = '';
     const pastelColors = ['pastel-blue', 'pastel-green', 'pastel-purple', 'pastel-pink', 'pastel-yellow', 'pastel-orange', 'pastel-teal', 'pastel-red'];
+
     user.tribeMembers.forEach((member, index) => {
         const memberDiv = document.createElement('div');
+        memberDiv.classList.add('tribe-member');
+        memberDiv.setAttribute('data-bs-toggle', 'popover');
+        memberDiv.setAttribute('data-bs-html', 'true');
+        memberDiv.setAttribute('data-bs-content', `
+            <div class="text-center">
+                <img src="${member.avatar || ''}" class="rounded-circle" style="width: 50px; height: 50px;">
+                <div><strong>${member.name}</strong></div>
+                <div>Tribe: ${user.tribe}</div>
+                <div>Kills: ${member.kills}</div>
+                <div>Deaths: ${member.deaths}</div>
+                <div>K/D: ${member.kd}</div>
+            </div>
+        `);
+        memberDiv.setAttribute('data-bs-placement', 'top');
+
         if (member.avatar) {
             const memberImg = document.createElement('img');
             memberImg.src = member.avatar;
@@ -80,8 +96,10 @@ function displayUserProfile(user) {
             memberDiv.classList.add('tribe-member-initial', pastelColors[index % pastelColors.length]);
             memberDiv.innerText = member.initial;
         }
-        memberDiv.style.zIndex = user.tribeMembers.length - index; // Ensure the first icon is on top
+        memberDiv.style.zIndex = user.tribeMembers.length - index;
         tribeMembersContainer.appendChild(memberDiv);
+
+        new bootstrap.Popover(memberDiv);  // Initialize the popover
     });
 
     const leaderboard = document.getElementById("leaderboard");
