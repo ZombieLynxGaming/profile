@@ -2,12 +2,36 @@ const API_BASE_URL = "https://profile.zlg.gg:1111";  // Update to HTTPS
 
 document.addEventListener('DOMContentLoaded', () => {
     const token = new URLSearchParams(window.location.search).get('token');
+    const refreshToken = new URLSearchParams(window.location.search).get('refreshToken');
+
     if (!token) {
         console.error('No token found');
         return;
     }
-    fetchUserProfile(token);
+
+    const payload = parseJwt(token);
+    const expirationTime = payload.exp * 1000 - Date.now(); // Calculate time until expiration in ms
+
+    if (expirationTime > 0) {
+        setTimeout(() => {
+            refreshAccessToken(refreshToken);
+        }, expirationTime - 60000); // Refresh token 1 minute before it expires
+
+        fetchUserProfile(token);
+    } else {
+        refreshAccessToken(refreshToken);
+    }
 });
+
+function parseJwt(token) {
+    const base64Url = token.split('.')[1];
+    const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+    const jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
+        return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+    }).join(''));
+
+    return JSON.parse(jsonPayload);
+}
 
 function fetchUserProfile(token) {
     console.log('Fetching user profile');
@@ -17,8 +41,10 @@ function fetchUserProfile(token) {
         }
     })
     .then(response => {
-        console.log('Response received:', response); // Log the response
         if (!response.ok) {
+            if (response.status === 401) {
+                displaySessionExpiredMessage();
+            }
             throw new Error('Network response was not ok ' + response.statusText);
         }
         return response.json();
@@ -106,4 +132,46 @@ function displayMessage(message) {
             console.error('Message element not found in the DOM.');
         }
     }
+}
+
+function refreshAccessToken(refreshToken) {
+    console.log('Refreshing access token');
+    fetch(`${API_BASE_URL}/api/refresh-token`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ refreshToken })
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Failed to refresh token');
+        }
+        return response.json();
+    })
+    .then(data => {
+        console.log('New tokens received:', data);
+        const newUrlParams = new URLSearchParams(window.location.search);
+        newUrlParams.set('token', data.token);
+        newUrlParams.set('refreshToken', data.refreshToken);
+        window.history.replaceState({}, '', `${window.location.pathname}?${newUrlParams.toString()}`);
+        fetchUserProfile(data.token);
+    })
+    .catch(error => {
+        console.error('Error refreshing token:', error);
+        displaySessionExpiredMessage();
+    });
+}
+
+function displaySessionExpiredMessage() {
+    const messageElement = document.getElementById('message');
+    if (messageElement) {
+        messageElement.innerText = 'Your session has expired. Please log in again to continue.';
+        messageElement.style.visibility = 'visible';
+    } else {
+        alert('Your session has expired. Please log in again to continue.');
+    }
+    setTimeout(() => {
+        window.location.href = 'https://zlg.gg'; // Redirect to login page after showing the message
+    }, 5000); // Display for 5 seconds
 }
