@@ -49,22 +49,37 @@ function displayUserProfile(user) {
         'Standard': 'standard'
     };
 
-    document.querySelectorAll(".username").forEach(elem => elem.innerText = user.displayName);
-    document.querySelectorAll(".avatar").forEach(elem => elem.src = user.avatar);
-    document.querySelectorAll(".points").forEach(elem => elem.innerText = user.points);
-    document.querySelectorAll(".membership").forEach(elem => {
-        elem.innerText = user.membership;
-        elem.className = 'membership';
-        elem.classList.add(membershipClasses[user.membership] || 'standard');
+    const usernameElems = document.querySelectorAll(".username");
+    const avatarElems = document.querySelectorAll(".avatar");
+    const pointsElems = document.querySelectorAll(".points");
+    const membershipElems = document.querySelectorAll(".membership");
+    const messageElems = document.querySelectorAll(".message");
+    const tribeElems = document.querySelectorAll(".tribe");
+    const killsElems = document.querySelectorAll(".kills");
+    const deathsElems = document.querySelectorAll(".deaths");
+    const kdElems = document.querySelectorAll(".kd");
+    const dailiesElems = document.querySelectorAll(".dailies");
+    const weekliesElems = document.querySelectorAll(".weeklies");
+    const bkilledElems = document.querySelectorAll(".bkilled");
+
+    usernameElems.forEach(elem => elem ? elem.innerText = user.displayName : null);
+    avatarElems.forEach(elem => elem ? elem.src = user.avatar : null);
+    pointsElems.forEach(elem => elem ? elem.innerText = user.points : null);
+    membershipElems.forEach(elem => {
+        if (elem) {
+            elem.innerText = user.membership;
+            elem.className = 'membership';
+            elem.classList.add(membershipClasses[user.membership] || 'standard');
+        }
     });
-    document.querySelectorAll(".message").forEach(elem => elem.innerText = user.message);
-    document.querySelectorAll(".tribe").forEach(elem => elem.innerText = user.tribe);
-    document.querySelectorAll(".kills").forEach(elem => elem.innerText = user.kills);
-    document.querySelectorAll(".deaths").forEach(elem => elem.innerText = user.deaths);
-    document.querySelectorAll(".kd").forEach(elem => elem.innerText = user.kd);
-    document.querySelectorAll(".dailies").forEach(elem => elem.innerText = user.dailies);
-    document.querySelectorAll(".weeklies").forEach(elem => elem.innerText = user.weeklies);
-    document.querySelectorAll(".bkilled").forEach(elem => elem.innerText = user.bkilled);
+    messageElems.forEach(elem => elem ? elem.innerText = user.message : null);
+    tribeElems.forEach(elem => elem ? elem.innerText = user.tribe : null);
+    killsElems.forEach(elem => elem ? elem.innerText = user.kills : null);
+    deathsElems.forEach(elem => elem ? elem.innerText = user.deaths : null);
+    kdElems.forEach(elem => elem ? elem.innerText = user.kd : null);
+    dailiesElems.forEach(elem => elem ? elem.innerText = user.dailies : null);
+    weekliesElems.forEach(elem => elem ? elem.innerText = user.weeklies : null);
+    bkilledElems.forEach(elem => elem ? elem.innerText = user.bkilled : null);
 
     // Display tribe members
     const tribeMembersContainer = document.querySelector('.tribe-members');
@@ -147,8 +162,13 @@ function displayMessage(message) {
     }
 }
 
-function createHorizontalBarChart(ctx, label, userData, averageData) {
-    return new Chart(ctx, {
+let charts = {};
+
+function createHorizontalBarChart(ctx, label, userData, averageData, chartId) {
+    if (charts[chartId]) {
+        charts[chartId].destroy();
+    }
+    charts[chartId] = new Chart(ctx, {
         type: 'bar',
         data: {
             labels: [label],
@@ -204,7 +224,7 @@ function initializeCharts(user) {
     stats.forEach(stat => {
         const ctx = document.getElementById(stat.id).getContext('2d');
         if (ctx) {
-            createHorizontalBarChart(ctx, stat.label, stat.userData, stat.averageData);
+            createHorizontalBarChart(ctx, stat.label, stat.userData, stat.averageData, stat.id);
         } else {
             console.warn(`Canvas for ${stat.label} not found.`);
         }
