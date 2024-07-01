@@ -98,9 +98,9 @@ function displayUserProfile(user) {
                         <img class="text-start align-self-start rounded-circle popover-avatar" src="${member.avatar || ''}" alt="Profile Image">
                     </div>
                     <div class="profile-info flex-grow-1 col-6">
-                        <div class=" my-0 text-center text-white tribe-member-text-1"><strong>${member.name}</strong></div>
-                        <div class=" fw-light my-0 text-center text-white tribe-member-text-2">${user.tribe}</div>
-                        <div class="d-flex justify-content-around mt-2">
+                        <div class=" my-0 text-center text-white tribe-member-text-1 m-0 p-0"><strong>${member.name}</strong></div>
+                        <div class=" fw-light my-0 text-center text-white tribe-member-text-2 m-0 p-0">${user.tribe}</div>
+                        <div class="d-flex justify-content-around mt-3">
                             <div class="stat">
                                 <img src="./assets/images/kills.png" alt="" style="width: 10px; height: 10px;">
                                 <div class="stat-number-small fw-bold"><strong>${member.kills}</strong></div>
