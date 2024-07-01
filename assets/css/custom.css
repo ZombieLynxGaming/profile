@@ -394,6 +394,10 @@ tbody tr {
   -webkit-text-fill-color: transparent;
 }
 
-.tribe-member-text {
-  font-size: 2rem;
+.tribe-member-text-1 {
+  font-size: 1.5rem;
+}
+
+.tribe-member-text-2 {
+  font-size: 1.25rem;
 }
