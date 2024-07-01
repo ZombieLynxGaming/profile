@@ -402,3 +402,8 @@ tbody tr {
 .tribe-member-text-2 {
   font-size: 1.25rem;
 }
+
+.popover-body {
+  padding-top: 5px !important;
+  padding-bottom: 5px !important;
+}
