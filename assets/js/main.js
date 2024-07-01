@@ -188,7 +188,7 @@ function adjustPopoverDimensions(popoverElement) {
         const popoverInner = popoverElement.querySelector('.popover-inner');
         if (popoverInner) {
             popoverInner.style.height = '186px'; // Adjust this value as needed
-            popoverInner.style.width = '270px';  // Adjust this value as needed
+            popoverInner.style.width = '325px';  // Adjust this value as needed
             console.log(`Adjusted popover dimensions for element: ${popoverElement}`);
         }
     }, 0);
