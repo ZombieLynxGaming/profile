@@ -378,9 +378,18 @@ tbody tr {
   inset: none !important;
   left: 0% !important;
   top: 0% !important;
+  background: radial-gradient(circle, #2F3541 0%, #212326 100%);
 }
 
 .popover-avatar {
   width: 100px;
   height: 100px;
+}
+
+.stat-number-small {
+  font-weight: bolder;
+  font-size: 1rem;
+  background: linear-gradient(180deg, #FFFFFF, #BF9B1D);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }

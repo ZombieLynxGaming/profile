@@ -103,15 +103,15 @@ function displayUserProfile(user) {
                         <div class="d-flex justify-content-around mt-2">
                             <div class="stat">
                                 <img src="./assets/images/kills.png" alt="" style="width: 10px; height: 10px;">
-                                <div>${member.kills}</div>
+                                <div class="stat-number-small"><strong>${member.kills}</strong></div>
                             </div>
                             <div class="stat">
                                 <img src="./assets/images/deaths.png" alt="" style="width: 10px; height: 10px;">
-                                <div>${member.deaths}</div>
+                                <div class="stat-number-small"><strong>${member.deaths}</strong></div>
                             </div>
                             <div class="stat">
                                 <img src="./assets/images/kd.png" alt="" style="width: 10px; height: 10px;">
-                                <div>${member.kd}</div>
+                                <div class="stat-number-small"><strong>${member.kd}</strong></div>
                             </div>
                         </div>
                     </div>
