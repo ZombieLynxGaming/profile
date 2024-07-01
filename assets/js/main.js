@@ -176,15 +176,17 @@ function initializePopovers() {
     });
 }
 
-function adjustPopoverHeight(popoverElement) {
+function adjustPopoverDimensions(popoverElement) {
     setTimeout(() => {
         const popoverInner = popoverElement.querySelector('.popover-inner');
         if (popoverInner) {
             popoverInner.style.height = '186px'; // Adjust this value as needed
-            console.log(`Adjusted popover height for element: ${popoverElement}`);
+            popoverInner.style.width = '250px';  // Adjust this value as needed
+            console.log(`Adjusted popover dimensions for element: ${popoverElement}`);
         }
     }, 0);
 }
+
 
 function displayMessage(message) {
     if (message) {
