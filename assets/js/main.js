@@ -100,16 +100,16 @@ function displayUserProfile(user) {
                     <div class="profile-info flex-grow-1 col-6 ps-0">
                         <div class=" my-0 text-center text-white tribe-member-text-1 m-0 p-0"><strong>${member.name}</strong></div>
                         <div class=" fw-light my-0 text-center text-white tribe-member-text-2 m-0 p-0 mb-15">${user.tribe}</div>
-                        <div class="d-flex justify-content-around mt-3">
-                            <div class="stat">
+                        <div class="row d-flex justify-content-around mt-3">
+                            <div class="stat col-4">
                                 <img src="./assets/images/kills.png" alt="" style="width: 12px !important; height: 12px !important;">
                                 <div class="stat-number-small fw-bolder">${member.kills}</div>
                             </div>
-                            <div class="stat">
+                            <div class="stat col-4">
                                 <img src="./assets/images/deaths.png" alt="" style="width: 12px !important; height: 12px !important;">
                                 <div class="stat-number-small fw-bolder">${member.deaths}</div>
                             </div>
-                            <div class="stat">
+                            <div class="stat col-4">
                                 <img src="./assets/images/kd.png" alt="" style="width: 12px !important; height: 12px !important;">
                                 <div class="stat-number-small fw-bolder">${member.kd}</div>
                             </div>
