@@ -140,11 +140,10 @@ function initializePopovers() {
     const popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'));
     popoverTriggerList.map((popoverTriggerEl) => {
         console.log(`Initializing popover for element: ${popoverTriggerEl}`);
-        const popover = new bootstrap.Popover(popoverTriggerEl);
-        popover.show(); // Manually show the popover for testing
-        return popover;
+        return new bootstrap.Popover(popoverTriggerEl);
     });
 }
+
 
 // Add hover event listener for debugging
 document.addEventListener('mouseover', function(event) {
