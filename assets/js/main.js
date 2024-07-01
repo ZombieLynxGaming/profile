@@ -100,21 +100,18 @@ function displayUserProfile(user) {
                     <div class="col-4">
                         <div class="d-flex justify-content-center">
                             <img src="./assets/images/kills.png" alt="" style="width: 10px; height: 10px;">
-                            
                         </div>
                         <div>${member.kills}</div>
                     </div>
                     <div class="col-4">
                         <div class="d-flex justify-content-center">
-                            <img src="./assets/images/deaths.png" alt="" style="width: 10px; height: 10px;">
-                            
+                            <img src="./assets/images/deaths.png" alt="" style="width: 10px; height: 10px;">                           
                         </div>
                         <div>${member.deaths}</div>
                     </div>
                     <div class="col-4">
                         <div class="d-flex justify-content-center">
-                            <img src="./assets/images/kd.png" alt="" style="width: 10px; height: 10px;">
-                            
+                            <img src="./assets/images/kd.png" alt="" style="width: 10px; height: 10px;">                           
                         </div>
                         <div>${member.kd}</div>
                     </div>

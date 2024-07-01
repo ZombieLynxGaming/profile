@@ -373,11 +373,11 @@ tbody tr {
 
 /* Center the popover */
 .popover {
-  width: 200px;
-  height: 190px;
+  width: 400px;
+  height: 300px;
   inset: none !important;
   left: -10% !important;
-  top: 22% !important;
+  top: 26% !important;
 }
 
 .popover-avatar {
