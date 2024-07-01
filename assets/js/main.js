@@ -93,30 +93,30 @@ function displayUserProfile(user) {
         memberDiv.setAttribute('data-bs-html', 'true');
         memberDiv.setAttribute('data-bs-content', `
             <div class="text-center">
-                <img src="${member.avatar || ''}" class="rounded-circle popover-avatar">
-                <div class=" my-0"><strong>${member.name}</strong></div>
-                <div class=" fw-light my-0">${user.tribe}</div>
-                <div class="row popover-tribe-member-stats mt-20">
-                    <div class="col-4">
-                        <div class="d-flex justify-content-center">
-                            <img src="./assets/images/kills.png" alt="" style="width: 10px; height: 10px;">
-                        </div>
-                        <div>${member.kills}</div>
+                <div class="profile-card d-flex align-items-center row">
+                    <div class="profile-image me-3 col-6 ps-0 rounded" style="border: 1px solid green;">
+                        <img class="text-start align-self-start rounded-circle popover-avatar" src="${member.avatar || ''}" alt="Profile Image">
                     </div>
-                    <div class="col-4">
-                        <div class="d-flex justify-content-center">
-                            <img src="./assets/images/deaths.png" alt="" style="width: 10px; height: 10px;">                           
+                    <div class="profile-info flex-grow-1 col-5">
+                        <div class=" my-0 text-center"><strong>${member.name}</strong></div>
+                        <div class=" fw-light my-0 text-center">${user.tribe}</div>
+                        <div class="d-flex justify-content-around mt-2">
+                            <div class="stat">
+                                <img src="./assets/images/kills.png" alt="" style="width: 10px; height: 10px;">
+                                <div>${member.kills}</div>
+                            </div>
+                            <div class="stat">
+                                <img src="./assets/images/deaths.png" alt="" style="width: 10px; height: 10px;">
+                                <div>${member.deaths}</div>
+                            </div>
+                            <div class="stat">
+                                <img src="./assets/images/kd.png" alt="" style="width: 10px; height: 10px;">
+                                <div>${member.kd}</div>
+                            </div>
                         </div>
-                        <div>${member.deaths}</div>
-                    </div>
-                    <div class="col-4">
-                        <div class="d-flex justify-content-center">
-                            <img src="./assets/images/kd.png" alt="" style="width: 10px; height: 10px;">                           
-                        </div>
-                        <div>${member.kd}</div>
                     </div>
                 </div>
-            </div>
+            </div>    
         `);
         memberDiv.setAttribute('data-bs-placement', 'top');
 
@@ -180,7 +180,7 @@ function adjustPopoverHeight(popoverElement) {
     setTimeout(() => {
         const popoverInner = popoverElement.querySelector('.popover-inner');
         if (popoverInner) {
-            popoverInner.style.height = '200px'; // Adjust this value as needed
+            popoverInner.style.height = '186px'; // Adjust this value as needed
             console.log(`Adjusted popover height for element: ${popoverElement}`);
         }
     }, 0);
