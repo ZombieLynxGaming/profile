@@ -365,3 +365,14 @@ tbody tr {
   text-align: center; /* optional: center text horizontally */
   background-color: lightblue; /* optional: for visibility */
 }
+
+/* Custom class to remove popover arrow */
+.no-arrow .popover-arrow {
+  display: none;
+}
+
+/* Center the popover */
+.popover {
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+}

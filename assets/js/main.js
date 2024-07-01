@@ -101,17 +101,7 @@ function displayUserProfile(user) {
                 <div>K/D: ${member.kd}</div>
             </div>
         `);
-        memberDiv.setAttribute('data-bs-placement', 'top');
-
-        if (member.avatar) {
-            const memberImg = document.createElement('img');
-            memberImg.src = member.avatar;
-            memberImg.classList.add('tribe-member-avatar');
-            memberDiv.appendChild(memberImg);
-        } else {
-            memberDiv.classList.add('tribe-member-initial', pastelColors[index % pastelColors.length]);
-            memberDiv.innerText = member.initial;
-        }
+        memberDiv.setAttribute('data-bs-placement', 'bottom');
         memberDiv.style.zIndex = user.tribeMembers.length - index;
         tribeMembersContainer.appendChild(memberDiv);
 
@@ -140,17 +130,21 @@ function initializePopovers() {
     const popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'));
     popoverTriggerList.map((popoverTriggerEl) => {
         console.log(`Initializing popover for element: ${popoverTriggerEl}`);
-        return new bootstrap.Popover(popoverTriggerEl);
+        const popover = new bootstrap.Popover(popoverTriggerEl, {
+            trigger: 'manual',
+            placement: 'bottom',
+            offset: [0, 0], // No offset to avoid the arrow
+            customClass: 'no-arrow' // Custom class to remove arrow
+        });
+        popoverTriggerEl.addEventListener('mouseenter', () => {
+            popover.show();
+        });
+        popoverTriggerEl.addEventListener('mouseleave', () => {
+            popover.hide();
+        });
+        return popover;
     });
 }
-
-
-// Add hover event listener for debugging
-document.addEventListener('mouseover', function(event) {
-    if (event.target.matches('.tribe-member')) {
-        console.log('Hover recognized for:', event.target);
-    }
-});
 
 function displayMessage(message) {
     if (message) {
