@@ -95,9 +95,9 @@ function displayUserProfile(user) {
             <div class="text-center">
                 <div class="profile-card d-flex align-items-center row">
                     <div class="profile-image col-6 ps-0 rounded d-flex justify-content-center" style="border: 1px solid green;">
-                        <img class="text-center align-self-center rounded-circle popover-avatar" src="${member.avatar || ''}" alt="Profile Image">
+                        <img class="text-center align-self-center rounded-circle popover-avatar w-75" src="${member.avatar || ''}" alt="Profile Image">
                     </div>
-                    <div class="profile-info flex-grow-1 col-6 ps-0">
+                    <div class="profile-info flex-grow-1 col-6 ps-0 pe-4">
                         <div class=" my-0 text-center text-white tribe-member-text-1 m-0 p-0"><strong>${member.name}</strong></div>
                         <div class=" fw-light my-0 text-center text-white tribe-member-text-2 m-0 p-0 mb-15">${user.tribe}</div>
                         <div class="row d-flex justify-content-around mt-3">
