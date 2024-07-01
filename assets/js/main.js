@@ -180,7 +180,7 @@ function adjustPopoverHeight(popoverElement) {
     setTimeout(() => {
         const popoverInner = popoverElement.querySelector('.popover-inner');
         if (popoverInner) {
-            popoverInner.style.height = '250px'; // Adjust this value as needed
+            popoverInner.style.height = '200px'; // Adjust this value as needed
             console.log(`Adjusted popover height for element: ${popoverElement}`);
         }
     }, 0);
