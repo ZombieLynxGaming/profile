@@ -373,7 +373,7 @@ tbody tr {
 
 /* Center the popover */
 .popover {
-  width: 230px !important;
+  width: 270px !important;
   /* height: 300px !important; */
   inset: none !important;
   left: 0% !important;
