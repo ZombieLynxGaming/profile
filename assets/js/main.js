@@ -95,10 +95,30 @@ function displayUserProfile(user) {
             <div class="text-center">
                 <img src="${member.avatar || ''}" class="rounded-circle" style="width: 50px; height: 50px;">
                 <div><strong>${member.name}</strong></div>
-                <div>Tribe: ${user.tribe}</div>
-                <div>Kills: ${member.kills}</div>
-                <div>Deaths: ${member.deaths}</div>
-                <div>K/D: ${member.kd}</div>
+                <div>${user.tribe}</div>
+                div class="row">
+                    <div class="col-4">
+                        <div class="d-block">
+                            <img src="./assets/images/kills.png" alt="" style="width: 10px; height: 10px;">
+                            <div>Kills</div>
+                        </div>
+                        <div class="d-block">${member.kills}</div>
+                    </div>
+                    <div class="col-4">
+                        <div class="d-block">
+                            <img src="./assets/images/deaths.png" alt="" style="width: 10px; height: 10px;">
+                            <div>Kills</div>
+                        </div>
+                        <div class="d-block">${member.deaths}</div>
+                    </div>
+                    <div class="col-4">
+                        <div class="d-block">
+                            <img src="./assets/images/kd.png" alt="" style="width: 10px; height: 10px;">
+                            <div>Kills</div>
+                        </div>
+                        <div class="d-block">${member.kd}</div>
+                    </div>
+                </div>
             </div>
         `);
         memberDiv.setAttribute('data-bs-placement', 'top');
