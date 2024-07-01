@@ -388,8 +388,12 @@ tbody tr {
 
 .stat-number-small {
   font-weight: bolder;
-  font-size: 1rem;
+  font-size: 1.5rem;
   background: linear-gradient(180deg, #FFFFFF, #BF9B1D);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+
+.tribe-member-text {
+  font-size: 2rem;
 }
