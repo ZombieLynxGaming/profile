@@ -163,15 +163,22 @@ function initializePopovers() {
             offset: [0, 0], // No offset to avoid the arrow
             customClass: 'no-arrow' // Custom class to remove arrow
         });
-        popoverTriggerEl.addEventListener('mouseenter', () => {
+        
+        // Show popover on click and keep it visible
+        popoverTriggerEl.addEventListener('click', (event) => {
+            event.preventDefault(); // Prevent default click behavior
             console.log(`Showing popover for element: ${popoverTriggerEl}`);
             popover.show();
-            adjustPopoverHeight(popover._element);
+            adjustPopoverDimensions(popover._element);
         });
-        popoverTriggerEl.addEventListener('mouseleave', () => {
-            console.log(`Hiding popover for element: ${popoverTriggerEl}`);
-            popover.hide();
+        
+        // Optional: Add a way to hide the popover
+        document.addEventListener('click', (event) => {
+            if (!popoverTriggerEl.contains(event.target) && !document.querySelector('.popover').contains(event.target)) {
+                popover.hide();
+            }
         });
+        
         return popover;
     });
 }
@@ -186,6 +193,7 @@ function adjustPopoverDimensions(popoverElement) {
         }
     }, 0);
 }
+
 
 
 function displayMessage(message) {
