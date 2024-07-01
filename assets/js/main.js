@@ -93,7 +93,7 @@ function displayUserProfile(user) {
         memberDiv.setAttribute('data-bs-html', 'true');
         memberDiv.setAttribute('data-bs-content', `
             <div class="text-center">
-                <img src="${member.avatar || ''}" class="rounded-circle" style="width: 50px; height: 50px;">
+                <img src="${member.avatar || ''}" class="rounded-circle popover-avatar">
                 <div><strong>${member.name}</strong></div>
                 <div>${user.tribe}</div>
                 <div class="row mt-5">
