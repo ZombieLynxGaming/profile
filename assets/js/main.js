@@ -98,25 +98,25 @@ function displayUserProfile(user) {
                 <div>${user.tribe}</div>
                 <div class="row">
                     <div class="col-4">
-                        <div class="d-block">
+                        <div class="d-flex justify-content-center">
                             <img src="./assets/images/kills.png" alt="" style="width: 10px; height: 10px;">
                             <div>Kills</div>
                         </div>
-                        <div class="d-block">${member.kills}</div>
+                        <div>${member.kills}</div>
                     </div>
                     <div class="col-4">
-                        <div class="d-block">
+                        <div class="d-flex justify-content-center">
                             <img src="./assets/images/deaths.png" alt="" style="width: 10px; height: 10px;">
                             <div>Kills</div>
                         </div>
-                        <div class="d-block">${member.deaths}</div>
+                        <div>${member.deaths}</div>
                     </div>
                     <div class="col-4">
-                        <div class="d-block">
+                        <div class="d-flex justify-content-center">
                             <img src="./assets/images/kd.png" alt="" style="width: 10px; height: 10px;">
                             <div>Kills</div>
                         </div>
-                        <div class="d-block">${member.kd}</div>
+                        <div>${member.kd}</div>
                     </div>
                 </div>
             </div>
