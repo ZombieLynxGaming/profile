@@ -96,7 +96,7 @@ function displayUserProfile(user) {
                 <img src="${member.avatar || ''}" class="rounded-circle" style="width: 50px; height: 50px;">
                 <div><strong>${member.name}</strong></div>
                 <div>${user.tribe}</div>
-                div class="row">
+                <div class="row">
                     <div class="col-4">
                         <div class="d-block">
                             <img src="./assets/images/kills.png" alt="" style="width: 10px; height: 10px;">
