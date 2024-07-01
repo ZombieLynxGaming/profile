@@ -95,7 +95,7 @@ function displayUserProfile(user) {
             <div class="text-center">
                 <img src="${member.avatar || ''}" class="rounded-circle popover-avatar">
                 <div class="fs-3"><strong>${member.name}</strong></div>
-                <div class="fs-4">${user.tribe}</div>
+                <div class="fs-3 fw-light">${user.tribe}</div>
                 <div class="row popover-tribe-member-stats">
                     <div class="col-4">
                         <div class="d-flex justify-content-center">
