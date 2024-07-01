@@ -377,10 +377,10 @@ tbody tr {
   height: 300px;
   inset: none !important;
   left: -10% !important;
-  top: 26% !important;
+  top: 22% !important;
 }
 
 .popover-avatar {
-  width: 100px;
-  height: 100px;
+  width: 80px;
+  height: 80px;
 }
