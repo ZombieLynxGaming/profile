@@ -157,17 +157,34 @@ function initializePopovers() {
     const popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'));
     popoverTriggerList.map((popoverTriggerEl) => {
         console.log(`Initializing popover for element: ${popoverTriggerEl}`);
-        return new bootstrap.Popover(popoverTriggerEl);
+        const popover = new bootstrap.Popover(popoverTriggerEl, {
+            trigger: 'manual',
+            placement: 'bottom',
+            offset: [0, 0], // No offset to avoid the arrow
+            customClass: 'no-arrow' // Custom class to remove arrow
+        });
+        popoverTriggerEl.addEventListener('mouseenter', () => {
+            console.log(`Showing popover for element: ${popoverTriggerEl}`);
+            popover.show();
+            adjustPopoverHeight(popover._element);
+        });
+        popoverTriggerEl.addEventListener('mouseleave', () => {
+            console.log(`Hiding popover for element: ${popoverTriggerEl}`);
+            popover.hide();
+        });
+        return popover;
     });
 }
 
-
-// Add hover event listener for debugging
-document.addEventListener('mouseover', function(event) {
-    if (event.target.matches('.tribe-member')) {
-        console.log('Hover recognized for:', event.target);
-    }
-});
+function adjustPopoverHeight(popoverElement) {
+    setTimeout(() => {
+        const popoverInner = popoverElement.querySelector('.popover-inner');
+        if (popoverInner) {
+            popoverInner.style.height = '250px'; // Adjust this value as needed
+            console.log(`Adjusted popover height for element: ${popoverElement}`);
+        }
+    }, 0);
+}
 
 function displayMessage(message) {
     if (message) {
