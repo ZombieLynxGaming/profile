@@ -384,6 +384,7 @@ tbody tr {
 
 .popover-avatar {
   border: 2px solid rgb(128, 128, 128, .5);
+  cursor: pointer;
 }
 
 .stat-number-small {
