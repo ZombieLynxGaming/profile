@@ -94,10 +94,10 @@ function displayUserProfile(user) {
         memberDiv.setAttribute('data-bs-content', `
             <div class="text-center">
                 <div class="profile-card d-flex align-items-center row">
-                    <div class="profile-image me-3 col-6 ps-0 rounded" style="border: 1px solid green;">
+                    <div class="profile-image me-3 col-5 ps-0 rounded" style="border: 1px solid green;">
                         <img class="text-start align-self-start rounded-circle popover-avatar" src="${member.avatar || ''}" alt="Profile Image">
                     </div>
-                    <div class="profile-info flex-grow-1 col-5">
+                    <div class="profile-info flex-grow-1 col-6 d-flex justify-content-around">
                         <div class=" my-0 text-center"><strong>${member.name}</strong></div>
                         <div class=" fw-light my-0 text-center">${user.tribe}</div>
                         <div class="d-flex justify-content-around mt-2">
