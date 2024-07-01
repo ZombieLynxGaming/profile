@@ -102,15 +102,15 @@ function displayUserProfile(user) {
                         <div class=" fw-light my-0 text-center text-white tribe-member-text-2 m-0 p-0 mb-15">${user.tribe}</div>
                         <div class="d-flex justify-content-around mt-3">
                             <div class="stat">
-                                <img src="./assets/images/kills.png" alt="" style="width: 10px; height: 10px;">
+                                <img src="./assets/images/kills.png" alt="" style="width: 7px; height: 7px;">
                                 <div class="stat-number-small fw-bolder">${member.kills}</div>
                             </div>
                             <div class="stat">
-                                <img src="./assets/images/deaths.png" alt="" style="width: 10px; height: 10px;">
+                                <img src="./assets/images/deaths.png" alt="" style="width: 7px; height: 7px;">
                                 <div class="stat-number-small fw-bolder">${member.deaths}</div>
                             </div>
                             <div class="stat">
-                                <img src="./assets/images/kd.png" alt="" style="width: 10px; height: 10px;">
+                                <img src="./assets/images/kd.png" alt="" style="width: 7px; height: 7px;">
                                 <div class="stat-number-small fw-bolder">${member.kd}</div>
                             </div>
                         </div>
