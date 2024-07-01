@@ -99,7 +99,7 @@ function displayUserProfile(user) {
                     </div>
                     <div class="profile-info flex-grow-1 col-6 ps-0 pe-4">
                         <div class=" my-0 text-center text-white tribe-member-text-1 m-0 p-0"><strong>${member.name}</strong></div>
-                        <div class=" fw-light my-0 text-center text-white tribe-member-text-2 m-0 p-0 mb-15">${user.tribe}</div>
+                        <div class=" fw-light my-0 text-center align-items-start align-top text-white tribe-member-text-2 m-0 p-0 mb-15">${user.tribe}</div>
                         <div class="row d-flex justify-content-around mt-3">
                             <div class="stat col-4 px-2">
                                 <img src="./assets/images/kills.png" alt="" style="width: 12px !important; height: 12px !important;">
