@@ -373,14 +373,18 @@ tbody tr {
 
 /* Center the popover */
 .popover {
-  width: 400px;
-  height: 300px;
+  width: 200px;
+  height: 190px;
   inset: none !important;
   left: -10% !important;
-  top: 22% !important;
+  top: 21% !important;
 }
 
 .popover-avatar {
   width: 80px;
   height: 80px;
+}
+
+.popover-tribe-member-stats {
+margin-top: 15px;
 }
