@@ -228,19 +228,7 @@ function displayUserProfile(user) {
     const bkilledElems = document.querySelectorAll(".bkilled");
 
     usernameElems.forEach(elem => elem ? elem.innerText = user.displayName : null);
-
-    avatarElems.forEach(elem => {
-        if (elem) {
-            if (user.avatar && user.avatar.endsWith('_full.gif')) {
-                elem.src = user.avatar;
-            } else if (user.avatar) {
-                elem.src = user.avatar.replace('_full.jpg', '_full.gif');
-            } else {
-                elem.src = ''; // Or set a default avatar if needed
-            }
-        }
-    });
-
+    avatarElems.forEach(elem => elem ? elem.src = user.avatar : null);
     pointsElems.forEach(elem => elem ? elem.innerText = user.points : null);
     membershipElems.forEach(elem => {
         if (elem) {
@@ -400,4 +388,3 @@ function fetchMockUserStats() {
 
     displayMedals(mockStats);
 }
-
