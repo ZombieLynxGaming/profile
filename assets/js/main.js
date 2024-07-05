@@ -181,18 +181,17 @@ function displayMedals(user) {
 
         topStats.forEach(stat => {
             const medalDiv = document.createElement('div');
-            medalDiv.classList.add('mx-1', 'd-flex', 'justify-content-center', 'align-items-center', 'medal', stat.tier);
-            medalDiv.style.height = '20px';
-            medalDiv.style.width = '20px';
+            medalDiv.classList.add('mx-1', 'd-flex', 'justify-content-center', 'align-items-center', 'medal', 'circle', stat.tier);
+            medalDiv.style.height = '28px';
+            medalDiv.style.width = '28px';
             medalDiv.style.borderRadius = '50%';
 
             const medalImg = document.createElement('img');
             medalImg.src = `./assets/images/${medalIcons[stat.key]}`;
             medalImg.alt = stat.key;
-            medalImg.style.width = '22px';
-            medalImg.style.height = '22px';
+            medalImg.style.width = '18px';
+            medalImg.style.height = '18px';
             medalImg.style.border = '1px solid rgb(128, 128, 128, .2)';
-            medalImg.style.borderRadius = '50%';
 
             medalDiv.appendChild(medalImg);
             medalsContainer.appendChild(medalDiv);

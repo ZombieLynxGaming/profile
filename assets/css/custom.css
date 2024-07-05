@@ -308,7 +308,7 @@ tbody tr {
 .medals {
   position: absolute;
   top: -70%;
-  transform: translateY(90%);
+  transform: translateY(-20%);
   width: 170px;
   height: 30px;
 }
@@ -317,7 +317,6 @@ tbody tr {
   position: relative;
   top: 80%;
   width: 30px;
-  background-color: rgb(66, 221, 221);
   padding: px;
 }
 
@@ -459,3 +458,22 @@ tbody tr {
   background: linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 36%, rgba(252,176,69,1) 67%, rgba(97,252,69,1) 100%);
   border: 2px solid rgb(255, 100, 44);
   }
+
+  .circle {
+    width: 30px;
+    height: 30px;
+  
+    display: inline-block;
+    margin: 25px;
+    position: relative;
+    overflow: hidden;
+}
+.circle img {
+    width: 70%;
+    height: 70%;
+    object-fit: cover;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
