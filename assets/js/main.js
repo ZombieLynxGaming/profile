@@ -16,7 +16,7 @@ function fetchMockUserProfile() {
     const mockUser = {
         displayName: 'Danulsan',
         avatar: 'https://cdn.akamai.steamstatic.com/steamcommunity/public/images/items/1192640/638ff86cd1eb7b7368d146f034688280e6f0db09.gif',
-        points: 12345,
+        points: 1234,
         membership: 'Gold',
         message: 'This is a mock user for testing purposes.',
         tribe: 'Tribe of Danulsan',
