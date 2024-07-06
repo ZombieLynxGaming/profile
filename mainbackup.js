@@ -5,8 +5,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const token = new URLSearchParams(window.location.search).get('token');
     if (!token) {
         console.error('No token found, using mock data');
-        fetchMockUserProfile();
-        fetchMockUserStats(); // Fetch mock user stats
+        // fetchMockUserProfile();
+        // fetchMockUserStats(); // Fetch mock user stats
         return;
     }
 
@@ -48,82 +48,6 @@ function forceLogout() {
     localStorage.removeItem('loginTime');
 }
 
-function fetchMockUserProfile() {
-    console.log('Using mock user profile');
-    const mockUser = {
-        displayName: 'Danulsan',
-        avatar: 'https://cdn.akamai.steamstatic.com/steamcommunity/public/images/items/1192640/638ff86cd1eb7b7368d146f034688280e6f0db09.gif',
-        points: 1234,
-        membership: 'Gold',
-        message: 'This is a mock user for testing purposes.',
-        tribe: 'Tribe of Danulsan',
-        kills: 10,
-        deaths: 5,
-        kd: 2.0,
-        dailies: 3,
-        weeklies: 7,
-        bkilled: 1,
-        pvpDamage: 600,
-        totalDeaths: 3,
-        minutesPlayed: 8000,
-        alphaKills: 5,
-        tamedDinos: 2,
-        missionsCompleted: 15,
-        averages: {
-            avgKills: 8,
-            avgDeaths: 4,
-            avgKD: 2.0,
-            avgDailies: 2,
-            avgWeeklies: 5,
-            avgBossKills: 1
-        },
-        leaderboard: [
-            { Name: 'Player1', PlayerKills: 100, KD: 3.5 },
-            { Name: 'Player2', PlayerKills: 90, KD: 3.0 },
-            { Name: 'Player3', PlayerKills: 80, KD: 2.5 },
-        ],
-        tribeMembers: [
-            {
-                name: 'Kintokid',
-                avatar: 'https://avatars.akamai.steamstatic.com/f00d07ea063355891b611f35dd4aeb30295e7dc0_full.jpg',
-                initial: 'M',
-                kills: 5,
-                deaths: 2,
-                kd: 2.5
-            },
-            {
-                name: 'Linthoss',
-                avatar: 'https://avatars.akamai.steamstatic.com/d4d3da034c914a25c9815da96369c3ace351114e_full.jpg',
-                initial: 'M',
-                kills: 3,
-                deaths: 1,
-                kd: 3.0
-            },
-            {
-                name: 'PoorDawg',
-                avatar: 'https://avatars.akamai.steamstatic.com/39f57db4946eda3f415674a3fbe989ed6e1d03e4_full.jpg',
-                initial: 'M',
-                kills: 3,
-                deaths: 1,
-                kd: 3.0
-            },
-            {
-                name: 'John',
-                avatar: 'https://avatars.akamai.steamstatic.com/3604ac34b47c87e187d151f22aa17e107253ce34_medium.jpg',
-                initial: 'M',
-                kills: 3,
-                deaths: 1,
-                kd: 3.0
-            }
-        ]
-    };
-    displayUserProfile(mockUser);
-    initializeCharts(mockUser);
-    displayMessage(mockUser.message);
-    initializePopovers();
-    displayMedals(mockUser); // Display mock medals
-}
-
 function fetchUserProfile(token) {
     console.log('Fetching user profile');
     fetch(`${API_BASE_URL}/api/profile`, {
@@ -151,7 +75,7 @@ function fetchUserProfile(token) {
     })
     .catch(error => {
         console.error('Error fetching user profile:', error);
-        fetchMockUserProfile(); // Use mock data on error
+        // fetchMockUserProfile(); // Use mock data on error
     });
 }
 
@@ -247,31 +171,7 @@ function displayMedals(user) {
             medalImg.style.border = '1px solid rgb(128, 128, 128, .2)';
 
             medalDiv.appendChild(medalImg);
-
-            // Add the popover content
-            const statKeyFormatted = stat.key.replace(/([A-Z])/g, ' $1').trim(); // Format the stat key
-            const popoverContent = `
-                <div>
-                    <img src="${medalImg.src}" alt="${statKeyFormatted}" style="width: 50px; height: 50px;">
-                    <p>Stat: ${statKeyFormatted}</p>
-                    <p>Rank: ${stat.tier}</p>
-                    <p>Value: ${stat.value}</p>
-                </div>
-            `;
-
-            medalDiv.setAttribute('data-bs-toggle', 'popover');
-            medalDiv.setAttribute('data-bs-html', 'true');
-            medalDiv.setAttribute('data-bs-content', popoverContent);
-            medalDiv.setAttribute('data-bs-trigger', 'hover');
-            medalDiv.setAttribute('data-bs-placement', 'top');
-
             medalsContainer.appendChild(medalDiv);
-        });
-
-        // Initialize the popovers for the medals
-        const popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'));
-        popoverTriggerList.map((popoverTriggerEl) => {
-            return new bootstrap.Popover(popoverTriggerEl);
         });
     }
 }
@@ -400,12 +300,40 @@ function initializePopovers() {
     popoverTriggerList.map((popoverTriggerEl) => {
         console.log(`Initializing popover for element: ${popoverTriggerEl}`);
         const popover = new bootstrap.Popover(popoverTriggerEl, {
-            trigger: 'hover',
-            placement: 'top',
+            trigger: 'manual',
+            placement: 'bottom',
+            offset: [0, 0], // No offset to avoid the arrow
             customClass: 'no-arrow' // Custom class to remove arrow
         });
+        
+        // Show popover on click and keep it visible
+        popoverTriggerEl.addEventListener('click', (event) => {
+            event.preventDefault(); // Prevent default click behavior
+            console.log(`Showing popover for element: ${popoverTriggerEl}`);
+            popover.show();
+            adjustPopoverDimensions(popover._element);
+        });
+        
+        // Optional: Add a way to hide the popover
+        document.addEventListener('click', (event) => {
+            if (!popoverTriggerEl.contains(event.target) && !document.querySelector('.popover').contains(event.target)) {
+                popover.hide();
+            }
+        });
+        
         return popover;
     });
+}
+
+function adjustPopoverDimensions(popoverElement) {
+    setTimeout(() => {
+        const popoverInner = popoverElement.querySelector('.popover-inner');
+        if (popoverInner) {
+            popoverInner.style.height = '186px'; // Adjust this value as needed
+            popoverInner.style.width = '350px';  // Adjust this value as needed
+            console.log(`Adjusted popover dimensions for element: ${popoverElement}`);
+        }
+    }, 0);
 }
 
 function displayMessage(message) {
@@ -420,20 +348,20 @@ function displayMessage(message) {
 }
 
 // Example function to fetch mock stats (optional)
-function fetchMockUserStats() {
-    const mockStats = {
-        kills: 1,
-        pvpDamage: 600,
-        deaths: 3,
-        totalDeaths: 3,
-        kd: 2.5,
-        minutesPlayed: 8000,
-        alphaKills: 5,
-        tamedDinos: 2,
-        dailies: 3,
-        weeklies: 1,
-        missionsCompleted: 15
-    };
+// function fetchMockUserStats() {
+//     const mockStats = {
+//         kills: 1,
+//         pvpDamage: 600,
+//         deaths: 3,
+//         totalDeaths: 3,
+//         kd: 2.5,
+//         minutesPlayed: 8000,
+//         alphaKills: 5,
+//         tamedDinos: 2,
+//         dailies: 3,
+//         weeklies: 1,
+//         missionsCompleted: 15
+//     };
 
-    displayMedals(mockStats);
-}
+//     displayMedals(mockStats);
+// }
