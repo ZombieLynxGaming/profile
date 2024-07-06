@@ -35,7 +35,7 @@ a {
 /* Media query for small screens and smaller */
 @media (max-width: 575.98px) {
   .card-body {
-      height: 570px;
+      height: 630px;
   }
 }
 
@@ -59,6 +59,10 @@ a {
 
 .nk-main > .container {
   flex: 1;
+}
+
+.membership {
+  padding: 0 5px;
 }
 
 .membership.admin {
@@ -227,6 +231,11 @@ tbody tr {
 
 .price-card-mobile {
   background: repeating-linear-gradient(-55deg, rgba(13, 13, 13, 1), rgba(13, 13, 13, 1) 2px, rgba(7, 7, 7, 1) 2px, rgba(7, 7, 7, 1) 5px);
+  height: 120px;
+
+  @media (max-width: 575.98px) {
+    height: 350px;
+  }
 }
 
 /* Tribe Members */
@@ -296,6 +305,8 @@ tbody tr {
   position: relative;
 }
 
+
+/* desktop */
 .avatar-img img {
   position: absolute;
   top: -50%;
@@ -308,9 +319,28 @@ tbody tr {
 .medals {
   position: absolute;
   top: -70%;
-  transform: translateY(-20%);
+  transform: translateY(80%);
   width: 170px;
   height: 30px;
+
+  @media (max-width: 575.98px) {
+    transform: translateY(260%);
+  }
+} 
+
+@media (min-width: 768px) {
+  .avatar-img img,
+  .medals {
+    left: 15%;
+  }
+}
+
+.profile-details {
+  margin-top: 10px;
+}
+
+.profile-points {
+
 }
 
 .medals img {
@@ -372,7 +402,7 @@ tbody tr {
   }
 
   .profile-details {
-      margin-top: 5.5rem;
+      margin-top: 7rem;
   }
 }
 
@@ -462,9 +492,7 @@ tbody tr {
   .circle {
     width: 30px;
     height: 30px;
-  
     display: inline-block;
-    margin: 25px;
     position: relative;
     overflow: hidden;
 }
@@ -476,4 +504,32 @@ tbody tr {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+}
+
+@media only screen and (max-width: 600px) {
+  /* Your CSS rules for small displays go here */
+  .example-class {
+    background-color: red;
+    font-size: 14px;
+    padding: 10px;
+  }
+}
+
+.logout {
+  width: 65%;
+}
+
+.vote {
+  width: 45%;
+}
+
+/* Small screens and smaller */
+@media (max-width: 767.98px) {
+  .logout {
+    width: 50%;
+  }
+
+  .vote {
+    width: 50%;
+  }
 }

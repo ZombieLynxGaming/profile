@@ -47,16 +47,34 @@ function fetchMockUserProfile() {
         ],
         tribeMembers: [
             {
-                name: 'Member1',
-                avatar: 'https://cdn.akamai.steamstatic.com/steamcommunity/public/images/items/1192640/638ff86cd1eb7b7368d146f034688280e6f0db09.gif',
+                name: 'Kintokid',
+                avatar: 'https://avatars.akamai.steamstatic.com/f00d07ea063355891b611f35dd4aeb30295e7dc0_full.jpg',
                 initial: 'M',
                 kills: 5,
                 deaths: 2,
                 kd: 2.5
             },
             {
-                name: 'Member2',
-                avatar: 'https://cdn.akamai.steamstatic.com/steamcommunity/public/images/items/1192640/638ff86cd1eb7b7368d146f034688280e6f0db09.gif',
+                name: 'Linthoss',
+                avatar: 'https://avatars.akamai.steamstatic.com/d4d3da034c914a25c9815da96369c3ace351114e_full.jpg',
+                initial: 'M',
+                kills: 3,
+                deaths: 1,
+                kd: 3.0
+            }
+            ,
+            {
+                name: 'PoorDawg',
+                avatar: 'https://avatars.akamai.steamstatic.com/39f57db4946eda3f415674a3fbe989ed6e1d03e4_full.jpg',
+                initial: 'M',
+                kills: 3,
+                deaths: 1,
+                kd: 3.0
+            }
+            ,
+            {
+                name: 'John',
+                avatar: 'https://avatars.akamai.steamstatic.com/3604ac34b47c87e187d151f22aa17e107253ce34_medium.jpg',
                 initial: 'M',
                 kills: 3,
                 deaths: 1,
