@@ -1,5 +1,5 @@
 const API_BASE_URL = "https://profile.zlg.gg:1111";  // Update to HTTPS
-const SESSION_DURATION = 1 * 60 * 1000; // 14.5 minutes in milliseconds
+const SESSION_DURATION = 14.5 * 60 * 1000; // 14.5 minutes in milliseconds
 
 document.addEventListener('DOMContentLoaded', () => {
     const token = new URLSearchParams(window.location.search).get('token');
