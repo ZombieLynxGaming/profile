@@ -247,31 +247,7 @@ function displayMedals(user) {
             medalImg.style.border = '1px solid rgb(128, 128, 128, .2)';
 
             medalDiv.appendChild(medalImg);
-
-            // Add the popover content
-            const statKeyFormatted = stat.key.replace(/([A-Z])/g, ' $1').trim(); // Format the stat key
-            const popoverContent = `
-                <div>
-                    <img src="${medalImg.src}" alt="${statKeyFormatted}" style="width: 50px; height: 50px;">
-                    <p>Stat: ${statKeyFormatted}</p>
-                    <p>Rank: ${stat.tier}</p>
-                    <p>Value: ${stat.value}</p>
-                </div>
-            `;
-
-            medalDiv.setAttribute('data-bs-toggle', 'popover');
-            medalDiv.setAttribute('data-bs-html', 'true');
-            medalDiv.setAttribute('data-bs-content', popoverContent);
-            medalDiv.setAttribute('data-bs-trigger', 'hover');
-            medalDiv.setAttribute('data-bs-placement', 'top');
-
             medalsContainer.appendChild(medalDiv);
-        });
-
-        // Initialize the popovers for the medals
-        const popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'));
-        popoverTriggerList.map((popoverTriggerEl) => {
-            return new bootstrap.Popover(popoverTriggerEl);
         });
     }
 }
@@ -400,12 +376,40 @@ function initializePopovers() {
     popoverTriggerList.map((popoverTriggerEl) => {
         console.log(`Initializing popover for element: ${popoverTriggerEl}`);
         const popover = new bootstrap.Popover(popoverTriggerEl, {
-            trigger: 'hover',
-            placement: 'top',
+            trigger: 'manual',
+            placement: 'bottom',
+            offset: [0, 0], // No offset to avoid the arrow
             customClass: 'no-arrow' // Custom class to remove arrow
         });
+        
+        // Show popover on click and keep it visible
+        popoverTriggerEl.addEventListener('click', (event) => {
+            event.preventDefault(); // Prevent default click behavior
+            console.log(`Showing popover for element: ${popoverTriggerEl}`);
+            popover.show();
+            adjustPopoverDimensions(popover._element);
+        });
+        
+        // Optional: Add a way to hide the popover
+        document.addEventListener('click', (event) => {
+            if (!popoverTriggerEl.contains(event.target) && !document.querySelector('.popover').contains(event.target)) {
+                popover.hide();
+            }
+        });
+        
         return popover;
     });
+}
+
+function adjustPopoverDimensions(popoverElement) {
+    setTimeout(() => {
+        const popoverInner = popoverElement.querySelector('.popover-inner');
+        if (popoverInner) {
+            popoverInner.style.height = '186px'; // Adjust this value as needed
+            popoverInner.style.width = '350px';  // Adjust this value as needed
+            console.log(`Adjusted popover dimensions for element: ${popoverElement}`);
+        }
+    }, 0);
 }
 
 function displayMessage(message) {
