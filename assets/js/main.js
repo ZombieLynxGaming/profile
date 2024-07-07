@@ -171,6 +171,8 @@ const medalTiers = {
 
 const tierNames = ['bronze', 'silver', 'gold', 'platinum', 'diamond', 'legendary'];
 
+
+
 function getTier(value, thresholds) {
     for (let i = thresholds.length - 1; i >= 0; i--) {
         if (value >= thresholds[i]) {
@@ -238,19 +240,63 @@ function displayMedals(user) {
             medalDiv.style.height = '28px';
             medalDiv.style.width = '28px';
             medalDiv.style.borderRadius = '50%';
+            medalDiv.setAttribute('data-bs-toggle', 'popover');
+            medalDiv.setAttribute('data-bs-html', 'true');
+        
+            // Define the display name for the stat
+            let displayName = stat.key.replace(/([A-Z])/g, ' $1').trim();
+            if (displayName === 'K D') {
+                displayName = 'K/D';
+            }
+        
+            const messages = {
+                PlayerKills: "Aquired PVP Kills!",
+                PVPDamage: "What's your damage?!",
+                PlayerDeaths: "If you don't get it right the first time...",
+                TotalDeaths: "Even PVE is your jam!",
+                KD: "For better or worse you sure do like PVP!",
+                MinutesPlayed: "Grass? Why would I want to touch that?",
+                AlphaKills: "Going red for the red guy!",
+                TamedDinos: "Raising an army?",
+                DailyQuestsCompleted: "Are you in it for the prizes?",
+                WeeklyQuestsCompleted: "Pay me in riches!",
+                MissionsCompleted: "That skiff won't tame itself!"
+            };
 
+            medalDiv.setAttribute('data-bs-content', `
+                <div class="text-center text-white">
+                    <div class="profile-card d-flex align-items-center justify-content-between">
+                        <div class="ps-0 rounded d-flex justify-content-start" style="border: 1px solid red">
+                            <img class="text-center align-self-center rounded-circle popover-avatar-2 ${stat.tier}" src="./assets/images/${medalIcons[stat.key]}" alt="${stat.key}" style="width: 18px; height: 18px;">
+                            <div class="profile-info ps-2 pe-4 align-items-center">
+                                <div class="my-0 text-start text-white tribe-member-text-1 m-0 p-0 medal-font-1"><strong>${displayName}</strong></div>
+                                <div class="fw-light my-0 text-start align-items-start align-top text-white tribe-member-text-2 m-0 p-0 medal-font-1">${stat.tier.charAt(0).toUpperCase() + stat.tier.slice(1)}</div>
+                            </div>
+                        </div>
+                        <div class="stat-number-big fw-bolder text-start">${stat.value}</div>
+                    </div>
+                    <div class="text-start">${messages[stat.key]}</div>
+                </div>
+            `);
+        
             const medalImg = document.createElement('img');
             medalImg.src = `./assets/images/${medalIcons[stat.key]}`;
             medalImg.alt = stat.key;
             medalImg.style.width = '18px';
             medalImg.style.height = '18px';
             medalImg.style.border = '1px solid rgb(128, 128, 128, .2)';
-
+        
             medalDiv.appendChild(medalImg);
             medalsContainer.appendChild(medalDiv);
+        
+            console.log(`Medal for ${stat.key} created with popover.`);
         });
+        
+        // Initialize popovers for the new medal elements
+        initializePopovers();
     }
 }
+
 
 function displayNoMedalsMessage() {
     const medalsContainer = document.querySelector('.medals');
@@ -312,12 +358,12 @@ function displayUserProfile(user) {
         memberDiv.setAttribute('data-bs-content', `
             <div class="text-center">
                 <div class="profile-card d-flex align-items-center row">
-                    <div class="profile-image col-6 ps-0 rounded d-flex justify-content-center" style="border: 1px solid green;">
+                    <div class="profile-image col-6 ps-0 rounded d-flex justify-content-center">
                         <img class="text-center align-self-center rounded-circle popover-avatar w-75" src="${member.avatar || ''}" alt="Profile Image">
                     </div>
                     <div class="profile-info flex-grow-1 col-6 ps-0 pe-4">
-                        <div class=" my-0 text-center text-white tribe-member-text-1 m-0 p-0"><strong>${member.name}</strong></div>
-                        <div class=" fw-light my-0 text-center align-items-start align-top text-white tribe-member-text-2 m-0 p-0 mb-15">${user.tribe}</div>
+                        <div class="my-0 text-start text-white tribe-member-text-1 m-0 p-0"><strong>${member.name}</strong></div>
+                        <div class="fw-light my-0 text-start align-items-start align-top text-white tribe-member-text-2 m-0 p-0 mb-15">${user.tribe}</div>
                         <div class="row d-flex justify-content-around mt-3">
                             <div class="stat col-4 px-2">
                                 <img src="./assets/images/kills.png" alt="" style="width: 12px !important; height: 12px !important;">
@@ -337,7 +383,8 @@ function displayUserProfile(user) {
             </div>    
         `);
         memberDiv.setAttribute('data-bs-placement', 'top');
-
+        memberDiv.classList.add('popover-tribe');
+    
         if (member.avatar) {
             const memberImg = document.createElement('img');
             memberImg.src = member.avatar;
@@ -349,9 +396,10 @@ function displayUserProfile(user) {
         }
         memberDiv.style.zIndex = user.tribeMembers.length - index;
         tribeMembersContainer.appendChild(memberDiv);
-
+    
         console.log(`Tribe member ${member.name} created with popover.`);
     });
+    
 
     const leaderboard = document.getElementById("leaderboard");
     leaderboard.innerHTML = "";
@@ -376,41 +424,16 @@ function initializePopovers() {
     popoverTriggerList.map((popoverTriggerEl) => {
         console.log(`Initializing popover for element: ${popoverTriggerEl}`);
         const popover = new bootstrap.Popover(popoverTriggerEl, {
-            trigger: 'manual',
+            trigger: 'hover', // Changed to hover
             placement: 'bottom',
             offset: [0, 0], // No offset to avoid the arrow
             customClass: 'no-arrow' // Custom class to remove arrow
         });
-        
-        // Show popover on click and keep it visible
-        popoverTriggerEl.addEventListener('click', (event) => {
-            event.preventDefault(); // Prevent default click behavior
-            console.log(`Showing popover for element: ${popoverTriggerEl}`);
-            popover.show();
-            adjustPopoverDimensions(popover._element);
-        });
-        
-        // Optional: Add a way to hide the popover
-        document.addEventListener('click', (event) => {
-            if (!popoverTriggerEl.contains(event.target) && !document.querySelector('.popover').contains(event.target)) {
-                popover.hide();
-            }
-        });
-        
+
         return popover;
     });
 }
 
-function adjustPopoverDimensions(popoverElement) {
-    setTimeout(() => {
-        const popoverInner = popoverElement.querySelector('.popover-inner');
-        if (popoverInner) {
-            popoverInner.style.height = '186px'; // Adjust this value as needed
-            popoverInner.style.width = '350px';  // Adjust this value as needed
-            console.log(`Adjusted popover dimensions for element: ${popoverElement}`);
-        }
-    }, 0);
-}
 
 function displayMessage(message) {
     if (message) {
