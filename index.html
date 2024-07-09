@@ -88,6 +88,7 @@
             </div>
             <div class="d-block d-md-none" style="height: 40px;"></div>
             <div class="row h-100">
+                <!-- Player Card -->
                 <div class="col-lg-8 mb-4 h-100">
                     <div class="card bg-dark text-white h-100">
                         <div class="card-body p-0 img-container">
@@ -101,29 +102,31 @@
                                     <div class="d-flex justify-content-center medals"></div>
                                 </div>
                                 <div
-                                    class="col-12 col-md-7 text-md-start text-center profile-details pt-5 mt-md-3 ps-2 mb-3 mb-md-0">
-                                    <h4 id="username" class="mb-0 username">Zombie Lynx Gaming</h4>
-                                    <div
-                                        class="d-md-flex d-block align-items-center mb-5 justify-content-center justify-content-md-start">
-                                        <h4 id="tribe" class="fw-light mb-0 tribe me-md-4 me-0 align-self-end">Tribe of
-                                            ZLG</h4>
-                                        <div
-                                            class="d-flex justify-content-center ms-2 ms-md-0 my-md-0 my-2 tribe-members align-self-center">
-                                        </div>
+                                    class="col-12 col-md-7 text-md-start text-center profile-details pt-5 mt-md-3 ps-0 mb-3 mb-md-0">
+                                    <div class="d-flex align-items-center justify-content-center justify-content-md-start my-auto">
+                                        <h4 id="username" class="mb-0 username align-self-end">Zombie Lynx Gaming</h4>
+                                        <span id="membership"
+                                            class="fw-bold p-1 membership membership-text align-self-center" data-bs-toggle="tooltip" data-bs-title="Membership"
+                                            >Standard</span>
                                     </div>
                                     <div
-                                        class="d-flex align-items-center justify-content-center justify-content-md-start">
-                                        <h6 class="fw-light mt-5 mb-6">Tier: <span id="membership"
-                                                class="fw-bold p-1 membership membership-text p-5">Standard</span></h6>
+                                        class="d-block align-items-center mb-5 justify-content-center justify-content-md-start">
+                                        <h4 id="tribe" class="fw-light mb-0 tribe me-md-4 me-0 align-self-end my-1">Tribe of
+                                            ZLG</h4>
+                                        <div
+                                            class="d-flex justify-content-center justify-content-md-start ms-2 ms-md-0 my-1 ps-2 tribe-members align-self-center">
+                                        </div>
                                     </div>
                                 </div>
                                 <div
-                                    class="col-12 col-md-2 text-md-end text-center profile-points pe-md-4 pe-2 pt-5 my-1">
-                                    <div class="d-flex justify-content-between align-items-center mb-15 point-counter" style="border-radius: 20px; border: 1px solid rgb(119, 119, 119);">
+                                    class="col-12 col-md-2 text-end profile-points pe-md-4 pe-2 pt-5 my-1">
+                                    <div class="d-flex justify-content-between align-items-center mb-15 point-counter"
+                                        style="border-radius: 20px; border: 1px solid rgb(119, 119, 119);">
                                         <img src="./assets/images/coin.png" alt="" class="p-1 m-3">
-                                        <h4 id="points" class="m-0 points">0</h4> <a href="https://zlg.gg/aseshop"><img src="./assets/images/add.png" alt="" class="p-1 m-3"></a>
-                                      </div>
-                                      
+                                        <h4 id="points" class="m-0 points">0</h4> <a href="https://zlg.gg/aseshop"><img
+                                                src="./assets/images/add.png" alt="" class="p-1 m-3"></a>
+                                    </div>
+
                                     <div
                                         class="d-flex text-center justify-content-md-end justify-content-center mt-0 mt-md-3">
                                         <button
@@ -138,77 +141,340 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="row justify-content-center align-items-center stats ">
-                                <div class="col-md-3 col-4 text-center border-gray-top stats-inner">
-                                    <div
-                                        class="d-flex justify-content-md-start justify-content-center align-items-center text-md-start text-center">
-                                        <img src="./assets/images/kills.png" alt="" style="width: 20px; height: 20px;">
-                                        <p class="ps-1 mb-0">Kills</p>
+                            <div>
+                                <nav
+                                    class="justify-content-start d-flex font-monospace col-md-6 col-12 mx-auto mt-10 px-1">
+                                    <div class="nav nav-tabs col p-0" id="nav-tab" role="tablist">
+                                        <button class="nav-link active col-4 p-1" id="nav-stats-tab"
+                                            data-bs-toggle="tab" data-bs-target="#nav-stats" type="button" role="tab"
+                                            aria-controls="nav-stats" aria-selected="true">
+                                            Stats
+                                        </button>
+                                        <button class="nav-link col-4 p-1" id="nav-advanced-tab" data-bs-toggle="tab"
+                                            data-bs-target="#nav-advanced" type="button" role="tab"
+                                            aria-controls="nav-advanced" aria-selected="false">
+                                            Advanced Stats
+                                        </button>
+                                        <button class="nav-link col-4 p-1" id="nav-achievements-tab"
+                                            data-bs-toggle="tab" data-bs-target="#nav-achievements" type="button"
+                                            role="tab" aria-controls="nav-achievements" aria-selected="false">
+                                            Achievements
+                                        </button>
                                     </div>
+                                </nav>
+                                <div class="tab-content" id="nav-tabContent">
+                                    <!-- Stats Tab -->
+                                    <div class="tab-pane fade show active" id="nav-stats" role="tabpanel"
+                                        aria-labelledby="nav-stats-tab" tabindex="0">
+                                        <div>
+                                            <div>
+                                                <div class="row justify-content-center align-items-center stats">
+                                                    <div class="col-md-3 col-4 text-center border-gray-top stats-inner">
+                                                        <div
+                                                            class="d-flex justify-content-md-start justify-content-center align-items-center text-md-start text-center">
+                                                            <img src="./assets/images/kills.png" alt=""
+                                                                style="width: 20px; height: 20px;">
+                                                            <p class="ps-1 mb-0">Kills</p>
+                                                        </div>
 
-                                    <p id="kills" class="d-block  mb-0 text-md-start text-center stat-number kills">0
-                                    </p>
-                                    <canvas id="killsChart" class="d-md-block d-none"></canvas>
-                                </div>
-                                <div class="col-md-3 col-4 text-center border-gray-top stats-inner ">
-                                    <div
-                                        class="d-flex justify-content-md-start justify-content-center align-items-center text-md-start text-center">
-                                        <img src="./assets/images/deaths.png" alt="" style="width: 20px; height: 20px;">
-                                        <p class="ps-1 mb-0">Deaths</p>
+                                                        <p id="kills"
+                                                            class="d-block  mb-0 text-md-start text-center stat-number kills">
+                                                            0
+                                                        </p>
+                                                        <canvas id="killsChart" class="d-md-block d-none"></canvas>
+                                                    </div>
+                                                    <div
+                                                        class="col-md-3 col-4 text-center border-gray-top stats-inner ">
+                                                        <div
+                                                            class="d-flex justify-content-md-start justify-content-center align-items-center text-md-start text-center">
+                                                            <img src="./assets/images/deaths.png" alt=""
+                                                                style="width: 20px; height: 20px;">
+                                                            <p class="ps-1 mb-0">Deaths</p>
+                                                        </div>
+                                                        <p id="deaths"
+                                                            class="d-block  mb-0 text-md-start text-center stat-number deaths">
+                                                            0
+                                                        </p>
+                                                        <canvas id="deathsChart" class="d-md-block d-none"></canvas>
+                                                    </div>
+                                                    <div
+                                                        class="col-md-3 col-4 text-center  border-gray-top stats-inner ">
+                                                        <div
+                                                            class="d-flex justify-content-md-start justify-content-center align-items-center text-md-start text-center">
+                                                            <img src="./assets/images/kd.png" alt=""
+                                                                style="width: 20px; height: 20px;">
+                                                            <p class="ps-1 mb-0">K/D</p>
+                                                        </div>
+                                                        <p id="kd"
+                                                            class="d-block  mb-0 text-md-start text-center stat-number kd">
+                                                            0
+                                                        </p>
+                                                        <canvas id="kdChart" class="d-md-block d-none"></canvas>
+                                                    </div>
+                                                </div>
+                                                <div class="row justify-content-center align-items-center mt-0">
+                                                    <div
+                                                        class="col-md-3 col-4 text-center   border-gray-bottom stats-inner ">
+                                                        <div
+                                                            class="d-flex justify-content-md-start justify-content-center align-items-center text-md-start text-center">
+                                                            <img src="./assets/images/dailies.png" alt=""
+                                                                style="width: 20px; height: 20px;">
+                                                            <p class="ps-1 mb-0">Dailies</p>
+                                                        </div>
+                                                        <p id="dailies"
+                                                            class="d-block  mb-0 text-md-start text-center stat-number dailies">
+                                                            0</p>
+                                                        <canvas id="dailiesChart" class="d-md-block d-none"></canvas>
+                                                    </div>
+                                                    <div
+                                                        class="col-md-3 col-4 text-center border-gray-bottom  stats-inner ">
+                                                        <div
+                                                            class="d-flex justify-content-md-start justify-content-center align-items-center text-md-start text-center">
+                                                            <img src="./assets/images/weeklies.png" alt=""
+                                                                style="width: 20px; height: 20px;">
+                                                            <p class="ps-1 mb-0">Weeklies</p>
+                                                        </div>
+                                                        <p id="weeklies"
+                                                            class="d-block  mb-0 text-md-start text-center stat-number weeklies">
+                                                            0</p>
+                                                        <canvas id="weekliesChart" class="d-md-block d-none"></canvas>
+                                                    </div>
+                                                    <div
+                                                        class="col-md-3 col-4 text-center border-gray-bottom  stats-inner ">
+                                                        <div
+                                                            class="d-flex justify-content-md-start justify-content-center align-items-center text-md-start text-center">
+                                                            <img src="./assets/images/bkilled.png" alt=""
+                                                                style="width: 20px; height: 20px;">
+                                                            <p class="ps-1 mb-0">Bosses</p>
+                                                        </div>
+                                                        <p id="bkilled"
+                                                            class="d-block  mb-0 text-md-start text-center stat-number bkilled">
+                                                            0</p>
+                                                        <canvas id="bossesChart" class="d-md-block d-none"></canvas>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <p id="deaths" class="d-block  mb-0 text-md-start text-center stat-number deaths">0
-                                    </p>
-                                    <canvas id="deathsChart" class="d-md-block d-none"></canvas>
-                                </div>
-                                <div class="col-md-3 col-4 text-center  border-gray-top stats-inner ">
-                                    <div
-                                        class="d-flex justify-content-md-start justify-content-center align-items-center text-md-start text-center">
-                                        <img src="./assets/images/kd.png" alt="" style="width: 20px; height: 20px;">
-                                        <p class="ps-1 mb-0">K/D</p>
+                                    <!-- Advanced Stats Tab -->
+                                    <div class="tab-pane fade" id="nav-advanced" role="tabpanel"
+                                        aria-labelledby="nav-advanced-tab" tabindex="0">
+                                        <div class="scrollable-content">
+                                            <!-- PVP Stats -->
+                                            <div class="pvp-stats">
+                                                <h5 class="w-100 mx-auto text-center mt-20">PVP Stats</h5>
+                                                <div class="row justify-content-center align-items-center stats">
+                                                    <div
+                                                        class="col-md-5 col-6 text-center border-gray-top stats-inner p-0">
+                                                        <div
+                                                            class="d-flex justify-content-md-between justify-content-center align-items-center text-md-start text-center mx-3">
+                                                            <div
+                                                                class="d-flex justify-content-start align-items-center text-md-start text-center col-8 p-0">
+                                                                <img src="./assets/images/playerkills-medal.png" alt=""
+                                                                    id="killsTier"
+                                                                    style="width: 20px; height: 20px; border-radius: 50%;">
+                                                                <p class="ps-1 mb-0">Kills</p>
+                                                            </div>
+                                                            <div class="col-4 p-0">
+                                                                <p id="kills"
+                                                                    class="d-block  mb-0 text-end stat-number-smallest kills">
+                                                                    0
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div
+                                                        class="col-md-5 col-6 text-center border-gray-top stats-inner p-0">
+                                                        <div
+                                                            class="d-flex justify-content-md-between justify-content-center align-items-center text-md-start text-center mx-3">
+                                                            <div
+                                                                class="d-flex justify-content-start align-items-center text-md-start text-center col-8 p-0">
+                                                                <img src="./assets/images/pvpdamage-medal.png" alt=""
+                                                                    id="pvpDamageTier"
+                                                                    style="width: 20px; height: 20px;">
+                                                                <p class="ps-1 mb-0">Damage</p>
+                                                            </div>
+                                                            <div class="col-4 p-0">
+                                                                <p id="pvpDamage"
+                                                                    class="d-block  mb-0 text-end stat-number-smallest pvpDamage">
+                                                                    0
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div
+                                                    class="row justify-content-md-center justify-content-start align-items-center stats mt-0">
+                                                    <div
+                                                        class="col-md-5 col-6 text-center border-gray-top stats-inner p-0">
+                                                        <div
+                                                            class="d-flex justify-content-md-between justify-content-center align-items-center text-md-start text-center mx-3">
+                                                            <div
+                                                                class="d-flex justify-content-start align-items-center text-md-start text-center col-8 p-0">
+                                                                <img src="./assets/images/playerdeaths-medal.png" alt=""
+                                                                    id="deathsTier"
+                                                                    style="width: 20px; height: 20px; border-radius: 50%;">
+                                                                <p class="ps-1 mb-0">Deaths</p>
+                                                            </div>
+                                                            <div class="col-4 p-0">
+                                                                <p id="deaths"
+                                                                    class="d-block  mb-0 text-end stat-number-smallest deaths">
+                                                                    0
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-5 col-6 text-center stats-inner p-0">
+                                                        <!-- for spacing -->
+                                                    </div>
+                                                </div>
+                                                <div class="row justify-content-center align-items-center stats mt-0">
+                                                    <div
+                                                        class="col-md-5 col-6 text-center border-gray-top stats-inner p-0">
+                                                        <div
+                                                            class="d-flex justify-content-md-between justify-content-center align-items-center text-md-start text-center mx-3">
+                                                            <div
+                                                                class="d-flex justify-content-start align-items-center text-md-start text-center col-8 p-0">
+                                                                <img src="./assets/images/kd-medal.png" alt=""
+                                                                    id="kdTier"
+                                                                    style="width: 20px; height: 20px; border-radius: 50%;">
+                                                                <p class="ps-1 mb-0">K/D</p>
+                                                            </div>
+                                                            <div class="col-4 p-0">
+                                                                <p id="kd"
+                                                                    class="d-block  mb-0 text-end stat-number-smallest kd">
+                                                                    0
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-5 col-6 text-center stats-inner p-0">
+                                                        <!-- for spacing -->
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="pve-stats">
+                                                <h5 class="w-100 mx-auto text-center mt-20">PVE Stats</h5>
+                                                <div class="row justify-content-center align-items-center stats">
+                                                    <div
+                                                        class="col-md-5 col-6 text-center border-gray-top stats-inner p-0">
+                                                        <div
+                                                            class="d-flex justify-content-md-between justify-content-center align-items-center text-md-start text-center mx-3">
+                                                            <div
+                                                                class="d-flex justify-content-start align-items-center text-md-start text-center col-8 p-0">
+                                                                <img src="./assets/images/totaldeaths-medal.png" alt=""
+                                                                    id="totalDeathsTier"
+                                                                    style="width: 20px; height: 20px; border-radius: 50%;">
+                                                                <p class="ps-1 mb-0">PVE Deaths</p>
+                                                            </div>
+                                                            <div class="col-4 p-0">
+                                                                <p id="totalDeaths"
+                                                                    class="d-block  mb-0 text-end stat-number-smallest totalDeaths">
+                                                                    0
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div
+                                                        class="col-md-5 col-6 text-center border-gray-top stats-inner p-0">
+                                                        <div
+                                                            class="d-flex justify-content-md-between justify-content-center align-items-center text-md-start text-center mx-3">
+                                                            <div
+                                                                class="d-flex justify-content-start align-items-center text-md-start text-center col-8 p-0">
+                                                                <img src="./assets/images/minutesplayed-medal.png"
+                                                                    alt="" id="minutesPlayedTier"
+                                                                    style="width: 20px; height: 20px; border-radius: 50%;">
+                                                                <p class="ps-1 mb-0">Playtime</p>
+                                                            </div>
+                                                            <div class="col-4 p-0">
+                                                                <p id="minutesPlayed"
+                                                                    class="d-block  mb-0 text-end stat-number-smallest minutesPlayed">
+                                                                    0
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row justify-content-center align-items-center stats mt-0">
+                                                    <div
+                                                        class="col-md-5 col-6 text-center border-gray-top stats-inner p-0">
+                                                        <div
+                                                            class="d-flex justify-content-md-between justify-content-center align-items-center text-md-start text-center mx-3">
+                                                            <div
+                                                                class="d-flex justify-content-statr align-items-center text-md-start text-center col-8 p-0">
+                                                                <img src="./assets/images/tameddinos-medal.png" alt=""
+                                                                    id="tamedDinosTier"
+                                                                    style="width: 20px; height: 20px; border-radius: 50%;">
+                                                                <p class="ps-1 mb-0">Tamed</p>
+                                                            </div>
+                                                            <div class="col-4 p-0">
+                                                                <p id="tamedDinos"
+                                                                    class="d-block  mb-0 text-end stat-number-smallest tamed-dinos">
+                                                                    0
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div
+                                                        class="col-md-5 col-6 text-center border-gray-top stats-inner p-0">
+                                                        <div
+                                                            class="d-flex justify-content-md-between justify-content-center align-items-center text-md-start text-center mx-3">
+                                                            <div
+                                                                class="d-flex justify-content-start align-items-center text-md-start text-center col-8 p-0">
+                                                                <img src="./assets/images/alphakills-medal.png"
+                                                                    alt="" id="alphaKillsTier"
+                                                                    style="width: 20px; height: 20px; border-radius: 50%;">
+                                                                <p class="ps-1 mb-0">Alpha Kills</p>
+                                                            </div>
+                                                            <div class="col-4 p-0">
+                                                                <p id="alphaKills"
+                                                                    class="d-block  mb-0 text-end stat-number-smallest">
+                                                                    0
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row justify-content-center align-items-center stats mt-0 mb-30">
+                                                    <div
+                                                        class="col-md-5 col-6 text-center border-gray-top stats-inner p-0">
+                                                        <div
+                                                            class="d-flex justify-content-md-between justify-content-center align-items-center text-md-start text-center mx-3">
+                                                            <div
+                                                                class="d-flex justify-content-start align-items-center text-md-start text-center col-8 p-0">
+                                                                <img src="./assets/images/missionscompleted-medal.png" alt=""
+                                                                    id="missionsCompletedTier"
+                                                                    style="width: 20px; height: 20px; border-radius: 50%;">
+                                                                <p class="ps-1 mb-0">Missions</p>
+                                                            </div>
+                                                            <div class="col-4 p-0">
+                                                                <p id="missionsCompleted"
+                                                                    class="d-block  mb-0 text-end stat-number-smallest">
+                                                                    0
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-5 col-6 text-center stats-inner p-0">
+                                                       
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <p id="kd" class="d-block  mb-0 text-md-start text-center stat-number kd">0</p>
-                                    <canvas id="kdChart" class="d-md-block d-none"></canvas>
+                                    <!-- Achievements -->
+                                    <div class="tab-pane fade" id="nav-achievements" role="tabpanel"
+                                        aria-labelledby="nav-achievements-tab" tabindex="0">
+                                        <div class="d-flex justify-content-center align-items-center h-100 mt-30">Coming Soon</div>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="row justify-content-center align-items-center mt-0">
-                                <div class="col-md-3 col-4 text-center   border-gray-bottom stats-inner ">
-                                    <div
-                                        class="d-flex justify-content-md-start justify-content-center align-items-center text-md-start text-center">
-                                        <img src="./assets/images/dailies.png" alt=""
-                                            style="width: 20px; height: 20px;">
-                                        <p class="ps-1 mb-0">Dailies</p>
-                                    </div>
-                                    <p id="dailies" class="d-block  mb-0 text-md-start text-center stat-number dailies">
-                                        0</p>
-                                    <canvas id="dailiesChart" class="d-md-block d-none"></canvas>
-                                </div>
-                                <div class="col-md-3 col-4 text-center border-gray-bottom  stats-inner ">
-                                    <div
-                                        class="d-flex justify-content-md-start justify-content-center align-items-center text-md-start text-center">
-                                        <img src="./assets/images/weeklies.png" alt=""
-                                            style="width: 20px; height: 20px;">
-                                        <p class="ps-1 mb-0">Weeklies</p>
-                                    </div>
-                                    <p id="weeklies"
-                                        class="d-block  mb-0 text-md-start text-center stat-number weeklies">0</p>
-                                    <canvas id="weekliesChart" class="d-md-block d-none"></canvas>
-                                </div>
-                                <div class="col-md-3 col-4 text-center border-gray-bottom  stats-inner ">
-                                    <div
-                                        class="d-flex justify-content-md-start justify-content-center align-items-center text-md-start text-center">
-                                        <img src="./assets/images/bkilled.png" alt=""
-                                            style="width: 20px; height: 20px;">
-                                        <p class="ps-1 mb-0">Bosses</p>
-                                    </div>
-                                    <p id="bkilled" class="d-block  mb-0 text-md-start text-center stat-number bkilled">
-                                        0</p>
-                                    <canvas id="bossesChart" class="d-md-block d-none"></canvas>
-                                </div>
-                            </div>
+
                         </div>
                     </div>
                     <div class="version-text">v0.55(beta)</div>
                 </div>
+                <!-- Leaderboard -->
                 <div class="col-lg-4 h-100">
                     <div class="card bg-dark text-white mb-4 h-100">
                         <div class="card-body">
@@ -321,12 +587,17 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> -->
-    <script src="assets/js/main.js"></script>
+    <!-- Include your JS scripts as modules -->
+    <script type="module" src="assets/js/main.js"></script>
+<script type="module" src="assets/js/mock.js"></script>
+<script type="module" src="assets/js/api.js"></script>
+<script type="module" src="assets/js/medals.js"></script>
+<script type="module" src="assets/js/popovers.js"></script>
+<script type="module" src="assets/js/session.js"></script>
+<script type="module" src="assets/js/tribeMembers.js"></script>
+<script type="module" src="assets/js/userProfile.js"></script>
+<script type="module" src="assets/js/charts.js"></script>
 
-    <!-- <script src="assets/js/profile.js"></script>
-    <script src="assets/js/user.js"></script> -->
-    <script src="assets/js/charts.js"></script>
     <!-- END: Scripts -->
 </body>
 
