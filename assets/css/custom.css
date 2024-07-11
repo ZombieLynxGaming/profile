@@ -645,23 +645,9 @@ tbody tr {
   display: none;
 }
 
-.spinner-border {
-  width: 3rem;
-  height: 3rem;
-}
-
 .preloader-image {
-  width: 200px;
+  width: 200px; /* Adjust the size as needed */
   height: auto;
-}
-
-/* For larger screens, position at the bottom right */
-@media (min-width: 576px) {
-  .preloader {
-    justify-content: flex-end;
-    align-items: flex-end;
-    padding: 20px;
-  }
 }
 
 
