@@ -651,4 +651,32 @@ tbody tr {
 }
 
 
+.achievements {
+  line-height: 1.1;;
+}
 
+.achievement-item {
+  background: #2e333d ;
+  border: 1px solid rgb(73, 73, 73, .5); 
+  height: 60px; margin-bottom: 0px !important;
+}
+
+.achievement-item p, .achievement-item h3 {
+  color: gray;
+}
+
+.achievement-item img {
+  filter: grayscale(100%);
+}
+
+.achieved {
+  
+}
+
+.achieved p, .achieved h3 {
+  color: white;
+}
+
+.achieved img {
+  filter: none;
+}

@@ -31,11 +31,11 @@
 </head>
 
 <body>
-    <div class="preloader">
+    <!-- <div class="preloader">
         <div><img src="./assets/images/runninglynx.gif" alt="Loading..." class="preloader-image">
             <h5 class="text-center">Loading...</h5>
         </div>
-    </div>
+    </div> -->
     <header class="nk-header nk-header-opaque">
         <div class="nk-contacts-top my-0" style="margin: 0; padding: .105px;"></div>
         <nav class="nk-navbar nk-navbar-top nk-navbar-sticky nk-navbar-autohide">
@@ -298,7 +298,7 @@
                                                                 class="d-flex justify-content-start align-items-center text-md-start text-center col-8 p-0">
                                                                 <img src="./assets/images/pvpdamage-medal.png" alt=""
                                                                     id="pvpDamageTier" class="rounded-circle"
-                                                                    style="width: 20px; height: 20px;">
+                                                                    style="width: 20px; height: 20px; border-radius: 50% !important;">
                                                                 <p class="ps-1 mb-0">Damage</p>
                                                             </div>
                                                             <div class="col-4 p-0">
@@ -473,8 +473,316 @@
                                     <!-- Achievements -->
                                     <div class="tab-pane fade" id="nav-achievements" role="tabpanel"
                                         aria-labelledby="nav-achievements-tab" tabindex="0">
-                                        <div class="d-flex justify-content-center align-items-center h-100 mt-30">Coming
-                                            Soon</div>
+                                        <div class="scrollable-content achievements">
+                                            <div class="mx-auto col-9 mt-10">
+                                                <div class="w-100">
+                                                    <p class="fw-light mb-1">You've unlocked <span>0</span>
+                                                    </p>
+                                                    <div class="progress mb-10 mt-5"
+                                                        style="background-color: rgb(63, 63, 63);">
+                                                        <div class="progress-bar bg-success progress-bar-striped progress-bar-animated"
+                                                            role="progressbar" style="width: 25%" aria-valuenow="5"
+                                                            aria-valuemin="0" aria-valuemax="100"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- Friendship Achievements -->
+                                            <div
+                                                class="d-flex row justify-content-center align-items-center mt-0 col-9 mx-auto my-0 tribeMate achievement-item">
+                                                <div
+                                                    class="d-flex justify-content-start col-9 ps-0 text-start pe-0 align-items-center">
+                                                    <img src="./assets/images/chibi.png" alt=""
+                                                        style="width: 40px; height: 40px;" class="align-items-center">
+                                                    <div class="ms-2">
+                                                        <p class="my-0">Just don't get insided!</p>
+                                                        <p class="my-0 fw-light p-0">Tribe up with at least 1 person</p>
+                                                        <p class="p-0 m-0"><span id="tribeMate">0</span> / 1</p>
+                                                    </div>
+                                                </div>
+                                                <div
+                                                    class="d-flex justify-content-end align-items-center col-3 ps-0 text-end pe-0 h-100">
+                                                    <h3 class="my-0 me-2 align-self-center">10</h3><img
+                                                        src="./assets/images/coin.png" alt="">
+                                                </div>
+                                            </div>
+                                            <!-- Fiber Achievements -->
+                                            <div
+                                                class="d-flex row justify-content-center align-items-center mt-0 col-9 mx-auto my-0 fiberHarvest achievement-item">
+                                                <div
+                                                    class="d-flex justify-content-start col-9 ps-0 text-start pe-0 align-items-center">
+                                                    <img src="./assets/images/fiber.png" alt=""
+                                                        style="width: 40px; height: 40px;" class="align-items-center">
+                                                    <div class="ms-2">
+                                                        <p class="my-0">Get your daily Fiber!</p>
+                                                        <p class="my-0 fw-light p-0">Collect 100k fiber by hand</p>
+                                                        <p class="p-0 m-0"><span id="fiberHarvest">0</span> / 100k</p>
+                                                    </div>
+                                                </div>
+                                                <div
+                                                    class="d-flex justify-content-end align-items-center col-3 ps-0 text-end pe-0 h-100">
+                                                    <h3 class="my-0 me-2 align-self-center">10</h3><img
+                                                        src="./assets/images/coin.png" alt="">
+                                                </div>
+                                            </div>
+                                            <!-- Rare Flower Achievements -->
+                                            <div
+                                                class="d-flex row justify-content-center align-items-center mt-0 col-9 mx-auto my-0 rareFlowerHarvest achievement-item">
+                                                <div
+                                                    class="d-flex justify-content-start col-9 ps-0 text-start pe-0 align-items-center">
+                                                    <img src="./assets/images/flower.png" alt=""
+                                                        style="width: 40px; height: 40px;" class="align-items-center">
+                                                    <div class="ms-2">
+                                                        <p class="my-0">It's not that rare...</p>
+                                                        <p class="my-0 fw-light p-0">Collect 100 rare flowers by hand
+                                                        </p>
+                                                        <p class="p-0 m-0"><span id="rareFlowerHarvest">0</span> / 100
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                <div
+                                                    class="d-flex justify-content-end align-items-center col-3 ps-0 text-end pe-0 h-100">
+                                                    <h3 class="my-0 me-2 align-self-center">10</h3><img
+                                                        src="./assets/images/coin.png" alt="">
+                                                </div>
+                                            </div>
+                                            <!-- Fishing Achievements -->
+                                            <div
+                                                class="d-flex row justify-content-center align-items-center col-9 mx-auto my-0 fishCaught achievement-item">
+                                                <div
+                                                    class="d-flex justify-content-start col-9 ps-0 text-start pe-0 align-items-center">
+                                                    <img src="./assets/images/fish.png" alt=""
+                                                        style="width: 40px; height: 40px;" class="align-items-center">
+                                                    <div class="ms-2">
+                                                        <p class="my-0">Bait Master!</p>
+                                                        <p class="my-0 fw-light p-0">Catch 3 Fish</p>
+                                                        <p class="p-0 m-0"><span id="fishCaught">0</span> / 3</p>
+                                                    </div>
+                                                </div>
+                                                <div
+                                                    class="d-flex justify-content-end align-items-center col-3 ps-0 text-end pe-0 h-100">
+                                                    <h3 class="my-0 me-2 align-self-center">15</h3><img
+                                                        src="./assets/images/coin.png" alt="">
+                                                </div>
+                                            </div>
+                                            <!-- Time Achievements -->
+                                            <div
+                                                class="d-flex row justify-content-center align-items-center mt-0 col-9 mx-auto my-0 oneHourPlayed achievement-item">
+                                                <div
+                                                    class="d-flex justify-content-start col-9 ps-0 text-start pe-0 align-items-center">
+                                                    <img src="./assets/images/minutesplayed-medal.png" alt=""
+                                                        style="width: 40px; height: 40px;" class="align-items-center">
+                                                    <div class="ms-2">
+                                                        <p class="my-0">This is my life!</p>
+                                                        <p class="my-0 fw-light p-0">Play for at least 1 hour</p>
+                                                        <p class="p-0 m-0"><span id="oneHourPlayed">0</span> / 1</p>
+                                                    </div>
+                                                </div>
+                                                <div
+                                                    class="d-flex justify-content-end align-items-center col-3 ps-0 text-end pe-0 h-100">
+                                                    <h3 class="my-0 me-2 align-self-center">15</h3><img
+                                                        src="./assets/images/coin.png" alt="">
+                                                </div>
+                                            </div>
+                                            <!-- Dino Tamer Achievements -->
+                                            <div
+                                                class="d-flex row justify-content-center align-items-center col-9 mx-auto my-0 tamedDinos achievement-item">
+                                                <div
+                                                    class="d-flex justify-content-start col-9 ps-0 text-start pe-0 align-items-center">
+                                                    <img src="./assets/images/tamer.png" alt=""
+                                                        style="width: 40px; height: 40px;" class="align-items-center">
+                                                    <div class="ms-2">
+                                                        <p class="my-0">Dino Tamer</p>
+                                                        <p class="my-0 fw-light p-0">Tame 20 Dinos</p>
+                                                        <p class="p-0 m-0"><span id="tamedDinosAchievement">0</span> /
+                                                            20</p>
+                                                    </div>
+                                                </div>
+                                                <div
+                                                    class="d-flex justify-content-end align-items-center col-3 ps-0 text-end pe-0 h-100">
+                                                    <h3 class="my-0 me-2 align-self-center">15</h3><img
+                                                        src="./assets/images/coin.png" alt="">
+                                                </div>
+                                            </div>
+                                            <!-- Daily Achievements -->
+                                            <div
+                                                class="d-flex row justify-content-center align-items-center col-9 mx-auto my-0 daily achievement-item">
+                                                <div
+                                                    class="d-flex justify-content-start col-9 ps-0 text-start pe-0 align-items-center">
+                                                    <img src="./assets/images/dailyquestscompleted-medal.png" alt=""
+                                                        style="width: 40px; height: 40px;" class="align-items-center">
+                                                    <div class="ms-2">
+                                                        <p class="my-0">Daily Diligence</p>
+                                                        <p class="my-0 fw-light p-0">Complete 7 Dailies</p>
+                                                        <p class="p-0 m-0"><span id="dailiesAchievement">0</span> / 7
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                <div
+                                                    class="d-flex justify-content-end align-items-center col-3 ps-0 text-end pe-0 h-100">
+                                                    <h3 class="my-0 me-2 align-self-center">15</h3><img
+                                                        src="./assets/images/coin.png" alt="">
+                                                </div>
+                                            </div>
+                                            <!-- Boss Achievements -->
+                                            <div
+                                                class="d-flex row justify-content-center align-items-center col-9 mx-auto my-0 bossKills achievement-item">
+                                                <div
+                                                    class="d-flex justify-content-start col-9 ps-0 text-start pe-0 align-items-center">
+                                                    <img src="./assets/images/boss.png" alt=""
+                                                        style="width: 40px; height: 40px;" class="align-items-center">
+                                                    <div class="ms-2">
+                                                        <p class="my-0">You're the boss!</p>
+                                                        <p class="my-0 fw-light p-0">Defeat 1 boss</p>
+                                                        <p class="p-0 m-0"><span id="bossKills">0</span> / 1</p>
+                                                    </div>
+                                                </div>
+                                                <div
+                                                    class="d-flex justify-content-end align-items-center col-3 ps-0 text-end pe-0 h-100">
+                                                    <h3 class="my-0 me-2 align-self-center">20</h3><img
+                                                        src="./assets/images/coin.png" alt="">
+                                                </div>
+                                            </div>
+                                            <!-- Weekly Achievements -->
+                                            <div
+                                                class="d-flex row justify-content-center align-items-center col-9 mx-auto my-0 weekly achievement-item">
+                                                <div
+                                                    class="d-flex justify-content-start col-9 ps-0 text-start pe-0 align-items-center">
+                                                    <img src="./assets/images/weekly.png" alt=""
+                                                        style="width: 40px; height: 40px;" class="align-items-center">
+                                                    <div class="ms-2">
+                                                        <p class="my-0">Weekly Warrior</p>
+                                                        <p class="my-0 fw-light p-0">Complete 2 Weeklies</p>
+                                                        <p class="p-0 m-0"><span id="weekliesAchievement">0</span> / 2
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                <div
+                                                    class="d-flex justify-content-end align-items-center col-3 ps-0 text-end pe-0 h-100">
+                                                    <h3 class="my-0 me-2 align-self-center">30</h3><img
+                                                        src="./assets/images/coin.png" alt="">
+                                                </div>
+                                            </div>
+                                            <!-- PVP Kills Achievement -->
+                                            <div
+                                                class="d-flex row justify-content-center align-items-center col-9 mx-auto my-0 playerKills achievement-item">
+                                                <div
+                                                    class="d-flex justify-content-start col-9 ps-0 text-start pe-0 align-items-center">
+                                                    <img src="./assets/images/pvp.png" alt=""
+                                                        style="width: 40px; height: 40px;" class="align-items-center">
+                                                    <div class="ms-2">
+                                                        <p class="my-0">Redrum, Redrum!</p>
+                                                        <p class="my-0 fw-light p-0">Kill 2 people in PVP</p>
+                                                        <p class="p-0 m-0"><span id="playerKills">0</span> / 2</p>
+                                                    </div>
+                                                </div>
+                                                <div
+                                                    class="d-flex justify-content-end align-items-center col-3 ps-0 text-end pe-0 h-100">
+                                                    <h3 class="my-0 me-2 align-self-center">30</h3><img
+                                                        src="./assets/images/coin.png" alt="">
+                                                </div>
+                                            </div>
+                                            <!-- Purple OSD Achievement -->
+                                            <div
+                                                class="d-flex row justify-content-center align-items-center col-9 mx-auto my-0 purpleOSD achievement-item">
+                                                <div
+                                                    class="d-flex justify-content-start col-9 ps-0 text-start pe-0 align-items-center">
+                                                    <img src="./assets/images/osd.png" alt=""
+                                                        style="width: 40px; height: 40px;" class="align-items-center">
+                                                    <div class="ms-2">
+                                                        <p class="my-0">I'm plum excited about this!</p>
+                                                        <p class="my-0 fw-light p-0">Complete 1 Purple OSD on Extinction
+                                                        </p>
+                                                        <p class="p-0 m-0"><span id="purpleOSD">0</span> / 1</p>
+                                                    </div>
+                                                </div>
+                                                <div
+                                                    class="d-flex justify-content-end align-items-center col-3 ps-0 text-end pe-0 h-100">
+                                                    <h3 class="my-0 me-2 align-self-center">45</h3><img
+                                                        src="./assets/images/coin.png" alt="">
+                                                </div>
+                                            </div>
+                                            <!-- Alpha Kills Achievement -->
+                                            <div
+                                                class="d-flex row justify-content-center align-items-center col-9 mx-auto my-0 alphaKills achievement-item">
+                                                <div
+                                                    class="d-flex justify-content-start col-9 ps-0 text-start pe-0 align-items-center">
+                                                    <img src="./assets/images/alpha.png" alt=""
+                                                        style="width: 40px; height: 40px;" class="align-items-center">
+                                                    <div class="ms-2">
+                                                        <p class="my-0">Who's the real Alpha?</p>
+                                                        <p class="my-0 fw-light p-0">Kill 20 Alpha dinos</p>
+                                                        <p class="p-0 m-0"><span id="alphaKillsAchievement">0</span> /
+                                                            20</p>
+                                                    </div>
+                                                </div>
+                                                <div
+                                                    class="d-flex justify-content-end align-items-center col-3 ps-0 text-end pe-0 h-100">
+                                                    <h3 class="my-0 me-2 align-self-center">50</h3><img
+                                                        src="./assets/images/coin.png" alt="">
+                                                </div>
+                                            </div>
+                                            <!-- Alpha Reaper Achievement -->
+                                            <div
+                                                class="d-flex row justify-content-center align-items-center col-9 mx-auto my-0 alphaReaperKills achievement-item">
+                                                <div
+                                                    class="d-flex justify-content-start col-9 ps-0 text-start pe-0 align-items-center">
+                                                    <img src="./assets/images/reaper.png" alt=""
+                                                        style="width: 40px; height: 40px;" class="align-items-center">
+                                                    <div class="ms-2">
+                                                        <p class="my-0">Don't fear the Reaper</p>
+                                                        <p class="my-0 fw-light p-0">Kill 1 Alpha Reaper</p>
+                                                        <p class="p-0 m-0"><span id="alphaReaperKills">0</span> / 1</p>
+                                                    </div>
+                                                </div>
+                                                <div
+                                                    class="d-flex justify-content-end align-items-center col-3 ps-0 text-end pe-0 h-100">
+                                                    <h3 class="my-0 me-2 align-self-center">50</h3><img
+                                                        src="./assets/images/coin.png" alt="">
+                                                </div>
+                                            </div>
+                                            <!-- Desert Titan Tamed Achievement -->
+                                            <div
+                                                class="d-flex row justify-content-center align-items-center col-9 mx-auto my-0 desertTitanTamed achievement-item">
+                                                <div
+                                                    class="d-flex justify-content-start col-9 ps-0 text-start pe-0 align-items-center">
+                                                    <img src="./assets/images/titan.png" alt=""
+                                                        style="width: 40px; height: 40px;" class="align-items-center">
+                                                    <div class="ms-2">
+                                                        <p class="my-0">I ain't smitin' no Titan!</p>
+                                                        <p class="my-0 fw-light p-0">Tame the Desert Titan</p>
+                                                        <p class="p-0 m-0"><span id="desertTitanTamed">0</span> / 1</p>
+                                                    </div>
+                                                </div>
+                                                <div
+                                                    class="d-flex justify-content-end align-items-center col-3 ps-0 text-end pe-0 h-100">
+                                                    <h3 class="my-0 me-2 align-self-center">75</h3><img
+                                                        src="./assets/images/coin.png" alt="">
+                                                </div>
+                                            </div>
+                                            <!-- Missions Achievement -->
+                                            <div
+                                                class="d-flex row justify-content-center align-items-center col-9 mx-auto my-0 missionsCompleted achievement-item">
+                                                <div
+                                                    class="d-flex justify-content-start col-9 ps-0 text-start pe-0 align-items-center">
+                                                    <img src="./assets/images/walky.png" alt=""
+                                                        style="width: 40px; height: 40px;" class="align-items-center">
+                                                    <div class="ms-2">
+                                                        <p class="my-0">Let's skiff to the chase!</p>
+                                                        <p class="my-0 fw-light p-0">Complete 56 missions on Gen1</p>
+                                                        <p class="p-0 m-0"><span
+                                                                id="missionsCompletedAchievement">0</span> / 56
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                <div
+                                                    class="d-flex justify-content-end align-items-center col-3 ps-0 text-end pe-0 h-100">
+                                                    <h3 class="my-0 me-2 align-self-center">100</h3><img
+                                                        src="./assets/images/coin.png" alt="">
+                                                </div>
+                                            </div>
+
+
+                                        </div>
                                     </div>
                                 </div>
                             </div>

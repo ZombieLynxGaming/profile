@@ -7,8 +7,7 @@ export function fetchMockUserProfile() {
     console.log("Using mock user profile");
     const mockUser = {
         displayName: "Danulsan",
-        avatar:
-            "https://cdn.akamai.steamstatic.com/steamcommunity/public/images/items/1192640/638ff86cd1eb7b7368d146f034688280e6f0db09.gif",
+        avatar: "https://cdn.akamai.steamstatic.com/steamcommunity/public/images/items/1192640/638ff86cd1eb7b7368d146f034688280e6f0db09.gif",
         points: 1234,
         membership: "Admins",
         message: "This is a mock user for testing purposes.",
@@ -22,9 +21,15 @@ export function fetchMockUserProfile() {
         pvpDamage: 600,
         totalDeaths: 30,
         minutesPlayed: 36000,
-        alphaKills: 5,
-        tamedDinos: 10,
+        alphaKills: 25,
+        tamedDinos: 50,
         missionsCompleted: 15,
+        fiberHarvest: 100000,
+        rareFlowerHarvest: 100,
+        fishCaught: 3,
+        purpleOSD: 1, 
+        alphaReaperKills: 1, 
+        desertTitanTamed: 1, 
         averages: {
             avgKills: 8,
             avgDeaths: 4,
@@ -41,8 +46,7 @@ export function fetchMockUserProfile() {
         tribeMembers: [
             {
                 name: "Kintokid",
-                avatar:
-                    "https://avatars.akamai.steamstatic.com/f00d07ea063355891b611f35dd4aeb30295e7dc0_full.jpg",
+                avatar: "https://avatars.akamai.steamstatic.com/f00d07ea063355891b611f35dd4aeb30295e7dc0_full.jpg",
                 initial: "M",
                 kills: 5,
                 deaths: 2,
@@ -50,8 +54,7 @@ export function fetchMockUserProfile() {
             },
             {
                 name: "Linthoss",
-                avatar:
-                    "https://avatars.akamai.steamstatic.com/d4d3da034c914a25c9815da96369c3ace351114e_full.jpg",
+                avatar: "https://avatars.akamai.steamstatic.com/d4d3da034c914a25c9815da96369c3ace351114e_full.jpg",
                 initial: "M",
                 kills: 3,
                 deaths: 1,
@@ -59,8 +62,7 @@ export function fetchMockUserProfile() {
             },
             {
                 name: "PoorDawg",
-                avatar:
-                    "https://avatars.akamai.steamstatic.com/39f57db4946eda3f415674a3fbe989ed6e1d03e4_full.jpg",
+                avatar: "https://avatars.akamai.steamstatic.com/39f57db4946eda3f415674a3fbe989ed6e1d03e4_full.jpg",
                 initial: "M",
                 kills: 3,
                 deaths: 1,
@@ -68,8 +70,7 @@ export function fetchMockUserProfile() {
             },
             {
                 name: "John",
-                avatar:
-                    "https://avatars.akamai.steamstatic.com/3604ac34b47c87e187d151f22aa17e107253ce34_medium.jpg",
+                avatar: "https://avatars.akamai.steamstatic.com/3604ac34b47c87e187d151f22aa17e107253ce34_medium.jpg",
                 initial: "M",
                 kills: 3,
                 deaths: 1,
@@ -83,6 +84,8 @@ export function fetchMockUserProfile() {
     displayMedals(mockUser); // Display mock medals
 }
 
+
+
 export function fetchMockUserStats() {
     const mockStats = {
         kills: 1,
@@ -91,7 +94,7 @@ export function fetchMockUserStats() {
         totalDeaths: 3,
         kd: 2.5,
         minutesPlayed: 8000,
-        alphaKills: 5,
+        alphaKills: 25,
         tamedDinos: 2,
         dailies: 3,
         weeklies: 1,
