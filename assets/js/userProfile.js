@@ -223,9 +223,13 @@ export function displayUserProfile(user) {
     playerKillsElem.innerText = Math.min(user.kills, 2);
   }
   // Just don't get insided! Achievement
+  // Just don't get insided! Achievement
   const tribeMateElem = document.getElementById("tribeMate");
   if (tribeMateElem) {
-    tribeMateElem.innerText = user.tribeMembers && user.tribeMembers.length > 1 ? 1 : 0;
+    tribeMateElem.innerText = user.tribeMembers && user.tribeMembers.length > 0 ? 1 : 0;
+    if (user.tribeMembers && user.tribeMembers.length > 0) {
+      tribeMateElem.closest(".tribeMate").classList.add("achieved");
+    }
   }
   // This is my life! Achievement
   const oneHourPlayedElem = document.getElementById("oneHourPlayed");
